@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-lmsg&_!l)s_t+v%g_&s6ql-uk7--)bu&e_^v&)ha_)5$2c(=k=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*", "13.201.166.114"]
+
 
 
 # Application definition
@@ -37,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'main',
     'pages',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,4 +135,15 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your-email@gmail.com'  # Replace with your Gmail
 EMAIL_HOST_PASSWORD = 'your-app-password'  # Replace with your Gmail App Password
 DEFAULT_FROM_EMAIL = 'your-email@gmail.com'  # Replace with your Gmail
+
+# CORS Configuration
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://13.201.166.114",
+    "http://13.201.166.114:8000",
+    "http://13.201.166.114:80",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
