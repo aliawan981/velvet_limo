@@ -9,9 +9,9 @@
 							class="box-cover-image"
 							style="background-image: url('{% static 'assets/imgs/page/homepage1/banner.png' %}')"></div>
 						<div class="box-banner-info">
-							<p class="text-16 color-white wow fadeInUp">Where Would You Like To Go?</p>
+							<p class="text-16 color-white wow fadeInUp">Where Can Velvet Take You?</p>
 							<h2 class="heading-52-medium color-white wow fadeInUp">
-								Your Personal <br class="d-none d-lg-block" />Chauffeur Services
+								Your New York <br class="d-none d-lg-block" />Chauffeur Service
 							</h2>
 						</div>
 					</div>
@@ -219,7 +219,7 @@
 					<h2 class="heading-44-medium title-fleet wow fadeInUp">Our Fleet</h2>
 				</div>
 				<div class="col-lg-6 col-5 text-end">
-					<a class="text-16-medium color-primary wow fadeInUp" href="#"
+					<a class="text-16-medium color-primary wow fadeInUp" href="{% url 'fleet' %}"
 						>More Fleet
 						<svg
 							class="icon-16"
@@ -407,24 +407,23 @@
 					<ul class="slider-nav-thumbnails list-how">
 						<li>
 							<span class="line-white"></span>
-							<h4 class="text-20-medium mb-20">Create Your Route</h4>
+							<h4 class="text-20-medium mb-20">Plan Your Route</h4>
 							<p class="text-16">
-								Enter your pickup & dropoff locations or the number of hours you wish to book a car and driver
-								for
+								Enter your pickup and drop-off details or book hourly service with a private NYC chauffeur.
 							</p>
 						</li>
 						<li>
 							<span class="line-white"></span>
-							<h4 class="text-20-medium mb-20">Choose Vehicle For You</h4>
+							<h4 class="text-20-medium mb-20">Choose Your Vehicle</h4>
 							<p class="text-16">
-								On the day of your ride, you will receive two email and SMS updates - one informing you that.
+								Select your preferred luxury vehicle and confirm your ride with clear pricing and trip details.
 							</p>
 						</li>
 						<li>
 							<span class="line-white"></span>
-							<h4 class="text-20-medium mb-20">Enjoy The Journey</h4>
+							<h4 class="text-20-medium mb-20">Enjoy Your Journey</h4>
 							<p class="text-16">
-								After your ride has taken place, we would appreciate it if you could rate your car and driver.
+								Relax in comfort while your professional chauffeur gets you to your destination on time.
 							</p>
 						</li>
 					</ul>
@@ -435,7 +434,7 @@
 	<section class="section mt-110">
 		<div class="container-sub">
 			<div class="text-center">
-				<h2 class="heading-44-medium color-text wow fadeInUp">Make Your Trip Your Way With Us</h2>
+				<h2 class="heading-44-medium color-text wow fadeInUp">Make Your Ride Your Way With Us</h2>
 			</div>
 			<div class="row mt-50 cardIconStyleCircle">
 				<div class="col-lg-4">
@@ -448,8 +447,7 @@
 						</div>
 						<div class="cardDesc">
 							<p class="text-16 color-text">
-								Both you and your shipments will travel with professional drivers. Always with the highest
-								quality standards.
+								Ride with professional chauffeurs focused on safety, comfort, privacy, and first-class service.
 							</p>
 						</div>
 					</div>
@@ -460,7 +458,7 @@
 							<img src="{% static 'assets/imgs/page/homepage1/price.svg' %}" alt="luxride" />
 						</div>
 						<div class="cardTitle">
-							<h5 class="text-20-medium color-text">Prices With No Surprises</h5>
+							<h5 class="text-20-medium color-text">No Hidden Prices</h5>
 						</div>
 						<div class="cardDesc">
 							<p class="text-16 color-text">
@@ -480,8 +478,7 @@
 						</div>
 						<div class="cardDesc">
 							<p class="text-16 color-text">
-								Both you and your shipments will travel with professional drivers. Always with the highest
-								quality standards.
+								Book airport transfers, hourly rides, events, and business travel across New York City.
 							</p>
 						</div>
 					</div>
@@ -531,7 +528,7 @@
 				<div class="col-lg-6 col-sm-5 col-5 text-end">
 					<a
 						class="text-16-medium color-primary d-flex align-items-center justify-content-end wow fadeInUp"
-						href="#"
+						href="{% url 'services' %}"
 						>More Services
 						<svg
 							class="icon-16 ml-5"
@@ -704,128 +701,123 @@
 			</div>
 		</div>
 	</section>
-	<section class="section pt-130 pb-130 bg-primary box-testimonials">
+		<section class="section pt-80 mb-30">
 		<div class="container-sub">
-			<div class="row">
-				<div class="col-lg-5 col-md-6 mb-30">
-					<div class="box-swiper">
-						<div class="swiper-container swiper-group-testimonials pb-50">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
-									<div class="cardQuote wow fadeInUp">
-										<div class="box-quote">
-											<div class="icon-quote"></div>
-											<div class="info-quote">
-												<h5 class="color-white text-18-medium">Jonathan Miller</h5>
-												<p class="color-white text-14">Web Developer</p>
-											</div>
-										</div>
-										<div class="content-quote">
-											I really can recommend this theme, because it’s coded very well and it’s really easy to
-											build your own website!
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div class="cardQuote wow fadeInUp">
-										<div class="box-quote">
-											<div class="icon-quote"></div>
-											<div class="info-quote">
-												<h5 class="color-white text-18-medium">Jonathan Miller</h5>
-												<p class="color-white text-14">Web Developer</p>
-											</div>
-										</div>
-										<div class="content-quote">
-											I really can recommend this theme, because it’s coded very well and it’s really easy to
-											build your own website!
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div class="cardQuote wow fadeInUp">
-										<div class="box-quote">
-											<div class="icon-quote"></div>
-											<div class="info-quote">
-												<h5 class="color-white text-18-medium">Jonathan Miller</h5>
-												<p class="color-white text-14">Web Developer</p>
-											</div>
-										</div>
-										<div class="content-quote">
-											I really can recommend this theme, because it’s coded very well and it’s really easy to
-											build your own website!
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div class="cardQuote wow fadeInUp">
-										<div class="box-quote">
-											<div class="icon-quote"></div>
-											<div class="info-quote">
-												<h5 class="color-white text-18-medium">Jonathan Miller</h5>
-												<p class="color-white text-14">Web Developer</p>
-											</div>
-										</div>
-										<div class="content-quote">
-											I really can recommend this theme, because it’s coded very well and it’s really easy to
-											build your own website!
-										</div>
-									</div>
+			<div class="box-faqs">
+				<div class="text-center">
+					<h2 class="color-brand-1 mb-20 wow fadeInUp">Frequently Asked Questions</h2>
+				</div>
+				<div class="mt-60 mb-40">
+					<div class="accordion wow fadeInUp" id="accordionFAQ">
+						<div class="accordion-item">
+							<h5 class="accordion-header" id="headingOne">
+								<button
+									class="accordion-button text-heading-5"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseOne"
+									aria-expanded="true"
+									aria-controls="collapseOne">
+									How do I book a Velvet Limo?
+								</button>
+							</h5>
+							<div
+								class="accordion-collapse collapse show"
+								id="collapseOne"
+								aria-labelledby="headingOne"
+								data-bs-parent="#accordionFAQ">
+								<div class="accordion-body">
+									You can book your ride online by entering pickup, drop-off, date, time, and vehicle details.
 								</div>
 							</div>
-							<div class="box-pagination-testimonials mt-40 wow fadeInUp">
-								<span class="firstNumber"></span><span class="lastNumber"></span>
-								<div class="swiper-pagination swiper-pagination-testimonials"></div>
+						</div>
+						<div class="accordion-item">
+							<h5 class="accordion-header" id="headingTwo">
+								<button
+									class="accordion-button text-heading-5 collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseTwo"
+									aria-expanded="false"
+									aria-controls="collapseTwo">
+									How do I schedule an airport transfer?
+								</button>
+							</h5>
+							<div
+								class="accordion-collapse collapse"
+								id="collapseTwo"
+								aria-labelledby="headingTwo"
+								data-bs-parent="#accordionFAQ">
+								<div class="accordion-body">
+									Share your flight details, and our chauffeur will track your arrival for smooth pickup.
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="col-lg-7 col-md-6 mb-30 text-lg-end text-center d-none d-md-block">
-					<div class="box-video wow fadeInUp">
-						<a
-							class="btn btn-play popup-youtube hover-up"
-							href="https://www.youtube.com/watch?v=sVPYIRF9RCQ"></a
-						><img src="{% static 'assets/imgs/page/homepage1/img-video.png' %}" alt="luxride" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="section pt-120 pb-120 bg-region">
-		<div class="container-sub">
-			<div class="row align-items-center">
-				<div class="col-lg-6 mb-30">
-					<div class="box-gallery justify-content-center justify-content-lg-start">
-						<div class="gallery-1 wow fadeInUp">
-							<img src="{% static 'assets/imgs/page/homepage1/img1.png' %}" alt="luxride" />
+						<div class="accordion-item">
+							<h5 class="accordion-header" id="headingThree">
+								<button
+									class="accordion-button text-heading-5 collapsed text-heading-5 type="
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseThree"
+									aria-expanded="false"
+									aria-controls="collapseThree">
+									Can I book hourly chauffeur service in New York?
+								</button>
+							</h5>
+							<div
+								class="accordion-collapse collapse"
+								id="collapseThree"
+								aria-labelledby="headingThree"
+								data-bs-parent="#accordionFAQ">
+								<div class="accordion-body">
+									Yes, Velvet Limo offers hourly chauffeur service for meetings, events, and city travel.
+								</div>
+							</div>
 						</div>
-						<div class="gallery-2 wow fadeInUp">
-							<img src="{% static 'assets/imgs/page/homepage1/img2.png' %}" alt="luxride" /><img
-								src="{% static 'assets/imgs/page/homepage1/img3.png' %}"
-								alt="luxride" />
+						<div class="accordion-item">
+							<h5 class="accordion-header" id="headingFour">
+								<button
+									class="accordion-button text-heading-5 collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseFour"
+									aria-expanded="false"
+									aria-controls="collapseFour">
+									How early should I reserve my ride?
+								</button>
+							</h5>
+							<div
+								class="accordion-collapse collapse"
+								id="collapseFour"
+								aria-labelledby="headingFour"
+								data-bs-parent="#accordionFAQ">
+								<div class="accordion-body">
+									We recommend booking early, especially for airport rides, events, and weekend travel.
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 mb-30">
-					<div class="box-region-right wow fadeInUp">
-						<h2 class="heading-44-medium color-text mb-30">From the region, for the region</h2>
-						<p class="text-16 color-text mb-30">
-							Superide operates in more than 120 cities in 18 countries from Morocco to Pakistan.
-						</p>
-						<a class="btn btn-primary"
-							>View All Cities
-							<svg
-								class="icon-16 ml-5"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="1.5"
-								viewbox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-								aria-hidden="true">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
-						></a>
+						<div class="accordion-item">
+							<h5 class="accordion-header" id="headingFive">
+								<button
+									class="accordion-button text-heading-5 collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseFive"
+									aria-expanded="false"
+									aria-controls="collapseFive">
+									Where can I get support or change my booking?
+								</button>
+							</h5>
+							<div
+								class="accordion-collapse collapse"
+								id="collapseFive"
+								aria-labelledby="headingFive"
+								data-bs-parent="#accordionFAQ">
+								<div class="accordion-body">
+									Contact our support team anytime for booking changes, ride updates, or service questions.
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -1087,38 +1079,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</section>
-	<section class="section mt-50 bg-download">
-		<div class="container-sub">
-			<h2 class="heading-44-medium color-text mb-20 wow fadeInUp">Download the app</h2>
-			<p class="color-text text-16 mb-60 wow fadeInUp">
-				Have a personal driver at your fingertips no matter where you <br class="d-none d-md-block" />are with
-				our easy-to-use smartphone app.
-			</p>
-			<div class="box-button-download">
-				<a class="btn btn-download mr-15 hover-up wow fadeInUp" href="#">
-					<div class="inner-download">
-						<div class="icon-download">
-							<img src="{% static 'assets/imgs/template/icons/apple-icon.svg' %}" alt="luxride" />
-						</div>
-						<div class="info-download">
-							<span class="text-download-top">Download on the</span
-							><span class="text-14-medium">Apple Store</span>
-						</div>
-					</div></a
-				><a class="btn btn-download hover-up wow fadeInUp" href="#">
-					<div class="inner-download">
-						<div class="icon-download">
-							<img src="{% static 'assets/imgs/template/icons/google-icon.svg' %}" alt="luxride" />
-						</div>
-						<div class="info-download">
-							<span class="text-download-top">Download on the</span
-							><span class="text-14-medium">Apple Store</span>
-						</div>
-					</div></a
-				>
 			</div>
 		</div>
 	</section>

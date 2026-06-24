@@ -5,10 +5,10 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="shortcut icon" href="{% static 'assets/imgs/template/favicon.png' %}" />
+		<link rel="shortcut icon" href="{% static 'assets/imgs/template/velvet-fav.png' %}" />
 		<link rel="stylesheet" href="{% static 'assets/css/style.css' %}?v=1.0.0" />
 
-		<title>Luxride</title>
+		<title>Velvet Essence Limousine Services</title>
 	</head>
 	<body>
 		{% include 'header.html' %} {% block content %} {% endblock %} {% include 'footer.html' %}
@@ -34,5 +34,8 @@
 		<script src="{% static 'assets/js/vendors/jquery-ui.js' %}"></script>
 		<script src="{% static 'assets/js/vendors/jquery.timepicker.min.js' %}"></script>
 		<script src="{% static 'assets/js/main.js' %}?v=1.0.0"></script>
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+		</script>
 	</body>
 </html>
