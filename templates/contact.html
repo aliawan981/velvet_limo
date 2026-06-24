@@ -1,12 +1,66 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+.form-group {
+x    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #333;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.form-control {
+    width: 100%;
+    display: block;
+    min-height: 44px;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fafafa;
+    font-family: inherit;
+    transition: border-color 0.3s, background-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-control:hover {
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: #0066cc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.text-danger {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+</style>
 <main class="main">
 	<div class="section pt-60 pb-60 bg-primary">
 		<div class="container-sub">
 			<h1 class="heading-44-medium color-white mb-5">Contact Us</h1>
 			<div class="box-breadcrumb">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="service-grid.html">Contact</a></li>
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li><a href="{% url 'contact' %}">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -32,31 +86,56 @@
 		<div class="container-sub">
 			<div class="mw-770">
 				<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">Leave us your info</h2>
+				
+				{% if messages %}
+				<div class="alert-messages mb-30">
+					{% for message in messages %}
+					<div class="alert alert-{{ message.tags }}" role="alert">
+						{{ message }}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					{% endfor %}
+				</div>
+				{% endif %}
+				
 				<div class="form-contact form-comment wow fadeInUp">
-					<form action="#">
+					<form method="POST" action="{% url 'contact' %}">
+						{% csrf_token %}
 						<div class="row">
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
-									<label class="form-label" for="fullname">Full Name</label>
-									<input class="form-control" id="fullname" type="text" value="Ali Tufan" />
+									<label class="form-label" for="{{ form.full_name.id_for_label }}">Full Name</label>
+									{{ form.full_name }}
+									{% if form.full_name.errors %}
+									<span class="text-danger">{{ form.full_name.errors }}</span>
+									{% endif %}
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
-									<label class="form-label" for="email">Email</label>
-									<input class="form-control" id="email" type="text" placeholder="" />
+									<label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+									{{ form.email }}
+									{% if form.email.errors %}
+									<span class="text-danger">{{ form.email.errors }}</span>
+									{% endif %}
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group">
-									<label class="form-label" for="subject">Subject</label>
-									<input class="form-control" id="subject" type="text" placeholder="" />
+									<label class="form-label" for="{{ form.subject.id_for_label }}">Subject</label>
+									{{ form.subject }}
+									{% if form.subject.errors %}
+									<span class="text-danger">{{ form.subject.errors }}</span>
+									{% endif %}
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group">
-									<label class="form-label" for="message">Message</label>
-									<textarea class="form-control" id="message"></textarea>
+									<label class="form-label" for="{{ form.message.id_for_label }}">Message</label>
+									{{ form.message }}
+									{% if form.message.errors %}
+									<span class="text-danger">{{ form.message.errors }}</span>
+									{% endif %}
 								</div>
 							</div>
 							<div class="col-lg-12">
