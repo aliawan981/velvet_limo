@@ -140,10 +140,24 @@ DEFAULT_FROM_EMAIL = 'your-email@gmail.com'  # Replace with your Gmail
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://13.201.166.114",
     "http://13.201.166.114",
     "http://13.201.166.114:8000",
     "http://13.201.166.114:80",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+# CSRF Configuration
+CSRF_TRUSTED_ORIGINS = [
+    "https://13.201.166.114",
+    "http://13.201.166.114",
+    "https://13.201.166.114:8000",
+    "http://13.201.166.114:8000",
+    "http://localhost:3000",
+    "http://localhost:8000",
+]
+
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
 
