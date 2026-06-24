@@ -5,7 +5,7 @@
 			<div class="header-left">
 				<div class="header-logo">
 					<a class="d-flex" href="{% url 'home' %}"
-						><img alt="luxride" src="{% static 'assets/imgs/template/logo.svg' %}"
+						><img alt="luxride" src="{% static 'assets/imgs/template/velvet-logo.png' %}"
 					/></a>
 				</div>
 				<div class="header-nav">
@@ -21,6 +21,9 @@
 								<a href="{% url 'services' %}">Services</a>
 							</li>
 							<li>
+								<a href="{% url 'about' %}">About</a>
+							</li>
+							<li>
 								<a href="{% url 'blog' %}">Blog List</a>
 							</li>
 							<li><a href="{% url 'contact' %}">Contact</a></li>
@@ -33,14 +36,11 @@
 				<div class="header-right">
 					<div class="d-none d-xxl-inline-block align-middle mr-10">
 						<a class="text-14-medium call-phone color-white hover-up" href="tel:+41227157000"
-							>+41 22 715 7000</a
+							>+914-501-1564</a
 						>
 					</div>
-					<div class="box-button-login d-inline-block mr-10 align-middle">
-						<a class="btn btn-default hover-up" href="login.html">Log In</a>
-					</div>
 					<div class="box-button-login d-none2 d-inline-block align-middle">
-						<a class="btn btn-white hover-up" href="register.html">Sign Up</a>
+						<a class="btn btn-white hover-up" href="{% url 'contact' %}">Book Now</a>
 					</div>
 				</div>
 			</div>
