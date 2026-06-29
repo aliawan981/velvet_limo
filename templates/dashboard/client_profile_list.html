@@ -1,0 +1,35 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_title %}Client Profiles{% endblock %}
+{% block dashboard_content %}
+<section class="dashboard-panel">
+	<div class="dashboard-panel-head">
+		<h2>Client Profiles</h2>
+	</div>
+	<table class="dashboard-table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Created</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for client_profile in client_profiles %}
+			<tr>
+				<td>{{ client_profile.full_name }}</td>
+				<td>{{ client_profile.user.email }}</td>
+				<td>{{ client_profile.phone }}</td>
+				<td>{{ client_profile.created_at|date:"M d, Y" }}</td>
+				<td>
+					<a class="dashboard-danger-link" href="{% url 'dashboard_client_profile_delete' client_profile.id %}">Delete</a>
+				</td>
+			</tr>
+			{% empty %}
+			<tr><td colspan="5">No client profiles found.</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</section>
+{% endblock %}

@@ -18,12 +18,27 @@
 		<span>Active Fleet</span>
 		<strong>{{ active_fleet }}</strong>
 	</div>
+	<div class="dashboard-stat">
+		<span>Client Profiles</span>
+		<strong>{{ total_client_profiles }}</strong>
+	</div>
+	<div class="dashboard-stat">
+		<span>Contact Forms</span>
+		<strong>{{ total_contact_forms }}</strong>
+	</div>
+	<div class="dashboard-stat">
+		<span>Quote Requests</span>
+		<strong>{{ total_quote_requests }}</strong>
+	</div>
 </section>
 <section class="dashboard-panel">
 	<h2>Quick Actions</h2>
 	<div class="dashboard-actions">
 		<a class="dashboard-button" href="{% url 'dashboard_service_add' %}">Add Service</a>
 		<a class="dashboard-button" href="{% url 'dashboard_fleet_add' %}">Add Fleet</a>
+		<a class="dashboard-button" href="{% url 'dashboard_client_profiles' %}">View Client Profiles</a>
+		<a class="dashboard-button" href="{% url 'dashboard_contact_forms' %}">View Contact Forms</a>
+		<a class="dashboard-button" href="{% url 'dashboard_quote_requests' %}">View Quote Requests</a>
 	</div>
 </section>
 {% endblock %}

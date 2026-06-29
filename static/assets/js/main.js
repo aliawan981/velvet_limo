@@ -696,7 +696,8 @@ function initSwiperFleet() {
         slidesPerView: 4,
         slidesPerGroup: 1,
         // initialSlide: 1,
-        loop: true,
+        loop: false,
+        watchOverflow: true,
         navigation: {
             nextEl: ".swiper-button-next-fleet",
             prevEl: ".swiper-button-prev-fleet"

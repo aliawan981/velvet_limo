@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404, redirect, render
 
+from main.models import ClientProfile, ContactForm, QuoteRequest
 from pages.models import Fleet, Service
 
 from .forms import FleetForm, ServiceForm
@@ -14,8 +15,24 @@ def dashboard_home(request):
         'active_services': Service.objects.filter(is_active=True).count(),
         'total_fleet': Fleet.objects.count(),
         'active_fleet': Fleet.objects.filter(is_active=True).count(),
+        'total_client_profiles': ClientProfile.objects.count(),
+        'total_contact_forms': ContactForm.objects.count(),
+        'total_quote_requests': QuoteRequest.objects.count(),
     }
     return render(request, 'dashboard/home.html', context)
+
+
+def _delete_record(request, instance, redirect_name, success_message, object_type):
+    if request.method == 'POST':
+        instance.delete()
+        messages.success(request, success_message)
+        return redirect(redirect_name)
+
+    return render(request, 'dashboard/confirm_delete.html', {
+        'object': instance,
+        'object_type': object_type,
+        'cancel_url': redirect_name,
+    })
 
 
 @staff_member_required(login_url='admin:login')
@@ -89,12 +106,58 @@ def fleet_edit(request, pk):
 @staff_member_required(login_url='admin:login')
 def fleet_delete(request, pk):
     fleet = get_object_or_404(Fleet, pk=pk)
-    if request.method == 'POST':
-        fleet.delete()
-        messages.success(request, 'Fleet vehicle deleted successfully.')
-        return redirect('dashboard_fleet')
-    return render(request, 'dashboard/confirm_delete.html', {
-        'object': fleet,
-        'object_type': 'Fleet',
-        'cancel_url': 'dashboard_fleet',
-    })
+    return _delete_record(request, fleet, 'dashboard_fleet', 'Fleet vehicle deleted successfully.', 'Fleet')
+
+
+@staff_member_required(login_url='admin:login')
+def client_profile_list(request):
+    client_profiles = ClientProfile.objects.select_related('user').order_by('-created_at')
+    return render(request, 'dashboard/client_profile_list.html', {'client_profiles': client_profiles})
+
+
+@staff_member_required(login_url='admin:login')
+def client_profile_delete(request, pk):
+    client_profile = get_object_or_404(ClientProfile, pk=pk)
+    return _delete_record(
+        request,
+        client_profile,
+        'dashboard_client_profiles',
+        'Client profile deleted successfully.',
+        'Client Profile',
+    )
+
+
+@staff_member_required(login_url='admin:login')
+def contact_form_list(request):
+    contact_forms = ContactForm.objects.all().order_by('-created_at')
+    return render(request, 'dashboard/contact_form_list.html', {'contact_forms': contact_forms})
+
+
+@staff_member_required(login_url='admin:login')
+def contact_form_delete(request, pk):
+    contact_form = get_object_or_404(ContactForm, pk=pk)
+    return _delete_record(
+        request,
+        contact_form,
+        'dashboard_contact_forms',
+        'Contact form deleted successfully.',
+        'Contact Form',
+    )
+
+
+@staff_member_required(login_url='admin:login')
+def quote_request_list(request):
+    quote_requests = QuoteRequest.objects.select_related('user').order_by('-created_at')
+    return render(request, 'dashboard/quote_request_list.html', {'quote_requests': quote_requests})
+
+
+@staff_member_required(login_url='admin:login')
+def quote_request_delete(request, pk):
+    quote_request = get_object_or_404(QuoteRequest, pk=pk)
+    return _delete_record(
+        request,
+        quote_request,
+        'dashboard_quote_requests',
+        'Quote request deleted successfully.',
+        'Quote Request',
+    )

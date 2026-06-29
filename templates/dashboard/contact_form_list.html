@@ -1,0 +1,37 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_title %}Contact Forms{% endblock %}
+{% block dashboard_content %}
+<section class="dashboard-panel">
+	<div class="dashboard-panel-head">
+		<h2>Contact Forms</h2>
+	</div>
+	<table class="dashboard-table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Message</th>
+				<th>Created</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for contact_form in contact_forms %}
+			<tr>
+				<td>{{ contact_form.full_name }}</td>
+				<td>{{ contact_form.email }}</td>
+				<td>{{ contact_form.phone }}</td>
+				<td>{{ contact_form.message|truncatechars:80 }}</td>
+				<td>{{ contact_form.created_at|date:"M d, Y" }}</td>
+				<td>
+					<a class="dashboard-danger-link" href="{% url 'dashboard_contact_form_delete' contact_form.id %}">Delete</a>
+				</td>
+			</tr>
+			{% empty %}
+			<tr><td colspan="6">No contact forms found.</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</section>
+{% endblock %}
