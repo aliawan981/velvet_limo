@@ -6,51 +6,56 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 
+from threading import Thread
+
 from .forms import ClientLoginForm, ClientRegistrationForm, ContactFormForm, QuoteRequestForm
 from .models import ClientProfile, QuoteRequest
 
+ADMIN_EMAIL = getattr(settings, 'ADMIN_EMAIL')
 
-ADMIN_EMAIL = getattr(settings, 'QUOTE_ADMIN_EMAIL', 'mahbub@velvetlimousine.com')
+
+def _send_async_email(email_function, *args, **kwargs):
+    Thread(target=email_function, args=args, kwargs=kwargs, daemon=True).start()
 
 
 def _send_quote_emails(quote_request):
     admin_subject = f"New quote request from {quote_request.full_name}"
     admin_body = f"""
-New quote request received.
-
-Customer: {quote_request.full_name}
-Email: {quote_request.email}
-Phone: {quote_request.phone}
-Service type: {quote_request.get_service_type_display()}
-Pickup: {quote_request.pickup}
-Drop off: {quote_request.dropoff or '-'}
-Stop: {quote_request.stop or '-'}
-Trip date: {quote_request.trip_date}
-Trip time: {quote_request.trip_time}
-Riders: {quote_request.riders}
-Return date: {quote_request.return_date or '-'}
-Return time: {quote_request.return_time or '-'}
-Return pickup: {quote_request.return_pickup or '-'}
-Hours: {quote_request.hours or '-'}
-Hourly area: {quote_request.hourly_area or '-'}
-Hourly notes: {quote_request.hourly_notes or '-'}
-Submitted at: {quote_request.created_at}
-""".strip()
+    New quote request received.
+    
+    Customer: {quote_request.full_name}
+    Email: {quote_request.email}
+    Phone: {quote_request.phone}
+    Service type: {quote_request.get_service_type_display()}
+    Pickup: {quote_request.pickup}
+    Drop off: {quote_request.dropoff or '-'}
+    Stop: {quote_request.stop or '-'}
+    Trip date: {quote_request.trip_date}
+    Trip time: {quote_request.trip_time}
+    Riders: {quote_request.riders}
+    Return date: {quote_request.return_date or '-'}
+    Return time: {quote_request.return_time or '-'}
+    Return pickup: {quote_request.return_pickup or '-'}
+    Hours: {quote_request.hours or '-'}
+    Hourly area: {quote_request.hourly_area or '-'}
+    Hourly notes: {quote_request.hourly_notes or '-'}
+    Submitted at: {quote_request.created_at}
+    """.strip()
 
     customer_subject = 'We received your quote request'
     customer_body = f"""
-Hello {quote_request.full_name},
-
-We received your quote request and will review the details shortly.
-
-Pickup: {quote_request.pickup}
-Drop off: {quote_request.dropoff or '-'}
-Trip date: {quote_request.trip_date}
-Trip time: {quote_request.trip_time}
-
-Thank you,
-Velvet Limousine Team
-""".strip()
+    Hello {quote_request.full_name},
+    
+    We received your quote request and will review the details shortly.
+    
+    Pickup: {quote_request.pickup}
+    Drop off: {quote_request.dropoff or '-'}
+    Trip date: {quote_request.trip_date}
+    Trip time: {quote_request.trip_time}
+    
+    Thank you,
+    Velvet Limousine Team
+    """.strip()
 
     send_mail(admin_subject, admin_body, settings.DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
     send_mail(customer_subject, customer_body, settings.DEFAULT_FROM_EMAIL, [quote_request.email], fail_silently=False)
@@ -118,14 +123,15 @@ def contact(request):
             ---
             Submitted at: {contact_instance.created_at}
             """
-
+            admin_email = getattr(settings, 'ADMIN_EMAIL', '')
             try:
                 # Send email to admin
-                send_mail(
+                _send_async_email(
+                    send_mail,
                     subject,
                     message_body,
                     settings.DEFAULT_FROM_EMAIL,
-                    ['mahbub@velvetlimousine.com'],
+                    [admin_email],
                     fail_silently=True,
                 )
 
@@ -138,7 +144,8 @@ def contact(request):
                 Best regards,
                 Velvet Limousine Team
                 """
-                send_mail(
+                _send_async_email(
+                    send_mail,
                     'Thank you for your inquiry - Velvet Limousine',
                     user_message,
                     settings.DEFAULT_FROM_EMAIL,
@@ -176,10 +183,7 @@ def quote_request(request):
     quote_request.phone = profile.phone if profile else ''
     quote_request.save()
 
-    try:
-        _send_quote_emails(quote_request)
-        messages.success(request, 'Your quote request was sent successfully.')
-    except Exception:
-        messages.success(request, 'Your quote request was saved successfully.')
+    _send_async_email(_send_quote_emails, quote_request)
+    messages.success(request, 'Your quote request was saved and submitted successfully.')
 
     return redirect('home')

@@ -1,0 +1,86 @@
+<html>
+<head>
+  <title>Add a Map using HTML</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script type="module" src="./index.js"></script>
+</head>
+<body>
+  <div style="max-width: 960px; margin: 24px auto; padding: 0 16px;">
+    <label for="address-input" style="display:block; font-family: Arial, sans-serif; font-size: 14px; margin-bottom: 8px;">
+      Search address
+    </label>
+    <input
+      id="address-input"
+      type="text"
+      placeholder="Start typing an address"
+      autocomplete="off"
+      style="width: 100%; padding: 12px 14px; border: 1px solid #cfcfcf; border-radius: 8px; font-size: 16px;"
+    />
+    <p id="map-status" style="margin: 10px 0 0; font-family: Arial, sans-serif; font-size: 13px; color: #666;"></p>
+  </div>
+  <gmp-map
+    id="gmp-map"
+    center="38.7946,-106.5348"
+    zoom="4"
+    map-id="DEMO_MAP_ID"
+    style="display:block; height: 400px; width: min(960px, calc(100% - 32px)); margin: 0 auto 24px;"
+  >
+  </gmp-map>
+  <script>
+    const USE_GOOGLE_MAPS_API = true;
+    const GOOGLE_MAPS_API_KEY = 'AIzaSyCJUUg1Fk-cs_LlhMOjBGLPSKPoqNpHtoA';
+
+    function initAutocomplete() {
+      var addressInput = document.getElementById('address-input');
+
+      if (!addressInput || !window.google || !google.maps || !google.maps.places) {
+        return;
+      }
+
+      var autocomplete = new google.maps.places.Autocomplete(addressInput, {
+        types: ['geocode']
+      });
+
+      autocomplete.addListener('place_changed', function () {
+        var place = autocomplete.getPlace();
+        if (!place || !place.formatted_address) {
+          return;
+        }
+
+        addressInput.value = place.formatted_address;
+      });
+    }
+
+    function enableGoogleMaps() {
+      var script = document.createElement('script');
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_MAPS_API_KEY + '&libraries=maps,places';
+      script.defer = true;
+      script.onload = initAutocomplete;
+      document.head.appendChild(script);
+    }
+
+    window.addEventListener('load', function () {
+      var mapStatus = document.getElementById('map-status');
+      var mapElement = document.getElementById('gmp-map');
+
+      if (!USE_GOOGLE_MAPS_API) {
+        if (mapStatus) {
+          mapStatus.textContent = 'Google Maps is disabled. Turn USE_GOOGLE_MAPS_API on to enable map loading and address autocomplete.';
+        }
+
+        if (mapElement) {
+          mapElement.style.display = 'none';
+        }
+
+        return;
+      }
+
+      if (mapStatus) {
+        mapStatus.textContent = 'Google Maps is enabled.';
+      }
+
+      enableGoogleMaps();
+    });
+  </script>
+</body>
+</html>
