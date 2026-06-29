@@ -2762,6 +2762,10 @@ body {
   z-index: 1;
 }
 
+.hero-static-image {
+  background-attachment: fixed;
+}
+
 .box-pagination-button {
   position: absolute;
   top: 30%;

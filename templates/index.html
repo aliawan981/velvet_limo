@@ -1,74 +1,17 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <main class="main">
 	<section class="section banner-home1">
-		<div class="box-swiper">
-			<div class="swiper-container swiper-banner-1 pb-0">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div
-							class="box-cover-image"
-							style="background-image: url('{% static 'assets/imgs/page/homepage1/banner.png' %}')"></div>
-						<div class="box-banner-info">
-							<p class="text-16 color-white wow fadeInUp">Where Can Velvet Take You?</p>
-							<h2 class="heading-52-medium color-white wow fadeInUp">
-								Your New York <br class="d-none d-lg-block" />Chauffeur Service
-							</h2>
-						</div>
-					</div>
-					<!-- <div class="swiper-slide">
-						<div
-							class="box-cover-image"
-							style="background-image: url('{% static 'assets/imgs/page/homepage1/banner2.png' %}')"></div>
-						<div class="box-banner-info">
-							<p class="text-16 color-white wow fadeInUp">Where Would You Like To Go?</p>
-							<h2 class="heading-52-medium color-white wow fadeInUp">
-								Your Personal <br class="d-none d-lg-block" />Chauffeur Services
-							</h2>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div
-							class="box-cover-image"
-							style="background-image: url('{% static 'assets/imgs/page/homepage1/banner3.png' %}')"></div>
-						<div class="box-banner-info">
-							<p class="text-16 color-white wow fadeInUp">Where Would You Like To Go?</p>
-							<h2 class="heading-52-medium color-white wow fadeInUp">
-								Your Personal <br class="d-none d-lg-block" />Chauffeur Services
-							</h2>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div
-							class="box-cover-image"
-							style="background-image: url('{% static 'assets/imgs/page/homepage1/banner4.png' %}')"></div>
-						<div class="box-banner-info">
-							<p class="text-16 color-white wow fadeInUp">Where Would You Like To Go?</p>
-							<h2 class="heading-52-medium color-white wow fadeInUp">
-								Your Personal <br class="d-none d-lg-block" />Chauffeur Services
-							</h2>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div
-							class="box-cover-image"
-							style="background-image: url('{% static 'assets/imgs/page/homepage1/banner5.png' %}')"></div>
-						<div class="box-banner-info">
-							<p class="text-16 color-white wow fadeInUp">Where Would You Like To Go?</p>
-							<h2 class="heading-52-medium color-white wow fadeInUp">
-								Your Personal <br class="d-none d-lg-block" />Chauffeur Services
-							</h2>
-						</div>
-					</div> -->
-				</div>
-				<!-- <div class="box-pagination-button">
-					<div class="swiper-button-prev swiper-button-prev-banner"></div>
-					<div class="swiper-button-next swiper-button-next-banner"></div>
-					<div class="swiper-pagination swiper-pagination-banner"></div>
-				</div> -->
-			</div>
+		<div
+			class="box-cover-image hero-static-image"
+			style="background-image: url('{% static 'assets/imgs/page/homepage1/banner.png' %}')"></div>
+		<div class="box-banner-info">
+			<p class="text-16 color-white wow fadeInUp">Where Can Velvet Take You?</p>
+			<h2 class="heading-52-medium color-white wow fadeInUp">
+				Luxury Limousine &amp; <br class="d-none d-lg-block" />Chauffeur Services
+			</h2>
 		</div>
 		<form
-			class="box-search-ride box-search-ride-quote wow fadeInUp"
+			class="box-search-ride box-search-ride-quote wow fadeInUp mt-3"
 			action="{% url 'services' %}"
 			method="get">
 			<input type="hidden" name="service_type" value="one_way" data-quote-trip-type />
@@ -215,10 +158,12 @@
 	<section class="section pt-90 pb-120 bg-our-service">
 		<div class="container-sub">
 			<div class="row align-items-center">
-				<div class="col-lg-6 col-sm-7 col-7">
-					<h2 class="heading-44-medium title-fleet wow fadeInUp">Our Services</h2>
+				<div class="col-lg-10 col-sm-7 col-7">
+					<h2 class="heading-44-medium title-fleet wow fadeInUp">
+						Luxury Limousine &amp; Chauffeur Services:
+					</h2>
 				</div>
-				<div class="col-lg-6 col-sm-5 col-5 text-end">
+				<!-- <div class="col-lg-6 col-sm-5 col-5 text-end">
 					<a
 						class="text-16-medium color-primary d-flex align-items-center justify-content-end wow fadeInUp"
 						href="{% url 'services' %}"
@@ -236,21 +181,18 @@
 								stroke-linejoin="round"
 								d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
 					></a>
-				</div>
+				</div> -->
 			</div>
 			<div class="row mt-40">
 				<div class="col-lg-10">
-					<h3 class="text-20-medium color-text mb-10 wow fadeInUp">
-						Luxury Limousine &amp; Chauffeur Services:
-					</h3>
 					<p class="text-16 color-text mb-30 wow fadeInUp">
 						We provide premium limousine and black car transportation throughout
 						<strong>Westchester County, New York City,</strong> the <strong>Tri-State Area</strong> (New York,
 						New Jersey, and Connecticut), and <strong>All Major Airports</strong> (HPN, LGA, JFK, EWR, TEB,
 						SWF, PHL, BOS).
 					</p>
-					<h3 class="text-20-medium color-text mb-10 wow fadeInUp">Our Specialties:</h3>
-					<p class="text-16 color-text mb-0 wow fadeInUp">
+					<h2 class="heading-44-medium title-fleet wow fadeInUp">Our Specialties:</h2>
+					<p class="text-16 color-text mt-4 wow fadeInUp">
 						1. Premium Services.<br />
 						2. Professional Chauffeurs.<br />
 						3. Available 24/7.<br />
@@ -261,19 +203,19 @@
 		</div>
 		<div class="box-slide-fleet mt-50">
 			<div class="box-swiper">
-					<div class="swiper-container swiper-group-4-service pb-0">
-						<div class="swiper-wrapper">
-							{% for service in services %}
-							<div class="swiper-slide">
-								<div class="cardService wow fadeInUp">
-									<div class="cardInfo">
-										<h3 class="cardTitle text-20-medium color-white mb-10">{{ service.title }}</h3>
-										<div class="box-inner-info">
-											<p class="cardDesc text-14 color-white mb-30">{{ service.short_description }}</p>
-											<a class="cardLink btn btn-arrow-up" href="{% url 'services' %}">
-												<svg
-													class="icon-16"
-													fill="none"
+				<div class="swiper-container swiper-group-4-service pb-0">
+					<div class="swiper-wrapper">
+						{% for service in services %}
+						<div class="swiper-slide">
+							<div class="cardService wow fadeInUp">
+								<div class="cardInfo">
+									<h3 class="cardTitle text-20-medium color-white mb-10">{{ service.title }}</h3>
+									<div class="box-inner-info">
+										<p class="cardDesc text-14 color-white mb-30">{{ service.short_description }}</p>
+										<a class="cardLink btn btn-arrow-up" href="{% url 'services' %}">
+											<svg
+												class="icon-16"
+												fill="none"
 												stroke="currentColor"
 												stroke-width="1.5"
 												viewbox="0 0 24 24"
@@ -284,19 +226,21 @@
 													stroke-linejoin="round"
 													d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
 										></a>
-										</div>
-									</div>
-									<div class="cardImage">
-										{% if service.image %}
-										<img src="{{ service.image.url }}" alt="{{ service.title }}" />
-										{% else %}
-										<img src="{% static 'assets/imgs/page/homepage1/service1.png' %}" alt="{{ service.title }}" />
-										{% endif %}
 									</div>
 								</div>
+								<div class="cardImage">
+									{% if service.image %}
+									<img src="{{ service.image.url }}" alt="{{ service.title }}" />
+									{% else %}
+									<img
+										src="{% static 'assets/imgs/page/homepage1/service1.png' %}"
+										alt="{{ service.title }}" />
+									{% endif %}
+								</div>
 							</div>
-							{% endfor %}
 						</div>
+						{% endfor %}
+					</div>
 					<div class="box-pagination-fleet">
 						<div class="swiper-button-prev swiper-button-prev-fleet">
 							<svg
@@ -358,40 +302,40 @@
 		</div>
 		<div class="box-slide-fleet mt-50">
 			<div class="box-swiper">
-					<div class="swiper-container swiper-group-4-fleet pb-0">
-						<div class="swiper-wrapper">
-							{% for fleet in fleets %}
-							<div class="swiper-slide">
-								<div class="cardFleet wow fadeInUp">
-									<div class="cardInfo">
-										<a href="fleet-single.html">
-											<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3></a
-										>
-										<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
+				<div class="swiper-container swiper-group-4-fleet pb-0">
+					<div class="swiper-wrapper">
+						{% for fleet in fleets %}
+						<div class="swiper-slide">
+							<div class="cardFleet wow fadeInUp">
+								<div class="cardInfo">
+									<a href="fleet-single.html">
+										<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3></a
+									>
+									<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
+								</div>
+								<div class="cardImage mb-30">
+									<a href="fleet-single.html">
+										{% if fleet.image %}
+										<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
+										{% else %}
+										<img src="{% static 'assets/imgs/page/fleet/suv-class.png' %}" alt="{{ fleet.title }}" />
+										{% endif %}
+									</a>
+								</div>
+								<div class="cardInfoBottom">
+									<div class="passenger">
+										<span class="icon-circle icon-passenger"></span
+										><span class="text-14">Passengers<span>{{ fleet.passengers }}</span></span>
 									</div>
-									<div class="cardImage mb-30">
-										<a href="fleet-single.html">
-											{% if fleet.image %}
-											<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
-											{% else %}
-											<img src="{% static 'assets/imgs/page/fleet/suv-class.png' %}" alt="{{ fleet.title }}" />
-											{% endif %}
-										</a>
-									</div>
-									<div class="cardInfoBottom">
-										<div class="passenger">
-											<span class="icon-circle icon-passenger"></span
-											><span class="text-14">Passengers<span>{{ fleet.passengers }}</span></span>
-										</div>
-										<div class="luggage">
-											<span class="icon-circle icon-luggage"></span
-											><span class="text-14">Luggage<span>{{ fleet.luggage }}</span></span>
-										</div>
+									<div class="luggage">
+										<span class="icon-circle icon-luggage"></span
+										><span class="text-14">Luggage<span>{{ fleet.luggage }}</span></span>
 									</div>
 								</div>
 							</div>
-							{% endfor %}
 						</div>
+						{% endfor %}
+					</div>
 					<div class="box-pagination-fleet">
 						<div class="swiper-button-prev swiper-button-prev-fleet">
 							<svg
