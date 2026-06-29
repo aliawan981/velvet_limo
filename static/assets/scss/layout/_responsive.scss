@@ -137,6 +137,34 @@
             }
         }
     }
+    .box-search-ride-quote {
+        border-radius: 16px;
+        padding: 20px;
+        .quote-reserve-options {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .quote-search-row {
+            flex-wrap: wrap;
+            gap: 0px;
+            & + .quote-search-row {
+                margin-top: 0px;
+            }
+        }
+        .search-item {
+            min-width: 100%;
+            &.search-button {
+                background: transparent;
+                flex: 1 1 100%;
+                margin-bottom: 0px;
+                .btn-search {
+                    border-radius: 6px;
+                    height: 60px;
+                }
+            }
+        }
+    }
     .ui-timepicker-standard {
         margin-top: 25px;
         margin-left: 0px;

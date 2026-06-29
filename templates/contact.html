@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <style>
 .form-group {
-x    margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 .form-label {
@@ -75,8 +75,8 @@ textarea.form-control {
 						</div>
 						<div class="cardInfo">
 							<h6 class="heading-20-medium mb-10">New York Office</h6>
-							<p class="text-16 mb-20">272 Eastchester Road. New Rochelle. NY-10801.</p>
-							<p class="text-16 mb-20">+914-501-1564</p>
+							<p class="text-16 mb-20">272 Eastchester Road.New Rochelle. NY-10801 Westchester County.</p>
+							<p class="text-16 mb-20">914-501-1564</p>
 							<p class="text-16">Mahbub@velvetlimousine.com</p>
 						</div>
 					</div>
@@ -85,7 +85,7 @@ textarea.form-control {
 						<section class="section  mb-120">
 		<div class="container-sub">
 			<div class="mw-770">
-				<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">Leave us your info</h2>
+				<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">Ready to book your next ride? Let's Get You There</h2>
 				
 				{% if messages %}
 				<div class="alert-messages mb-30">
@@ -104,7 +104,7 @@ textarea.form-control {
 						<div class="row">
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
-									<label class="form-label" for="{{ form.full_name.id_for_label }}">Full Name</label>
+									<label class="form-label" for="{{ form.full_name.id_for_label }}">Your Name</label>
 									{{ form.full_name }}
 									{% if form.full_name.errors %}
 									<span class="text-danger">{{ form.full_name.errors }}</span>
@@ -113,7 +113,7 @@ textarea.form-control {
 							</div>
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
-									<label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+									<label class="form-label" for="{{ form.email.id_for_label }}">Your Email</label>
 									{{ form.email }}
 									{% if form.email.errors %}
 									<span class="text-danger">{{ form.email.errors }}</span>
@@ -122,10 +122,10 @@ textarea.form-control {
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group">
-									<label class="form-label" for="{{ form.subject.id_for_label }}">Subject</label>
-									{{ form.subject }}
-									{% if form.subject.errors %}
-									<span class="text-danger">{{ form.subject.errors }}</span>
+									<label class="form-label" for="{{ form.phone.id_for_label }}">Your Phone</label>
+									{{ form.phone }}
+									{% if form.phone.errors %}
+									<span class="text-danger">{{ form.phone.errors }}</span>
 									{% endif %}
 								</div>
 							</div>
@@ -140,7 +140,7 @@ textarea.form-control {
 							</div>
 							<div class="col-lg-12">
 								<button class="btn btn-primary" type="submit">
-									Get In Touch
+									Send Message
 									<svg
 										class="icon-16 ml-5"
 										fill="none"

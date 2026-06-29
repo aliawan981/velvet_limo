@@ -6146,6 +6146,80 @@ footer a {
   min-width: 230px;
 }
 
+.box-search-ride-quote {
+  border-radius: 30px;
+  display: block;
+  padding: 24px 28px;
+}
+.box-search-ride-quote .quote-reserve-options {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+.box-search-ride-quote .quote-reserve-options .nav-tabs-search {
+  border-bottom: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.box-search-ride-quote .quote-reserve-options .nav-tabs-search li {
+  padding: 0px;
+}
+.box-search-ride-quote .quote-reserve-options .nav-tabs-search li a {
+  cursor: pointer;
+  padding: 0px 0px 8px 0px;
+}
+.box-search-ride-quote .quote-search-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+.box-search-ride-quote .quote-search-row + .quote-search-row {
+  margin-top: 16px;
+}
+.box-search-ride-quote .quote-search-row[hidden] {
+  display: none;
+}
+.box-search-ride-quote .search-item {
+  background: #F6F6F6;
+  border-radius: 12px;
+  flex: 1 1 0;
+  min-width: 0px;
+  padding: 12px;
+}
+.box-search-ride-quote .search-item .search-icon {
+  max-width: 46px;
+  min-width: 46px;
+}
+.box-search-ride-quote .search-item .search-icon .item-icon {
+  width: 46px;
+  height: 46px;
+  background-color: #ffffff;
+}
+.box-search-ride-quote .search-item .search-icon .item-icon.icon-add-stop {
+  background-image: url(../imgs/template/icons/plus.svg);
+}
+.box-search-ride-quote .search-item .search-icon .item-icon.icon-riders {
+  background-image: url(../imgs/page/booking/pax.svg);
+}
+.box-search-ride-quote .search-date,
+.box-search-ride-quote .search-time,
+.box-search-ride-quote .search-button {
+  max-width: none;
+  min-width: 0px;
+}
+.box-search-ride-quote .search-button {
+  background: transparent;
+  flex: 0 0 190px;
+  padding: 0px;
+}
+.box-search-ride-quote .search-button .btn-search {
+  border-radius: 100px;
+  height: 70px;
+  width: 100%;
+}
+
 .list-logos {
   display: flex;
   align-items: center;
@@ -8249,6 +8323,29 @@ footer a {
 
 .box-info-right {
   padding-left: 50px;
+}
+
+.services-reservation-actions {
+  gap: 100px;
+}
+
+.services-reservation-action {
+  align-items: center;
+  display: flex;
+}
+
+@media (max-width: 575.98px) {
+  .services-reservation-actions {
+    gap: 24px;
+  }
+  .services-reservation-action {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  .services-reservation-action .ml-20 {
+    margin-left: 0px !important;
+  }
 }
 
 .icon-quote.bg-secondary {
@@ -10515,6 +10612,37 @@ textarea.form-control {
 /*OTHER SCREEN*/
 .page-content p {
   margin-bottom: 15px;
+}
+
+@media (max-width: 1199.98px) {
+  .box-search-ride-quote {
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .box-search-ride-quote .quote-reserve-options {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .box-search-ride-quote .quote-search-row {
+    flex-wrap: wrap;
+    gap: 0px;
+  }
+  .box-search-ride-quote .quote-search-row + .quote-search-row {
+    margin-top: 0px;
+  }
+  .box-search-ride-quote .search-item {
+    min-width: 100%;
+  }
+  .box-search-ride-quote .search-item.search-button {
+    background: transparent;
+    flex: 1 1 100%;
+    margin-bottom: 0px;
+  }
+  .box-search-ride-quote .search-item.search-button .btn-search {
+    border-radius: 6px;
+    height: 60px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

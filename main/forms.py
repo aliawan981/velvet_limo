@@ -5,11 +5,11 @@ from .models import ContactForm
 class ContactFormForm(forms.ModelForm):
     class Meta:
         model = ContactForm
-        fields = ['full_name', 'email', 'subject', 'message']
+        fields = ['full_name', 'email', 'phone', 'message']
         labels = {
-            'full_name': 'Full Name',
-            'email': 'Email',
-            'subject': 'Subject',
+            'full_name': 'Your Name',
+            'email': 'Your Email',
+            'phone': 'Your Phone',
             'message': 'Message',
         }
         widgets = {
@@ -21,7 +21,7 @@ class ContactFormForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': ''
             }),
-            'subject': forms.TextInput(attrs={
+            'phone': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': ''
             }),
