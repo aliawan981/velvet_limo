@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" href="{% static 'assets/imgs/template/velvet-fav.png' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/dashboard.css' %}" />
+		<title>Velvet Limo Dashboard</title>
+	</head>
+	<body>
+		<div class="dashboard-shell">
+			<aside class="dashboard-sidebar">
+				<a class="dashboard-brand" href="{% url 'dashboard_home' %}">
+					<img src="{% static 'assets/imgs/template/velvet-logo.png' %}" alt="Velvet Limo" />
+				</a>
+				<nav class="dashboard-nav">
+					<a href="{% url 'dashboard_home' %}">Dashboard</a>
+					<a href="{% url 'dashboard_services' %}">Services</a>
+					<a href="{% url 'dashboard_fleet' %}">Fleet</a>
+					<a href="{% url 'admin:index' %}">Django Admin</a>
+					<a href="{% url 'home' %}">View Website</a>
+				</nav>
+			</aside>
+			<main class="dashboard-main">
+				<header class="dashboard-topbar">
+					<div>
+						<p class="dashboard-eyebrow">Velvet Limo</p>
+						<h1>{% block dashboard_title %}Dashboard{% endblock %}</h1>
+					</div>
+					<div class="dashboard-user">
+						<span>{{ request.user.get_username }}</span>
+					</div>
+				</header>
+				{% if messages %}
+				<div class="dashboard-messages">
+					{% for message in messages %}
+					<div class="dashboard-message">{{ message }}</div>
+					{% endfor %}
+				</div>
+				{% endif %}
+				{% block dashboard_content %}{% endblock %}
+			</main>
+		</div>
+	</body>
+</html>

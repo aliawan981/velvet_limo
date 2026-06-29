@@ -1,0 +1,14 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_title %}{{ title }}{% endblock %}
+{% block dashboard_content %}
+<section class="dashboard-panel dashboard-form-panel">
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{% include 'dashboard/form_fields.html' %}
+		<div class="dashboard-form-actions">
+			<button class="dashboard-button" type="submit">Save Fleet</button>
+			<a class="dashboard-button dashboard-button-secondary" href="{% url 'dashboard_fleet' %}">Cancel</a>
+		</div>
+	</form>
+</section>
+{% endblock %}

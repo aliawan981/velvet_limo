@@ -71,6 +71,33 @@
     if ($(".select-active").length) {
         $(".select-active").select2();
     }
+    if ($(".box-search-ride-quote").length) {
+        $(".box-search-ride-quote").each(function () {
+            var $form = $(this);
+            var $tripType = $form.find("[data-quote-trip-type]");
+            var $options = $form.find("[data-quote-option]");
+            var $fieldGroups = $form.find("[data-quote-fields]");
+
+            function setQuoteOption(option) {
+                $tripType.val(option);
+                $options
+                    .removeClass("active")
+                    .attr("aria-selected", "false")
+                    .filter('[data-quote-option="' + option + '"]')
+                    .addClass("active")
+                    .attr("aria-selected", "true");
+                $fieldGroups.each(function () {
+                    var isVisible = $(this).data("quote-fields") === option;
+                    $(this).prop("hidden", !isVisible);
+                });
+            }
+
+            $options.on("click", function (e) {
+                e.preventDefault();
+                setQuoteOption($(this).data("quote-option"));
+            });
+        });
+    }
     /*---- CounterUp ----*/
     if ($(".count").length) {
         $(".count").counterUp({

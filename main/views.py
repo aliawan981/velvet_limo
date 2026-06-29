@@ -13,13 +13,13 @@ def contact(request):
             contact_instance = form.save()
 
             # Prepare email
-            subject = f"New Contact Form Submission: {contact_instance.subject}"
+            subject = f"New Contact Form Submission from {contact_instance.full_name}"
             message_body = f"""
             New contact form submission received:
             
             Name: {contact_instance.full_name}
             Email: {contact_instance.email}
-            Subject: {contact_instance.subject}
+            Phone: {contact_instance.phone}
             
             Message:
             {contact_instance.message}

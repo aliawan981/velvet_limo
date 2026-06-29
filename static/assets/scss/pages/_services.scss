@@ -23,3 +23,23 @@
 .box-info-right {
     padding-left: 50px;
 }
+.services-reservation-actions {
+    gap: 100px;
+}
+.services-reservation-action {
+    align-items: center;
+    display: flex;
+}
+@media (max-width: 575.98px) {
+    .services-reservation-actions {
+        gap: 24px;
+    }
+    .services-reservation-action {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        .ml-20 {
+            margin-left: 0px !important;
+        }
+    }
+}

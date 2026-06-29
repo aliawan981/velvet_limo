@@ -15,7 +15,7 @@
 							</h2>
 						</div>
 					</div>
-					<div class="swiper-slide">
+					<!-- <div class="swiper-slide">
 						<div
 							class="box-cover-image"
 							style="background-image: url('{% static 'assets/imgs/page/homepage1/banner2.png' %}')"></div>
@@ -58,142 +58,142 @@
 								Your Personal <br class="d-none d-lg-block" />Chauffeur Services
 							</h2>
 						</div>
-					</div>
+					</div> -->
 				</div>
-				<div class="box-pagination-button">
+				<!-- <div class="box-pagination-button">
 					<div class="swiper-button-prev swiper-button-prev-banner"></div>
 					<div class="swiper-button-next swiper-button-next-banner"></div>
 					<div class="swiper-pagination swiper-pagination-banner"></div>
-				</div>
+				</div> -->
 			</div>
 		</div>
-		<div class="box-search-ride wow fadeInUp">
-			<div class="search-item search-date">
-				<div class="search-icon"><span class="item-icon icon-date"> </span></div>
-				<div class="search-inputs">
-					<label class="text-14 color-grey">Date</label>
-					<input class="search-input datepicker" type="text" placeholder="" value="Thu, Oct 06, 2022" />
-				</div>
+		<form
+			class="box-search-ride box-search-ride-quote wow fadeInUp"
+			action="{% url 'services' %}"
+			method="get">
+			<input type="hidden" name="service_type" value="one_way" data-quote-trip-type />
+			<div class="quote-reserve-options">
+				<span class="text-14 color-grey">Reserve Options:</span>
+				<ul class="nav nav-tabs nav-tabs-search" role="tablist">
+					<li><a class="active" href="#" data-quote-option="one_way">One Way</a></li>
+					<li><a href="#" data-quote-option="return">Return</a></li>
+					<li><a href="#" data-quote-option="hourly">Hourly</a></li>
+				</ul>
 			</div>
-			<div class="search-item search-time">
-				<div class="search-icon"><span class="item-icon icon-time"> </span></div>
-				<div class="search-inputs">
-					<label class="text-14 color-grey">Time</label>
-					<input class="search-input timepicker" type="text" placeholder="" value="6 PM  :  15" />
+			<div class="quote-search-row quote-search-row-address">
+				<div class="search-item search-from">
+					<div class="search-icon"><span class="item-icon icon-from"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Pick Up</label>
+						<input class="search-input" type="text" name="pickup" value="New York City or Airport" />
+					</div>
 				</div>
-			</div>
-			<div class="search-item search-from">
-				<div class="search-icon"><span class="item-icon icon-from"> </span></div>
-				<div class="search-inputs">
-					<label class="text-14 color-grey">From</label>
-					<input
-						class="search-input dropdown-location"
-						type="text"
-						placeholder=""
-						value="London City Airport (LCY)"
-						readonly="readonly" />
-					<div class="box-dropdown-location">
-						<div class="list-locations">
-							<div class="item-location">
-								<div class="location-icon">
-									<img src="{% static 'assets/imgs/page/homepage1/plane.png' %}" alt="luxride" />
-								</div>
-								<div class="location-info">
-									<h6 class="text-16-medium color-text title-location">London Heathrow Airport (LHR)</h6>
-									<p class="text-14 color-grey">London, United Kingdom</p>
-								</div>
-							</div>
-							<div class="item-location">
-								<div class="location-icon">
-									<img src="{% static 'assets/imgs/page/homepage1/building.png' %}" alt="luxride" />
-								</div>
-								<div class="location-info">
-									<h6 class="text-16-medium color-text title-location">London Tower Hill</h6>
-									<p class="text-14 color-grey">London, United Kingdom</p>
-								</div>
-							</div>
-							<div class="item-location">
-								<div class="location-icon">
-									<img src="{% static 'assets/imgs/page/homepage1/train.png' %}" alt="luxride" />
-								</div>
-								<div class="location-info">
-									<h6 class="text-16-medium color-text title-location">Leyton Train Station</h6>
-									<p class="text-14 color-grey">London, United Kingdom</p>
-								</div>
-							</div>
-							<div class="item-location">
-								<div class="location-icon">
-									<img src="{% static 'assets/imgs/page/homepage1/plane.png' %}" alt="luxride" />
-								</div>
-								<div class="location-info">
-									<h6 class="text-16-medium color-text title-location">London Luton Airport (LTN)</h6>
-									<p class="text-14 color-grey">London, United Kingdom</p>
-								</div>
-							</div>
-						</div>
+				<div class="search-item search-to">
+					<div class="search-icon"><span class="item-icon icon-to"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Drop Off</label>
+						<input class="search-input" type="text" name="dropoff" value="Westchester County" />
+					</div>
+				</div>
+				<div class="search-item search-add-stop">
+					<div class="search-icon"><span class="item-icon icon-add-stop"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Add Stop</label>
+						<input class="search-input" type="text" name="stop" placeholder="Optional stop" />
 					</div>
 				</div>
 			</div>
-			<div class="search-item search-to">
-				<div class="search-icon"><span class="item-icon icon-to"> </span></div>
-				<div class="search-inputs">
-					<label class="text-14 color-grey">To</label>
-					<input
-						class="search-input dropdown-location"
-						type="text"
-						placeholder=""
-						value="London City Airport (LCY)"
-						readonly="readonly" />
-					<div class="box-dropdown-location">
-						<div class="list-locations">
-							<div class="item-location">
-								<div class="location-icon">
-									<img src="{% static 'assets/imgs/page/homepage1/plane.png' %}" alt="luxride" />
-								</div>
-								<div class="location-info">
-									<h6 class="text-16-medium color-text title-location">London Heathrow Airport (LHR)</h6>
-									<p class="text-14 color-grey">London, United Kingdom</p>
-								</div>
-							</div>
-							<div class="item-location">
-								<div class="location-icon">
-									<img src="{% static 'assets/imgs/page/homepage1/building.png' %}" alt="luxride" />
-								</div>
-								<div class="location-info">
-									<h6 class="text-16-medium color-text title-location">London Tower Hill</h6>
-									<p class="text-14 color-grey">London, United Kingdom</p>
-								</div>
-							</div>
-							<div class="item-location">
-								<div class="location-icon">
-									<img src="{% static 'assets/imgs/page/homepage1/train.png' %}" alt="luxride" />
-								</div>
-								<div class="location-info">
-									<h6 class="text-16-medium color-text title-location">Leyton Train Station</h6>
-									<p class="text-14 color-grey">London, United Kingdom</p>
-								</div>
-							</div>
-							<div class="item-location">
-								<div class="location-icon">
-									<img src="{% static 'assets/imgs/page/homepage1/plane.png' %}" alt="luxride" />
-								</div>
-								<div class="location-info">
-									<h6 class="text-16-medium color-text title-location">London Luton Airport (LTN)</h6>
-									<p class="text-14 color-grey">London, United Kingdom</p>
-								</div>
-							</div>
-						</div>
+			<div class="quote-search-row quote-search-row-conditional" data-quote-fields="return" hidden>
+				<div class="search-item search-date">
+					<div class="search-icon"><span class="item-icon icon-date"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Return Date</label>
+						<input class="search-input datepicker" type="text" name="return_date" placeholder="Return date" />
+					</div>
+				</div>
+				<div class="search-item search-time">
+					<div class="search-icon"><span class="item-icon icon-time"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Return Time</label>
+						<input class="search-input" type="time" name="return_time" />
+					</div>
+				</div>
+				<div class="search-item search-riders">
+					<div class="search-icon"><span class="item-icon icon-add-stop"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Return Pickup</label>
+						<input
+							class="search-input"
+							type="text"
+							name="return_pickup"
+							placeholder="Optional return pickup" />
 					</div>
 				</div>
 			</div>
-			<div class="search-item search-button">
-				<button class="btn btn-search" type="submit">
-					<img src="{% static 'assets/imgs/template/icons/search.svg' %}" alt="luxride" />Search
-				</button>
+			<div class="quote-search-row quote-search-row-conditional" data-quote-fields="hourly" hidden>
+				<div class="search-item search-date">
+					<div class="search-icon"><span class="item-icon icon-time"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Hours</label>
+						<input class="search-input" type="number" name="hours" min="1" value="3" />
+					</div>
+				</div>
+				<div class="search-item search-to">
+					<div class="search-icon"><span class="item-icon icon-to"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Service Area</label>
+						<input class="search-input" type="text" name="hourly_area" placeholder="City or area" />
+					</div>
+				</div>
+				<div class="search-item search-riders">
+					<div class="search-icon"><span class="item-icon icon-add-stop"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Notes</label>
+						<input class="search-input" type="text" name="hourly_notes" placeholder="Optional notes" />
+					</div>
+				</div>
 			</div>
-		</div>
+			<div class="quote-search-row quote-search-row-details">
+				<div class="search-item search-date">
+					<div class="search-icon"><span class="item-icon icon-date"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Date</label>
+						<input
+							id="quote-current-date"
+							class="search-input datepicker"
+							type="text"
+							name="date"
+							placeholder="Current date" />
+					</div>
+				</div>
+				<div class="search-item search-time">
+					<div class="search-icon"><span class="item-icon icon-time"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Time</label>
+						<input
+							id="quote-current-time"
+							class="search-input"
+							type="time"
+							name="time"
+							placeholder="Current time" />
+					</div>
+				</div>
+				<div class="search-item search-riders">
+					<div class="search-icon"><span class="item-icon icon-riders"> </span></div>
+					<div class="search-inputs">
+						<label class="text-14 color-grey">Riders</label>
+						<input class="search-input" type="number" name="riders" min="1" value="1" />
+					</div>
+				</div>
+				<div class="search-item search-button">
+					<button class="btn btn-search" type="submit">
+						<img src="{% static 'assets/imgs/template/icons/search.svg' %}" alt="luxride" />Get a Quote
+					</button>
+				</div>
+			</div>
+		</form>
 	</section>
-	<section class="section pt-65 pb-35 border-bottom">
+	<!-- <section class="section pt-65 pb-35 border-bottom">
 		<div class="container-sub">
 			<div class="row align-items-center">
 				<div class="col-xl-3 col-lg-4 mb-30">
@@ -211,18 +211,20 @@
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="section pt-120 pb-120 bg-our-fleet">
+	</section> -->
+	<section class="section pt-90 pb-120 bg-our-service">
 		<div class="container-sub">
 			<div class="row align-items-center">
-				<div class="col-lg-6 col-7">
-					<h2 class="heading-44-medium title-fleet wow fadeInUp">Our Fleet</h2>
+				<div class="col-lg-6 col-sm-7 col-7">
+					<h2 class="heading-44-medium title-fleet wow fadeInUp">Our Services</h2>
 				</div>
-				<div class="col-lg-6 col-5 text-end">
-					<a class="text-16-medium color-primary wow fadeInUp" href="{% url 'fleet' %}"
-						>More Fleet
+				<div class="col-lg-6 col-sm-5 col-5 text-end">
+					<a
+						class="text-16-medium color-primary d-flex align-items-center justify-content-end wow fadeInUp"
+						href="{% url 'services' %}"
+						>More Services
 						<svg
-							class="icon-16"
+							class="icon-16 ml-5"
 							fill="none"
 							stroke="currentColor"
 							stroke-width="1.5"
@@ -236,118 +238,65 @@
 					></a>
 				</div>
 			</div>
+			<div class="row mt-40">
+				<div class="col-lg-10">
+					<h3 class="text-20-medium color-text mb-10 wow fadeInUp">
+						Luxury Limousine &amp; Chauffeur Services:
+					</h3>
+					<p class="text-16 color-text mb-30 wow fadeInUp">
+						We provide premium limousine and black car transportation throughout
+						<strong>Westchester County, New York City,</strong> the <strong>Tri-State Area</strong> (New York,
+						New Jersey, and Connecticut), and <strong>All Major Airports</strong> (HPN, LGA, JFK, EWR, TEB,
+						SWF, PHL, BOS).
+					</p>
+					<h3 class="text-20-medium color-text mb-10 wow fadeInUp">Our Specialties:</h3>
+					<p class="text-16 color-text mb-0 wow fadeInUp">
+						1. Premium Services.<br />
+						2. Professional Chauffeurs.<br />
+						3. Available 24/7.<br />
+						4. Airport Services.
+					</p>
+				</div>
+			</div>
 		</div>
 		<div class="box-slide-fleet mt-50">
 			<div class="box-swiper">
-				<div class="swiper-container swiper-group-4-fleet pb-0">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<div class="cardFleet wow fadeInUp">
-								<div class="cardInfo">
-									<a href="fleet-single.html">
-										<h3 class="text-20-medium color-text mb-10">Business Class</h3></a
-									>
-									<p class="text-14 color-text mb-30">
-										Mercedes-Benz E-Class, BMW 5 Series, Cadillac XTS or similar
-									</p>
-								</div>
-								<div class="cardImage mb-30">
-									<a href="fleet-single.html"
-										><img src="{% static 'assets/imgs/page/homepage1/e-class.png' %}" alt="Luxride"
-									/></a>
-								</div>
-								<div class="cardInfoBottom">
-									<div class="passenger">
-										<span class="icon-circle icon-passenger"></span
-										><span class="text-14">Passengers<span>4</span></span>
+					<div class="swiper-container swiper-group-4-service pb-0">
+						<div class="swiper-wrapper">
+							{% for service in services %}
+							<div class="swiper-slide">
+								<div class="cardService wow fadeInUp">
+									<div class="cardInfo">
+										<h3 class="cardTitle text-20-medium color-white mb-10">{{ service.title }}</h3>
+										<div class="box-inner-info">
+											<p class="cardDesc text-14 color-white mb-30">{{ service.short_description }}</p>
+											<a class="cardLink btn btn-arrow-up" href="{% url 'services' %}">
+												<svg
+													class="icon-16"
+													fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+												viewbox="0 0 24 24"
+												xmlns="http://www.w3.org/2000/svg"
+												aria-hidden="true">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
+										></a>
+										</div>
 									</div>
-									<div class="luggage">
-										<span class="icon-circle icon-luggage"></span
-										><span class="text-14">Luggage<span>2</span></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="cardFleet wow fadeInUp">
-								<div class="cardInfo">
-									<a href="fleet-single.html">
-										<h3 class="text-20-medium color-text mb-10">First Class</h3></a
-									>
-									<p class="text-14 color-text mb-30">Mercedes-Benz EQS, BMW 7 Series, Audi A8 or similar</p>
-								</div>
-								<div class="cardImage mb-30">
-									<a href="fleet-single.html"
-										><img src="{% static 'assets/imgs/page/homepage1/eqs.png' %}" alt="Luxride"
-									/></a>
-								</div>
-								<div class="cardInfoBottom">
-									<div class="passenger">
-										<span class="icon-circle icon-passenger"></span
-										><span class="text-14">Passengers<span>4</span></span>
-									</div>
-									<div class="luggage">
-										<span class="icon-circle icon-luggage"></span
-										><span class="text-14">Luggage<span>2</span></span>
+									<div class="cardImage">
+										{% if service.image %}
+										<img src="{{ service.image.url }}" alt="{{ service.title }}" />
+										{% else %}
+										<img src="{% static 'assets/imgs/page/homepage1/service1.png' %}" alt="{{ service.title }}" />
+										{% endif %}
 									</div>
 								</div>
 							</div>
+							{% endfor %}
 						</div>
-						<div class="swiper-slide">
-							<div class="cardFleet wow fadeInUp">
-								<div class="cardInfo">
-									<a href="fleet-single.html">
-										<h3 class="text-20-medium color-text mb-10">Business Van/SUV</h3></a
-									>
-									<p class="text-14 color-text mb-30">
-										Mercedes-Benz V-Class, Chevrolet Suburban, Cadillac Escalade, Toyota Alphard or similar
-									</p>
-								</div>
-								<div class="cardImage mb-30">
-									<a href="fleet-single.html"
-										><img src="{% static 'assets/imgs/page/homepage1/suv.png' %}" alt="Luxride"
-									/></a>
-								</div>
-								<div class="cardInfoBottom">
-									<div class="passenger">
-										<span class="icon-circle icon-passenger"></span
-										><span class="text-14">Passengers<span>4</span></span>
-									</div>
-									<div class="luggage">
-										<span class="icon-circle icon-luggage"></span
-										><span class="text-14">Luggage<span>2</span></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="cardFleet wow fadeInUp">
-								<div class="cardInfo">
-									<a href="fleet-single.html">
-										<h3 class="text-20-medium color-text mb-10">Electric Class</h3></a
-									>
-									<p class="text-14 color-text mb-30">
-										Mercedes-Benz V-Class, Chevrolet Suburban, Cadillac Escalade, Toyota Alphard or similar
-									</p>
-								</div>
-								<div class="cardImage mb-30">
-									<a href="fleet-single.html"
-										><img src="{% static 'assets/imgs/page/homepage1/v-class.png' %}" alt="Luxride"
-									/></a>
-								</div>
-								<div class="cardInfoBottom">
-									<div class="passenger">
-										<span class="icon-circle icon-passenger"></span
-										><span class="text-14">Passengers<span>4</span></span>
-									</div>
-									<div class="luggage">
-										<span class="icon-circle icon-luggage"></span
-										><span class="text-14">Luggage<span>2</span></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 					<div class="box-pagination-fleet">
 						<div class="swiper-button-prev swiper-button-prev-fleet">
 							<svg
@@ -382,7 +331,102 @@
 			</div>
 		</div>
 	</section>
-	<section class="section pt-120 pb-20 bg-primary bg-how-it-works">
+	<section class="section pt-120 pb-120 bg-our-fleet">
+		<div class="container-sub">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-7">
+					<h2 class="heading-44-medium title-fleet wow fadeInUp">Our Fleet</h2>
+				</div>
+				<div class="col-lg-6 col-5 text-end">
+					<a class="text-16-medium color-primary wow fadeInUp" href="{% url 'fleet' %}"
+						>More Fleet
+						<svg
+							class="icon-16"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.5"
+							viewbox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
+					></a>
+				</div>
+			</div>
+		</div>
+		<div class="box-slide-fleet mt-50">
+			<div class="box-swiper">
+					<div class="swiper-container swiper-group-4-fleet pb-0">
+						<div class="swiper-wrapper">
+							{% for fleet in fleets %}
+							<div class="swiper-slide">
+								<div class="cardFleet wow fadeInUp">
+									<div class="cardInfo">
+										<a href="fleet-single.html">
+											<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3></a
+										>
+										<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
+									</div>
+									<div class="cardImage mb-30">
+										<a href="fleet-single.html">
+											{% if fleet.image %}
+											<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
+											{% else %}
+											<img src="{% static 'assets/imgs/page/fleet/suv-class.png' %}" alt="{{ fleet.title }}" />
+											{% endif %}
+										</a>
+									</div>
+									<div class="cardInfoBottom">
+										<div class="passenger">
+											<span class="icon-circle icon-passenger"></span
+											><span class="text-14">Passengers<span>{{ fleet.passengers }}</span></span>
+										</div>
+										<div class="luggage">
+											<span class="icon-circle icon-luggage"></span
+											><span class="text-14">Luggage<span>{{ fleet.luggage }}</span></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					<div class="box-pagination-fleet">
+						<div class="swiper-button-prev swiper-button-prev-fleet">
+							<svg
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+								viewbox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+							</svg>
+						</div>
+						<div class="swiper-button-next swiper-button-next-fleet">
+							<svg
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+								viewbox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+							</svg>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- <section class="section pt-120 pb-20 bg-primary bg-how-it-works">
 		<div class="container-sub">
 			<h2 class="heading-44-medium color-white mb-60 wow fadeInUp">How It Works</h2>
 			<div class="row">
@@ -430,8 +474,8 @@
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="section mt-110">
+	</section> -->
+	<!-- <section class="section mt-110">
 		<div class="container-sub">
 			<div class="text-center">
 				<h2 class="heading-44-medium color-text wow fadeInUp">Make Your Ride Your Way With Us</h2>
@@ -485,8 +529,8 @@
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="section mb-30 mt-80 box-showcase">
+	</section> -->
+	<!-- <section class="section mb-30 mt-80 box-showcase">
 		<div class="bg-showcase pt-100 pb-70">
 			<div class="container-sub">
 				<div class="row align-items-center">
@@ -518,190 +562,9 @@
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="section pt-90 pb-120 bg-our-service">
-		<div class="container-sub">
-			<div class="row align-items-center">
-				<div class="col-lg-6 col-sm-7 col-7">
-					<h2 class="heading-44-medium title-fleet wow fadeInUp">Our Services</h2>
-				</div>
-				<div class="col-lg-6 col-sm-5 col-5 text-end">
-					<a
-						class="text-16-medium color-primary d-flex align-items-center justify-content-end wow fadeInUp"
-						href="{% url 'services' %}"
-						>More Services
-						<svg
-							class="icon-16 ml-5"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1.5"
-							viewbox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-							aria-hidden="true">
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
-					></a>
-				</div>
-			</div>
-		</div>
-		<div class="box-slide-fleet mt-50">
-			<div class="box-swiper">
-				<div class="swiper-container swiper-group-4-service pb-0">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<div class="cardService wow fadeInUp">
-								<div class="cardInfo">
-									<h3 class="cardTitle text-20-medium color-white mb-10">Intercity Rides</h3>
-									<div class="box-inner-info">
-										<p class="cardDesc text-14 color-white mb-30">
-											Mercedes-Benz E-Class, BMW 5 Series, Cadillac XTS or similar
-										</p>
-										<a class="cardLink btn btn-arrow-up" href="service-single.html">
-											<svg
-												class="icon-16"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="1.5"
-												viewbox="0 0 24 24"
-												xmlns="http://www.w3.org/2000/svg"
-												aria-hidden="true">
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
-										></a>
-									</div>
-								</div>
-								<div class="cardImage">
-									<img src="{% static 'assets/imgs/page/homepage1/service1.png' %}" alt="Luxride" />
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="cardService wow fadeInUp">
-								<div class="cardInfo">
-									<h3 class="cardTitle text-20-medium color-white mb-10">Chauffeur Hailing</h3>
-									<div class="box-inner-info">
-										<p class="cardDesc text-14 color-white mb-30">
-											Mercedes-Benz E-Class, BMW 5 Series, Cadillac XTS or similar
-										</p>
-										<a class="cardLink btn btn-arrow-up" href="service-single.html">
-											<svg
-												class="icon-16"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="1.5"
-												viewbox="0 0 24 24"
-												xmlns="http://www.w3.org/2000/svg"
-												aria-hidden="true">
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
-										></a>
-									</div>
-								</div>
-								<div class="cardImage">
-									<img src="{% static 'assets/imgs/page/homepage1/service2.png' %}" alt="Luxride" />
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="cardService wow fadeInUp">
-								<div class="cardInfo">
-									<h3 class="cardTitle text-20-medium color-white mb-10">Airport Transfers</h3>
-									<div class="box-inner-info">
-										<p class="cardDesc text-14 color-white mb-30">
-											Mercedes-Benz E-Class, BMW 5 Series, Cadillac XTS or similar
-										</p>
-										<a class="cardLink btn btn-arrow-up" href="service-single.html">
-											<svg
-												class="icon-16"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="1.5"
-												viewbox="0 0 24 24"
-												xmlns="http://www.w3.org/2000/svg"
-												aria-hidden="true">
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
-										></a>
-									</div>
-								</div>
-								<div class="cardImage">
-									<img src="{% static 'assets/imgs/page/homepage1/service3.png' %}" alt="Luxride" />
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="cardService wow fadeInUp">
-								<div class="cardInfo">
-									<h3 class="cardTitle text-20-medium color-white mb-10">Sprinter Class</h3>
-									<div class="box-inner-info">
-										<p class="cardDesc text-14 color-white mb-30">
-											Mercedes-Benz E-Class, BMW 5 Series, Cadillac XTS or similar
-										</p>
-										<a class="cardLink btn btn-arrow-up" href="service-single.html">
-											<svg
-												class="icon-16"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="1.5"
-												viewbox="0 0 24 24"
-												xmlns="http://www.w3.org/2000/svg"
-												aria-hidden="true">
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
-										></a>
-									</div>
-								</div>
-								<div class="cardImage">
-									<img src="{% static 'assets/imgs/page/homepage1/service5.png' %}" alt="Luxride" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="box-pagination-fleet">
-						<div class="swiper-button-prev swiper-button-prev-fleet">
-							<svg
-								fill="none"
-								stroke="currentColor"
-								stroke-width="1.5"
-								viewbox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-								aria-hidden="true">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
-							</svg>
-						</div>
-						<div class="swiper-button-next swiper-button-next-fleet">
-							<svg
-								fill="none"
-								stroke="currentColor"
-								stroke-width="1.5"
-								viewbox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-								aria-hidden="true">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
-							</svg>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-		<section class="section pt-80 mb-30">
+	</section> -->
+
+	<!-- <section class="section pt-80 mb-30">
 		<div class="container-sub">
 			<div class="box-faqs">
 				<div class="text-center">
@@ -822,8 +685,8 @@
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="section pt-120 pb-90 bg-primary">
+	</section> -->
+	<!-- <section class="section pt-120 pb-90 bg-primary">
 		<div class="container-sub">
 			<div class="row align-items-center">
 				<div class="col-lg-6 col-7">
@@ -949,8 +812,8 @@
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="section pt-80 mb-30 bg-faqs">
+	</section> -->
+	<!-- <section class="section pt-80 mb-30 bg-faqs">
 		<div class="container-sub">
 			<div class="box-faqs">
 				<div class="text-center">
@@ -1081,6 +944,26 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 </main>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const dateInput = document.getElementById('quote-current-date');
+		const timeInput = document.getElementById('quote-current-time');
+		const now = new Date();
+
+		if (dateInput && !dateInput.value) {
+			dateInput.value = now.toLocaleDateString('en-US', {
+				weekday: 'short',
+				month: 'short',
+				day: '2-digit',
+				year: 'numeric',
+			});
+		}
+
+		if (timeInput && !timeInput.value) {
+			timeInput.value = now.toTimeString().slice(0, 5);
+		}
+	});
+</script>
 {% endblock %}

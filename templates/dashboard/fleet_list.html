@@ -1,0 +1,39 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_title %}Fleet{% endblock %}
+{% block dashboard_content %}
+<section class="dashboard-panel">
+	<div class="dashboard-panel-head">
+		<h2>Fleet</h2>
+		<a class="dashboard-button" href="{% url 'dashboard_fleet_add' %}">Add Fleet</a>
+	</div>
+	<table class="dashboard-table">
+		<thead>
+			<tr>
+				<th>Order</th>
+				<th>Title</th>
+				<th>Passengers</th>
+				<th>Luggage</th>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for fleet in fleets %}
+			<tr>
+				<td>{{ fleet.order }}</td>
+				<td>{{ fleet.title }}</td>
+				<td>{{ fleet.passengers }}</td>
+				<td>{{ fleet.luggage }}</td>
+				<td>{% if fleet.is_active %}Active{% else %}Inactive{% endif %}</td>
+				<td>
+					<a href="{% url 'dashboard_fleet_edit' fleet.id %}">Edit</a>
+					<a class="dashboard-danger-link" href="{% url 'dashboard_fleet_delete' fleet.id %}">Delete</a>
+				</td>
+			</tr>
+			{% empty %}
+			<tr><td colspan="6">No fleet vehicles added yet.</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</section>
+{% endblock %}
