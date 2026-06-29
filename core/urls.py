@@ -15,6 +15,14 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('blog/', views.blog, name='blog'),
     path('contact/', main_views.contact, name='contact'),
+    path('quote-request/', main_views.quote_request, name='quote_request'),
+    path('login/', main_views.login_view, name='login'),
+    path('login.html', main_views.login_view, name='login_html'),
+    path('register/', main_views.register, name='register'),
+    path('register.html', main_views.register, name='register_html'),
+    path('logout/', main_views.logout_view, name='logout'),
+    path('logout.html', main_views.logout_view, name='logout_html'),
+    path('contact.html', main_views.contact, name='contact_html'),
     path('privacy/', views.privacy, name='privacy'),
 
 ]

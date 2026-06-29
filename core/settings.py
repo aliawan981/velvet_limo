@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.google_maps_api_key',
             ],
         },
     },
@@ -139,6 +141,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your-email@gmail.com'  # Replace with your Gmail
 EMAIL_HOST_PASSWORD = 'your-app-password'  # Replace with your Gmail App Password
 DEFAULT_FROM_EMAIL = 'your-email@gmail.com'  # Replace with your Gmail
+GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY', '')
 
 # CORS Configuration
 CORS_ALLOWED_ORIGINS = [

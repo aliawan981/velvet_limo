@@ -67,10 +67,8 @@
 				</div> -->
 			</div>
 		</div>
-		<form
-			class="box-search-ride box-search-ride-quote wow fadeInUp"
-			action="{% url 'services' %}"
-			method="get">
+		<form class="box-search-ride box-search-ride-quote wow fadeInUp" action="{% url 'quote_request' %}" method="post">
+			{% csrf_token %}
 			<input type="hidden" name="service_type" value="one_way" data-quote-trip-type />
 			<div class="quote-reserve-options">
 				<span class="text-14 color-grey">Reserve Options:</span>
@@ -85,21 +83,21 @@
 					<div class="search-icon"><span class="item-icon icon-from"> </span></div>
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Pick Up</label>
-						<input class="search-input" type="text" name="pickup" value="New York City or Airport" />
+						<input id="quote-pickup" class="search-input quote-address-input" type="text" name="pickup" placeholder="Enter pickup location" />
 					</div>
 				</div>
 				<div class="search-item search-to">
 					<div class="search-icon"><span class="item-icon icon-to"> </span></div>
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Drop Off</label>
-						<input class="search-input" type="text" name="dropoff" value="Westchester County" />
+						<input id="quote-dropoff" class="search-input quote-address-input" type="text" name="dropoff" placeholder="Enter drop off location" />
 					</div>
 				</div>
 				<div class="search-item search-add-stop">
 					<div class="search-icon"><span class="item-icon icon-add-stop"> </span></div>
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Add Stop</label>
-						<input class="search-input" type="text" name="stop" placeholder="Optional stop" />
+						<input id="quote-stop" class="search-input quote-address-input" type="text" name="stop" placeholder="Optional stop" />
 					</div>
 				</div>
 			</div>
@@ -123,7 +121,7 @@
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Return Pickup</label>
 						<input
-							class="search-input"
+							class="search-input quote-address-input"
 							type="text"
 							name="return_pickup"
 							placeholder="Optional return pickup" />
@@ -142,7 +140,7 @@
 					<div class="search-icon"><span class="item-icon icon-to"> </span></div>
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Service Area</label>
-						<input class="search-input" type="text" name="hourly_area" placeholder="City or area" />
+						<input class="search-input quote-address-input" type="text" name="hourly_area" placeholder="City or area" />
 					</div>
 				</div>
 				<div class="search-item search-riders">
@@ -159,11 +157,11 @@
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Date</label>
 						<input
-							id="quote-current-date"
+							id="quote-trip-date"
 							class="search-input datepicker"
 							type="text"
-							name="date"
-							placeholder="Current date" />
+							name="trip_date"
+							placeholder="Select date" />
 					</div>
 				</div>
 				<div class="search-item search-time">
@@ -171,11 +169,11 @@
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Time</label>
 						<input
-							id="quote-current-time"
+							id="quote-trip-time"
 							class="search-input"
 							type="time"
-							name="time"
-							placeholder="Current time" />
+							name="trip_time"
+							placeholder="Select time" />
 					</div>
 				</div>
 				<div class="search-item search-riders">
@@ -186,12 +184,27 @@
 					</div>
 				</div>
 				<div class="search-item search-button">
+					{% if user.is_authenticated %}
 					<button class="btn btn-search" type="submit">
 						<img src="{% static 'assets/imgs/template/icons/search.svg' %}" alt="luxride" />Get a Quote
 					</button>
+					{% else %}
+					<a class="btn btn-search" href="{% url 'login' %}">Login to Get a Quote</a>
+					{% endif %}
 				</div>
 			</div>
 		</form>
+		{% if GOOGLE_MAPS_API_KEY %}
+		<script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&libraries=places" async defer></script>
+		<script>
+			window.addEventListener('load', function () {
+				if (!window.google || !google.maps || !google.maps.places) return;
+				document.querySelectorAll('.quote-address-input').forEach(function (input) {
+					new google.maps.places.Autocomplete(input, { types: ['geocode'] });
+				});
+			});
+		</script>
+		{% endif %}
 	</section>
 	<!-- <section class="section pt-65 pb-35 border-bottom">
 		<div class="container-sub">

@@ -9,9 +9,45 @@
 		<link rel="stylesheet" href="{% static 'assets/css/style.css' %}?v=1.0.0" />
 
 		<title>Velvet Essence Limousine Services</title>
+		<style>
+			.quote-toast-wrap {
+				position: fixed;
+				top: 90px;
+				right: 20px;
+				z-index: 2000;
+				max-width: 360px;
+			}
+
+			.quote-toast {
+				border: 0;
+				border-radius: 14px;
+				padding: 14px 18px;
+				margin-bottom: 12px;
+				box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+			}
+
+			.quote-toast-success {
+				background: #06c167;
+				color: #ffffff;
+			}
+
+			.quote-toast-error {
+				background: #c62828;
+				color: #ffffff;
+			}
+		</style>
 	</head>
 	<body>
-		{% include 'header.html' %} {% block content %} {% endblock %} {% include 'footer.html' %}
+			{% include 'header.html' %}
+			{% if messages %}
+			<div class="quote-toast-wrap">
+				{% for message in messages %}
+				<div class="quote-toast quote-toast-{{ message.tags }}" role="alert">{{ message }}</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+			{% block content %}{% endblock %}
+			{% include 'footer.html' %}
 
 		<script src="{% static 'assets/js/vendors/modernizr-3.6.0.min.js' %}"></script>
 		<script src="{% static 'assets/js/vendors/jquery-3.6.0.min.js' %}"></script>

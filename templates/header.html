@@ -39,6 +39,21 @@
 							>914-501-1564</a
 						>
 					</div>
+					{% if user.is_authenticated %}
+					<div class="d-none d-xl-inline-block align-middle mr-10">
+						<span class="text-14-medium color-white">Hi, {{ user.first_name|default:user.username }}</span>
+					</div>
+					<div class="box-button-login d-inline-block align-middle mr-10">
+						<a class="btn btn-default hover-up" href="{% url 'logout' %}">Logout</a>
+					</div>
+					{% else %}
+					<div class="box-button-login d-inline-block align-middle mr-10">
+						<a class="btn btn-default hover-up" href="{% url 'login' %}">Log In</a>
+					</div>
+					<div class="box-button-login d-none2 d-inline-block align-middle mr-10">
+						<a class="btn btn-white hover-up" href="{% url 'register' %}">Sign Up</a>
+					</div>
+					{% endif %}
 					<div class="box-button-login d-none2 d-inline-block align-middle">
 						<a class="btn btn-white hover-up" href="{% url 'contact' %}">Get a Quote</a>
 					</div>
