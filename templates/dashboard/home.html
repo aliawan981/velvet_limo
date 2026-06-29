@@ -1,0 +1,29 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_title %}Dashboard{% endblock %}
+{% block dashboard_content %}
+<section class="dashboard-grid">
+	<div class="dashboard-stat">
+		<span>Total Services</span>
+		<strong>{{ total_services }}</strong>
+	</div>
+	<div class="dashboard-stat">
+		<span>Active Services</span>
+		<strong>{{ active_services }}</strong>
+	</div>
+	<div class="dashboard-stat">
+		<span>Total Fleet</span>
+		<strong>{{ total_fleet }}</strong>
+	</div>
+	<div class="dashboard-stat">
+		<span>Active Fleet</span>
+		<strong>{{ active_fleet }}</strong>
+	</div>
+</section>
+<section class="dashboard-panel">
+	<h2>Quick Actions</h2>
+	<div class="dashboard-actions">
+		<a class="dashboard-button" href="{% url 'dashboard_service_add' %}">Add Service</a>
+		<a class="dashboard-button" href="{% url 'dashboard_fleet_add' %}">Add Fleet</a>
+	</div>
+</section>
+{% endblock %}

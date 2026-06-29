@@ -1,0 +1,13 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_title %}Delete {{ object_type }}{% endblock %}
+{% block dashboard_content %}
+<section class="dashboard-panel">
+	<h2>Delete {{ object_type }}</h2>
+	<p>Are you sure you want to delete "{{ object }}"?</p>
+	<form method="post" class="dashboard-form-actions">
+		{% csrf_token %}
+		<button class="dashboard-button dashboard-button-danger" type="submit">Delete</button>
+		<a class="dashboard-button dashboard-button-secondary" href="{% url cancel_url %}">Cancel</a>
+	</form>
+</section>
+{% endblock %}

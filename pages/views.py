@@ -1,16 +1,23 @@
 from django.shortcuts import render
 
+from .models import Fleet, Service
+
+
 def home(request):
-    return render(request, 'index.html')
+    services = Service.objects.filter(is_active=True).order_by('order')
+    fleets = Fleet.objects.filter(is_active=True).order_by('order')
+    return render(request, 'index.html', {'services': services, 'fleets': fleets})
 
 def about(request):
     return render(request, 'about.html')
 
 def fleet(request):
-    return render(request, 'fleet-list.html')
+    fleets = Fleet.objects.filter(is_active=True).order_by('order')
+    return render(request, 'fleet-list.html', {'fleets': fleets})
 
 def services(request):
-    return render(request, 'service-grid.html')
+    services = Service.objects.filter(is_active=True).order_by('order')
+    return render(request, 'service-grid.html', {'services': services})
 
 def blog(request):
     return render(request, 'blog-list.html')

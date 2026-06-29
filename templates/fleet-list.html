@@ -109,81 +109,39 @@
 						</div>
 					</div>
 				</div> -->
+				{% for fleet in fleets %}
 				<div class="col-lg-4 mb-30">
 					<div class="cardFleet wow fadeInUp">
 						<div class="cardInfo">
-							<a href="fleet-single.html"> <h3 class="text-20-medium color-text mb-10">Premium SUV</h3></a>
-							<p class="text-14 color-text mb-30">
-								Mercedes-Benz V-Class, Chevrolet Suburban, Cadillac Escalade, Toyota Alphard or similar
-							</p>
+							<a href="fleet-single.html"> <h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3></a>
+							<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
 						</div>
 						<div class="cardImage mb-30">
-							<a href="fleet-single.html"
-								><img src=" {% static 'assets/imgs/page/fleet/suv-class.png' %} " alt="Luxride"
-							/></a>
+							<a href="fleet-single.html">
+								{% if fleet.image %}
+								<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
+								{% else %}
+								<img src="{% static 'assets/imgs/page/fleet/suv-class.png' %}" alt="{{ fleet.title }}" />
+								{% endif %}
+							</a>
 						</div>
 						<div class="cardInfoBottom">
 							<div class="passenger">
 								<span class="icon-circle icon-passenger"></span
-								><span class="text-14">Passengers<span>6/7</span></span>
+								><span class="text-14">Passengers<span>{{ fleet.passengers }}</span></span>
 							</div>
 							<div class="luggage">
 								<span class="icon-circle icon-luggage"></span
-								><span class="text-14">Luggage<span>6</span></span>
+								><span class="text-14">Luggage<span>{{ fleet.luggage }}</span></span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 mb-30">
-					<div class="cardFleet wow fadeInUp">
-						<div class="cardInfo">
-							<a href="fleet-single.html"> <h3 class="text-20-medium color-text mb-10">First Class & Business Class</h3></a>
-							<p class="text-14 color-text mb-30">
-								Mercedes-Benz V-Class, Chevrolet Suburban, Cadillac Escalade, Toyota Alphard or similar
-							</p>
-						</div>
-						<div class="cardImage mb-30">
-							<a href="fleet-single.html"
-								><img src=" {% static 'assets/imgs/page/homepage1/e-class.png' %} " alt="Luxride"
-							/></a>
-						</div>
-						<div class="cardInfoBottom">
-							<div class="passenger">
-								<span class="icon-circle icon-passenger"></span
-								><span class="text-14">Passengers<span>3</span></span>
-							</div>
-							<div class="luggage">
-								<span class="icon-circle icon-luggage"></span
-								><span class="text-14">Luggage<span>3</span></span>
-							</div>
-						</div>
-					</div>
+				{% empty %}
+				<div class="col-12">
+					<p class="text-16 color-text">No fleet vehicles are available yet.</p>
 				</div>
-				<div class="col-lg-4 mb-30">
-					<div class="cardFleet wow fadeInUp">
-						<div class="cardInfo">
-							<a href="fleet-single.html"> <h3 class="text-20-medium color-text mb-10">Electric Class</h3></a>
-							<p class="text-14 color-text mb-30">
-								Mercedes-Benz V-Class, Chevrolet Suburban, Cadillac Escalade, Toyota Alphard or similar
-							</p>
-						</div>
-						<div class="cardImage mb-30">
-							<a href="fleet-single.html"
-								><img src=" {% static 'assets/imgs/page/homepage1/v-class.png' %} " alt="Luxride"
-							/></a>
-						</div>
-						<div class="cardInfoBottom">
-							<div class="passenger">
-								<span class="icon-circle icon-passenger"></span
-								><span class="text-14">Passengers<span>4</span></span>
-							</div>
-							<div class="luggage">
-								<span class="icon-circle icon-luggage"></span
-								><span class="text-14">Luggage<span>2</span></span>
-							</div>
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 			<!-- <div class="text-center mt-40 mb-120">
 				<nav class="box-pagination">
