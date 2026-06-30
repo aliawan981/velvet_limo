@@ -1,57 +1,85 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <style>
-.form-group {
-    margin-bottom: 25px;
-}
+	.form-group {
+		margin-bottom: 25px;
+	}
 
-.form-label {
-    display: block;
-    margin-bottom: 12px;
-    font-weight: 600;
-    color: #333;
-    font-size: 13px;
-    text-transform: capitalize;
-}
+	.form-label {
+		display: block;
+		margin-bottom: 12px;
+		font-weight: 600;
+		color: #333;
+		font-size: 13px;
+		text-transform: capitalize;
+	}
 
-.form-control {
-    width: 100%;
-    display: block;
-    min-height: 44px;
-    padding: 12px 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #333;
-    background-color: #fafafa;
-    font-family: inherit;
-    transition: border-color 0.3s, background-color 0.3s;
-    box-sizing: border-box;
-}
+	.form-control {
+		width: 100%;
+		display: block;
+		min-height: 44px;
+		padding: 12px 15px;
+		border: 1px solid #e0e0e0;
+		border-radius: 6px;
+		font-size: 14px;
+		line-height: 1.5;
+		color: #333;
+		background-color: #fafafa;
+		font-family: inherit;
+		transition:
+			border-color 0.3s,
+			background-color 0.3s;
+		box-sizing: border-box;
+	}
 
-.form-control:hover {
-    background-color: #fff;
-    border-color: #ccc;
-}
+	.form-control:hover {
+		background-color: #fff;
+		border-color: #ccc;
+	}
 
-.form-control:focus {
-    background-color: #fff;
-    border-color: #0066cc;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-}
+	.form-control:focus {
+		background-color: #fff;
+		border-color: #0066cc;
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+	}
 
-textarea.form-control {
-    min-height: 120px;
-    resize: vertical;
-}
+	textarea.form-control {
+		min-height: 120px;
+		resize: vertical;
+	}
 
-.text-danger {
-    color: #dc3545;
-    font-size: 12px;
-    margin-top: 5px;
-    display: block;
-}
+	.text-danger {
+		color: #dc3545;
+		font-size: 12px;
+		margin-top: 5px;
+		display: block;
+	}
+
+	.contact-info-row .cardContact {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		text-align: center;
+	}
+
+	.contact-info-row .cardImage {
+		align-items: center;
+		display: flex;
+		height: 120px;
+		justify-content: center;
+		margin-left: auto;
+		margin-right: auto;
+		width: 120px;
+	}
+
+	.contact-info-row .cardImage img {
+		margin: 0 auto;
+	}
+
+	.contact-info-row .cardInfo {
+		text-align: center;
+	}
 </style>
 <main class="main">
 	<div class="section pt-60 pb-60 bg-primary">
@@ -68,25 +96,69 @@ textarea.form-control {
 	<div class="section pt-60 pb-60">
 		<div class="container-sub">
 			<div class="row">
-				<div class="col-lg-3 col-sm-6 mb-30">
+				<p class="text-20 mb-20">
+					Please Contact us for reservations, quotes, or any questions. We're committed to providing safe,
+					reliable, and luxury transportation throughout Westchester County, New York City, the Tri-State
+					Area, and all major airports.
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="section pt-60 pb-60">
+		<div class="container-sub">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">
+						Ready to book your next ride? Let's Get You There
+					</h2>
+				</div>
+			</div>
+			<div class="row contact-info-row justify-content-center">
+				<div class="col-lg-4 col-sm-6 mb-30">
+					<div class="cardContact wow fadeInUp">
+						<div class="cardImage mb-30">
+							<img src="{% static 'assets/imgs/template/phone.png' %}" alt="luxride" />
+						</div>
+						<div class="cardInfo">
+							<h6 class="heading-20-medium mb-10">Phone</h6>
+							<p class="text-16 mb-20">914-501-1564</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-6 mb-30">
+					<div class="cardContact wow fadeInUp">
+						<div class="cardImage mb-30">
+							<img src="{% static 'assets/imgs/template/email.png' %}" alt="luxride" />
+						</div>
+						<div class="cardInfo">
+							<h6 class="heading-20-medium mb-10">Email</h6>
+							<p class="text-16 mb-20">Mahbub@velvetlimousine.com</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-6 mb-30">
 					<div class="cardContact wow fadeInUp">
 						<div class="cardImage mb-30">
 							<img src="{% static 'assets/imgs/page/contact/new-york.svg' %}" alt="luxride" />
 						</div>
 						<div class="cardInfo">
 							<h6 class="heading-20-medium mb-10">New York Office</h6>
-							<p class="text-16 mb-20">272 Eastchester Road.<br> New Rochelle. NY-10801 Westchester County.</p>
-							<p class="text-16">Mahbub@velvetlimousine.com</p>
-							<p class="text-16 mb-20">914-501-1564</p>
+							<p class="text-16 mb-20">
+								272 Eastchester Road.<br />
+								New Rochelle. NY-10801,<br />
+								Westchester County.
+							</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-9 col-sm-9 mb-30">
-						<section class="section  mb-120">
+			</div>
+		</div>
+	</div>
+	<section class="section pb-60">
 		<div class="container-sub">
 			<div class="mw-770">
-				<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">Ready to book your next ride? Let's Get You There</h2>
-				
+				<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">Reach Out Our Team with a Message</h2>
+
 				{% if messages %}
 				<div class="alert-messages mb-30">
 					{% for message in messages %}
@@ -97,7 +169,7 @@ textarea.form-control {
 					{% endfor %}
 				</div>
 				{% endif %}
-				
+
 				<div class="form-contact form-comment wow fadeInUp">
 					<form method="POST" action="{% url 'contact' %}">
 						{% csrf_token %}
@@ -105,8 +177,7 @@ textarea.form-control {
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<label class="form-label" for="{{ form.full_name.id_for_label }}">Your Name</label>
-									{{ form.full_name }}
-									{% if form.full_name.errors %}
+									{{ form.full_name }} {% if form.full_name.errors %}
 									<span class="text-danger">{{ form.full_name.errors }}</span>
 									{% endif %}
 								</div>
@@ -114,8 +185,7 @@ textarea.form-control {
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<label class="form-label" for="{{ form.email.id_for_label }}">Your Email</label>
-									{{ form.email }}
-									{% if form.email.errors %}
+									{{ form.email }} {% if form.email.errors %}
 									<span class="text-danger">{{ form.email.errors }}</span>
 									{% endif %}
 								</div>
@@ -123,8 +193,7 @@ textarea.form-control {
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label class="form-label" for="{{ form.phone.id_for_label }}">Your Phone</label>
-									{{ form.phone }}
-									{% if form.phone.errors %}
+									{{ form.phone }} {% if form.phone.errors %}
 									<span class="text-danger">{{ form.phone.errors }}</span>
 									{% endif %}
 								</div>
@@ -132,8 +201,7 @@ textarea.form-control {
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label class="form-label" for="{{ form.message.id_for_label }}">Message</label>
-									{{ form.message }}
-									{% if form.message.errors %}
+									{{ form.message }} {% if form.message.errors %}
 									<span class="text-danger">{{ form.message.errors }}</span>
 									{% endif %}
 								</div>
@@ -162,12 +230,6 @@ textarea.form-control {
 			</div>
 		</div>
 	</section>
-					</div>	
-				</div>
-				
-			</div>
-		</div>
-	</div>
 	<div class="section wow fadeInUp">
 		<iframe
 			class="map-contact"
@@ -177,6 +239,5 @@ textarea.form-control {
 			loading="lazy"
 			referrerpolicy="no-referrer-when-downgrade"></iframe>
 	</div>
-
 </main>
 {% endblock %}
