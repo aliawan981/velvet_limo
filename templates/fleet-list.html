@@ -1,4 +1,48 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+	.cardFleet {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.cardFleet .cardInfo {
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.cardFleet .cardImage {
+		display: flex;
+		align-items: stretch;
+		justify-content: center;
+	}
+
+	.cardFleet .cardImage img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.fleet-meta {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.fleet-meta .text-14 {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 6px;
+		font-weight: 600;
+	}
+
+	.fleet-meta .fleet-meta-value {
+		font-size: 18px;
+		font-weight: 800;
+		line-height: 1;
+	}
+</style>
 <main class="main">
 	<div class="section pt-60 pb-60 bg-primary">
 		<div class="container-sub">
@@ -48,13 +92,13 @@
 							/></a>
 						</div>
 						<div class="cardInfoBottom">
-							<div class="passenger">
+							<div class="passenger fleet-meta">
 								<span class="icon-circle icon-passenger"></span
-								><span class="text-14">Passengers<span>4</span></span>
+								><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">4</span></span>
 							</div>
-							<div class="luggage">
+							<div class="luggage fleet-meta">
 								<span class="icon-circle icon-luggage"></span
-								><span class="text-14">Luggage<span>2</span></span>
+								><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">2</span></span>
 							</div>
 						</div>
 					</div>
@@ -71,13 +115,13 @@
 							/></a>
 						</div>
 						<div class="cardInfoBottom">
-							<div class="passenger">
+							<div class="passenger fleet-meta">
 								<span class="icon-circle icon-passenger"></span
-								><span class="text-14">Passengers<span>4</span></span>
+								><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">4</span></span>
 							</div>
-							<div class="luggage">
+							<div class="luggage fleet-meta">
 								<span class="icon-circle icon-luggage"></span
-								><span class="text-14">Luggage<span>2</span></span>
+								><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">2</span></span>
 							</div>
 						</div>
 					</div>
@@ -98,13 +142,13 @@
 							/></a>
 						</div>
 						<div class="cardInfoBottom">
-							<div class="passenger">
+							<div class="passenger fleet-meta">
 								<span class="icon-circle icon-passenger"></span
-								><span class="text-14">Passengers<span>4</span></span>
+								><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">4</span></span>
 							</div>
-							<div class="luggage">
+							<div class="luggage fleet-meta">
 								<span class="icon-circle icon-luggage"></span
-								><span class="text-14">Luggage<span>2</span></span>
+								><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">2</span></span>
 							</div>
 						</div>
 					</div>
@@ -126,13 +170,13 @@
 							</a>
 						</div>
 						<div class="cardInfoBottom">
-							<div class="passenger">
+							<div class="passenger fleet-meta">
 								<span class="icon-circle icon-passenger"></span
-								><span class="text-14">Passengers<span>{{ fleet.passengers }}</span></span>
+								><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">{{ fleet.passengers }}</span></span>
 							</div>
-							<div class="luggage">
+							<div class="luggage fleet-meta">
 								<span class="icon-circle icon-luggage"></span
-								><span class="text-14">Luggage<span>{{ fleet.luggage }}</span></span>
+								><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">{{ fleet.luggage }}</span></span>
 							</div>
 						</div>
 					</div>
@@ -189,8 +233,13 @@
 	<section class="section">
 		<div class="container-sub">
 			<div class="mt-10">
-				<div class="content-single wow fadeInUp">
-					<p><b>Need Help to choose the type of Vehicle. Call our number (Phone Number).</b></p>
+				<div class="content-single wow fadeInUp" style="padding: 28px; border: 1px solid #ececec; border-radius: 14px; background: #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); text-align: center;">
+					<p style="font-size: 24px; line-height: 1.5; font-weight: 700; margin-bottom: 12px;">
+						Need Help to choose the type of Vehicle. Call our number.
+					</p>
+					<p style="font-size: 28px; line-height: 1.2; font-weight: 800; margin-bottom: 0;">
+						<a href="tel:9145011564" style="color: inherit; text-decoration: none;">914-501-1564</a>
+					</p>
 				</div>
 			</div>
 		</div>

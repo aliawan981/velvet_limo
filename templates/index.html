@@ -1,4 +1,68 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+	.swiper-group-4-service .swiper-slide,
+	.swiper-group-4-fleet .swiper-slide {
+		display: flex;
+		height: auto;
+	}
+
+	.cardService,
+	.cardFleet {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.cardService .cardInfo,
+	.cardFleet .cardInfo {
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.cardService .cardImage,
+	.cardFleet .cardImage {
+		display: flex;
+		align-items: stretch;
+		justify-content: center;
+	}
+
+	.cardService .cardImage img,
+	.cardFleet .cardImage img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.fleet-meta {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.fleet-meta .text-14 {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 6px;
+		font-weight: 600;
+	}
+
+	.fleet-meta .fleet-meta-value {
+		font-size: 18px;
+		font-weight: 800;
+		line-height: 1;
+	}
+	
+	.banner-home1 .box-banner-info {
+		top: 34%;
+	}
+
+	@media (max-width: 767px) {
+		.banner-home1 .box-banner-info {
+			top: 22%;
+		}
+	}
+</style>
 <main class="main">
 	<section class="section banner-home1">
 		<div class="box-swiper">
@@ -67,7 +131,7 @@
 				</div> -->
 			</div>
 		</div>
-		<form class="box-search-ride box-search-ride-quote wow fadeInUp" action="{% url 'quote_request' %}" method="post">
+		<form id="quote-form" class="box-search-ride box-search-ride-quote wow fadeInUp" action="{% url 'quote_request' %}" method="post">
 			{% csrf_token %}
 			<input type="hidden" name="service_type" value="one_way" data-quote-trip-type />
 			<div class="quote-reserve-options">
@@ -227,30 +291,6 @@
 	</section> -->
 	<section class="section pt-90 pb-120 bg-our-service">
 		<div class="container-sub">
-			<div class="row align-items-center">
-				<div class="col-lg-6 col-sm-7 col-7">
-					<h2 class="heading-44-medium title-fleet wow fadeInUp">Our Services</h2>
-				</div>
-				<div class="col-lg-6 col-sm-5 col-5 text-end">
-					<a
-						class="text-16-medium color-primary d-flex align-items-center justify-content-end wow fadeInUp"
-						href="{% url 'services' %}"
-						>More Services
-						<svg
-							class="icon-16 ml-5"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1.5"
-							viewbox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-							aria-hidden="true">
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
-					></a>
-				</div>
-			</div>
 			<div class="row mt-40">
 				<div class="col-lg-10">
 					<h3 class="text-20-medium color-text mb-10 wow fadeInUp">
@@ -262,7 +302,7 @@
 						New Jersey, and Connecticut), and <strong>All Major Airports</strong> (HPN, LGA, JFK, EWR, TEB,
 						SWF, PHL, BOS).
 					</p>
-					<h3 class="text-20-medium color-text mb-10 wow fadeInUp">Our Specialties:</h3>
+					<h2 class="heading-44-medium color-text mb-10 wow fadeInUp">Our Specialties:</h2>
 					<p class="text-16 color-text mb-0 wow fadeInUp">
 						1. Premium Services.<br />
 						2. Professional Chauffeurs.<br />
@@ -390,13 +430,13 @@
 										</a>
 									</div>
 									<div class="cardInfoBottom">
-										<div class="passenger">
+										<div class="passenger fleet-meta">
 											<span class="icon-circle icon-passenger"></span
-											><span class="text-14">Passengers<span>{{ fleet.passengers }}</span></span>
+											><span class="text-14"><span class="fleet-meta-label">Passengers</span><span class="fleet-meta-value">{{ fleet.passengers }}</span></span>
 										</div>
-										<div class="luggage">
+										<div class="luggage fleet-meta">
 											<span class="icon-circle icon-luggage"></span
-											><span class="text-14">Luggage<span>{{ fleet.luggage }}</span></span>
+											><span class="text-14"><span class="fleet-meta-label">Luggage</span><span class="fleet-meta-value">{{ fleet.luggage }}</span></span>
 										</div>
 									</div>
 								</div>

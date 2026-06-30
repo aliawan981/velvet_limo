@@ -147,15 +147,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Email Configuration (Gmail SMTP)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")  # Replace with your Gmail
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")  # Replace with your Gmail App Password
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "")  # Replace with the admin email address
+# Email Configuration (Microsoft Graph API)
+MICROSOFT_GRAPH_TENANT_ID = os.getenv('MICROSOFT_GRAPH_TENANT_ID', '')
+MICROSOFT_GRAPH_CLIENT_ID = os.getenv('MICROSOFT_GRAPH_CLIENT_ID', '')
+MICROSOFT_GRAPH_CLIENT_SECRET = os.getenv('MICROSOFT_GRAPH_CLIENT_SECRET', '')
+MICROSOFT_GRAPH_SENDER = os.getenv('MICROSOFT_GRAPH_SENDER', '')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', MICROSOFT_GRAPH_SENDER)
+ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', '')
 GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY', '')
 USE_GOOGLE_MAPS_API = os.getenv('USE_GOOGLE_MAPS_API', 'False').strip().lower() in {'1', 'true', 'yes', 'on'}
 

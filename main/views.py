@@ -3,19 +3,31 @@ from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 
 from threading import Thread
 
 from .forms import ClientLoginForm, ClientRegistrationForm, ContactFormForm, QuoteRequestForm
 from .models import ClientProfile, QuoteRequest
+from .microsoft_graph_mail import send_graph_mail
 
-ADMIN_EMAIL = getattr(settings, 'ADMIN_EMAIL')
+ADMIN_EMAIL = getattr(settings, 'ADMIN_EMAIL', '')
 
 
 def _send_async_email(email_function, *args, **kwargs):
     Thread(target=email_function, args=args, kwargs=kwargs, daemon=True).start()
+
+
+def _send_graph_email(subject, body, recipients):
+    if not recipients:
+        return
+
+    send_graph_mail(
+        subject=subject,
+        body=body,
+        recipients=recipients,
+        sender=settings.DEFAULT_FROM_EMAIL,
+    )
 
 
 def _send_quote_emails(quote_request):
@@ -57,8 +69,8 @@ def _send_quote_emails(quote_request):
     Velvet Limousine Team
     """.strip()
 
-    send_mail(admin_subject, admin_body, settings.DEFAULT_FROM_EMAIL, [ADMIN_EMAIL], fail_silently=False)
-    send_mail(customer_subject, customer_body, settings.DEFAULT_FROM_EMAIL, [quote_request.email], fail_silently=False)
+    _send_graph_email(admin_subject, admin_body, [ADMIN_EMAIL])
+    _send_graph_email(customer_subject, customer_body, [quote_request.email])
 
 
 def register(request):
@@ -127,12 +139,10 @@ def contact(request):
             try:
                 # Send email to admin
                 _send_async_email(
-                    send_mail,
+                    _send_graph_email,
                     subject,
                     message_body,
-                    settings.DEFAULT_FROM_EMAIL,
                     [admin_email],
-                    fail_silently=True,
                 )
 
                 # Send confirmation email to user
@@ -145,12 +155,10 @@ def contact(request):
                 Velvet Limousine Team
                 """
                 _send_async_email(
-                    send_mail,
+                    _send_graph_email,
                     'Thank you for your inquiry - Velvet Limousine',
                     user_message,
-                    settings.DEFAULT_FROM_EMAIL,
                     [contact_instance.email],
-                    fail_silently=True,
                 )
 
                 messages.success(request, 'Your message has been sent successfully! We will get back to you soon.')

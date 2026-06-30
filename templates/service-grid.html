@@ -1,4 +1,137 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+.services-callout {
+	padding: 32px;
+	border-radius: 18px;
+	background: linear-gradient(135deg, rgba(11, 38, 69, 0.04), rgba(255, 255, 255, 0.95));
+	border: 1px solid rgba(11, 38, 69, 0.08);
+	box-shadow: 0 18px 45px rgba(11, 38, 69, 0.08);
+	position: relative;
+	overflow: hidden;
+}
+
+.services-callout h3 {
+	margin-bottom: 16px;
+	font-size: 28px;
+	line-height: 1.2;
+}
+
+.services-callout p {
+	font-size: 18px;
+	line-height: 1.75;
+	color: #25364a;
+	margin-bottom: 18px;
+}
+
+.services-airport-list {
+	margin: 0;
+	padding-left: 22px;
+	column-count: 2;
+	column-gap: 32px;
+	font-size: 16px;
+	line-height: 1.7;
+	color: #25364a;
+}
+
+.services-airport-list li {
+	break-inside: avoid;
+	margin-bottom: 8px;
+}
+
+.services-reservation {
+	padding: 24px 0 10px;
+}
+
+.services-reservation-heading {
+	font-size: 28px;
+	line-height: 1.25;
+	font-weight: 800;
+	margin-bottom: 28px;
+	color: #0b2645;
+}
+
+.services-reservation-actions {
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	gap: 18px;
+	flex-wrap: wrap;
+}
+
+.services-reservation-card {
+	min-width: 290px;
+	padding: 22px 26px;
+	border-radius: 16px;
+	background: #fff;
+	border: 1px solid rgba(11, 38, 69, 0.1);
+	box-shadow: 0 16px 35px rgba(11, 38, 69, 0.08);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 10px;
+}
+
+.services-reservation-label {
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: #5b6572;
+}
+
+.services-online-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 14px 28px;
+	border-radius: 999px;
+	font-size: 18px;
+	font-weight: 800;
+	min-width: 180px;
+	text-decoration: none;
+}
+
+.services-phone-link {
+	font-size: 24px;
+	line-height: 1.1;
+	font-weight: 900;
+	color: #0b2645;
+	text-decoration: none;
+}
+
+@media (max-width: 767px) {
+	.services-callout {
+		padding: 24px;
+	}
+
+	.services-callout h3 {
+		font-size: 23px;
+	}
+
+	.services-callout p {
+		font-size: 16px;
+	}
+
+	.services-airport-list {
+		column-count: 1;
+	}
+
+	.services-reservation-heading {
+		font-size: 22px;
+	}
+
+	.services-reservation-card {
+		width: 100%;
+		min-width: 0;
+	}
+
+	.services-phone-link {
+		font-size: 20px;
+	}
+}
+</style>
 <main class="main">
 	<div class="section pt-60 pb-60 bg-primary">
 		<div class="container-sub">
@@ -15,11 +148,22 @@
 		<div class="container-sub">
 			<div class="mt-60">
 				<h2 class="heading-44-medium mb-30 color-text title-fleet wow fadeInUp">Our Services</h2>
-				<div class="content-single wow fadeInUp">
-					<p>
-						Whether you're traveling for business or leisure, our professional chauffeurs deliver safe,
-						reliable, and first-class service 24/7.
-					</p>
+				<div class="services-callout wow fadeInUp">
+					<h3 class="heading-44-medium color-text">Whether you're traveling for business or leisure, our professional chauffeurs deliver safe, reliable, and first-class service 24/7.</h3>
+					<p class="text-18-medium">Our Services Include:</p>
+					<ul class="services-airport-list">
+						<li>Airport transportation to and from Westchester County Airport (HPN).</li>
+						<li>John F. Kennedy Airport (JFK).</li>
+						<li>LaGuardia Airport (LGA).</li>
+						<li>Newark Liberty Airport (EWR).</li>
+						<li>Teterboro Airport (TEB).</li>
+						<li>Stewart Intl Airport (SWF).</li>
+						<li>Long Island MacArthur Airport (ISP).</li>
+						<li>Philadelphia Airport (PHL).</li>
+						<li>Boston Logan Airport (BOS).</li>
+						<li>All private aviation terminals.</li>
+					</ul>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -68,19 +212,19 @@
 		</div>
 	</section>
 	<section class="section pt-50 pb-70">
-		<div class="container-sub text-center">
-				<p class="text-18-medium color-text mb-35">Make your reservation with very simple way:</p>
-				<div class="services-reservation-actions d-flex justify-content-center align-items-center flex-wrap">
-					<div class="services-reservation-action">
-						<span class="text-18-medium color-text">Book Online</span>
-						<a class="btn btn-primary hover-up ml-20" href="{% url 'home' %}">Get a Quote</a>
-					</div>
-					<div class="services-reservation-action">
-						<span class="text-18-medium color-text">Call Phone number</span>
-						<a class="text-18-medium color-text hover-up ml-20" href="tel:+19145011564">914-501-1564</a>
-					</div>
+		<div class="container-sub text-center services-reservation">
+			<h3 class="services-reservation-heading wow fadeInUp">Make your reservation with very simple way:</h3>
+			<div class="services-reservation-actions wow fadeInUp">
+				<div class="services-reservation-card">
+					<span class="services-reservation-label">Book Online</span>
+					<a class="btn btn-primary hover-up services-online-btn" href="{% url 'home' %}#quote-form">Book Now</a>
+				</div>
+				<div class="services-reservation-card">
+					<span class="services-reservation-label">Call Phone number</span>
+					<a class="services-phone-link" href="tel:+19145011564">914-501-1564</a>
 				</div>
 			</div>
+		</div>
 		</section>
 </main>
 {% endblock %}
