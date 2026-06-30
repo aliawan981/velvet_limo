@@ -70,7 +70,7 @@ def _send_quote_emails(quote_request):
     """.strip()
 
     _send_graph_email(admin_subject, admin_body, [ADMIN_EMAIL])
-    _send_graph_email(customer_subject, customer_body, [quote_request.email])
+    # _send_graph_email(customer_subject, customer_body, [quote_request.email])
 
 
 def register(request):
@@ -154,12 +154,12 @@ def contact(request):
                 Best regards,
                 Velvet Limousine Team
                 """
-                _send_async_email(
-                    _send_graph_email,
-                    'Thank you for your inquiry - Velvet Limousine',
-                    user_message,
-                    [contact_instance.email],
-                )
+                # _send_async_email(
+                #     _send_graph_email,
+                #     'Thank you for your inquiry - Velvet Limousine',
+                #     user_message,
+                #     [contact_instance.email],
+                # )
 
                 messages.success(request, 'Your message has been sent successfully! We will get back to you soon.')
                 return redirect('contact')

@@ -47,6 +47,11 @@ class MicrosoftGraphMailer:
                 return json.loads(content) if content else {}
         except error.HTTPError as exc:
             detail = exc.read().decode('utf-8', errors='ignore')
+            if exc.code == 401 and '/sendMail' in url:
+                raise MicrosoftGraphMailError(
+                    'Microsoft Graph denied sendMail. Verify the app registration has Application permission Mail.Send, '
+                    'admin consent was granted, and MICROSOFT_GRAPH_SENDER is a real mailbox/UPN that can send mail.'
+                ) from exc
             raise MicrosoftGraphMailError(f'Graph request failed with {exc.code}: {detail}') from exc
         except error.URLError as exc:
             raise MicrosoftGraphMailError(f'Graph request failed: {exc.reason}') from exc
@@ -79,6 +84,10 @@ class MicrosoftGraphMailer:
                 token_data = json.loads(response.read().decode('utf-8'))
         except error.HTTPError as exc:
             detail = exc.read().decode('utf-8', errors='ignore')
+            if exc.code == 401 and 'AADSTS7000215' in detail:
+                raise MicrosoftGraphMailError(
+                    'Microsoft Graph rejected the client secret. Set MICROSOFT_GRAPH_CLIENT_SECRET to the secret value, not the secret ID, in .env.'
+                ) from exc
             raise MicrosoftGraphMailError(f'Unable to get Graph token: {exc.code}: {detail}') from exc
         except error.URLError as exc:
             raise MicrosoftGraphMailError(f'Unable to get Graph token: {exc.reason}') from exc
@@ -112,7 +121,7 @@ class MicrosoftGraphMailer:
         }
 
         self._request_json(
-            f'https://graph.microsoft.com/v1.0/users/{parse.quote(message_sender)}/sendMail',
+            f'https://graph.microsoft.com/v1.0/users/{parse.quote(message_sender, safe="")}/sendMail',
             payload,
             headers={'Authorization': f'Bearer {token}'},
         )
