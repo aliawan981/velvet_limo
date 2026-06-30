@@ -46,7 +46,7 @@ SECRET_KEY = 'django-insecure-lmsg&_!l)s_t+v%g_&s6ql-uk7--)bu&e_^v&)ha_)5$2c(=k=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*", "13.201.166.114"]
+ALLOWED_HOSTS = ["*", "13.201.166.114", "3.14.241.138", "velvetlimousine.com", "www.velvetlimousine.com"]
 
 # Application definition
 
@@ -161,8 +161,14 @@ USE_GOOGLE_MAPS_API = os.getenv('USE_GOOGLE_MAPS_API', 'False').strip().lower() 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://velvetlimousine.com",
+    "http://velvetlimousine.com",
+    "https://www.velvetlimousine.com",
+    "http://www.velvetlimousine.com",
     "https://13.201.166.114",
     "http://13.201.166.114",
+    "https://3.14.241.138",
+    "http://3.14.241.138",
     "http://13.201.166.114:8000",
     "http://13.201.166.114:80",
 ]
@@ -171,8 +177,14 @@ CORS_ALLOW_CREDENTIALS = True
 
 # CSRF Configuration
 CSRF_TRUSTED_ORIGINS = [
+    "https://velvetlimousine.com",
+    "http://velvetlimousine.com",
+    "https://www.velvetlimousine.com",
+    "http://www.velvetlimousine.com",
     "https://13.201.166.114",
     "http://13.201.166.114",
+    "https://3.14.241.138",
+    "http://3.14.241.138",
     "https://13.201.166.114:8000",
     "http://13.201.166.114:8000",
     "http://localhost:3000",
