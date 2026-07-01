@@ -3661,8 +3661,8 @@ body {
   background-color: #ffffff;
   -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.09);
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.09);
-  z-index: 1003;
-  padding-top: 66px;
+  z-index: 1005;
+  padding-top: 18px;
 }
 .mobile-header-wrapper-style.sidebar-visible {
   visibility: visible;

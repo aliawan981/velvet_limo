@@ -417,17 +417,13 @@
 							<div class="swiper-slide">
 								<div class="cardFleet wow fadeInUp">
 									<div class="cardInfo">
-										<a href="fleet-single.html">
-											<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3></a
-										>
+										<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
 										<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
 									</div>
 									<div class="cardImage mb-30">
-										<a href="fleet-single.html">
-											{% if fleet.image %}
-											<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
-											{% endif %}
-										</a>
+										{% if fleet.image %}
+										<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
+										{% endif %}
 									</div>
 									<div class="cardInfoBottom">
 										<div class="passenger fleet-meta">
