@@ -52,7 +52,7 @@
 		font-weight: 800;
 		line-height: 1;
 	}
-	
+
 	.banner-home1 .box-banner-info {
 		top: 34%;
 	}
@@ -73,9 +73,9 @@
 							class="box-cover-image"
 							style="background-image: url('{% static 'assets/imgs/page/homepage1/banner.png' %}')"></div>
 						<div class="box-banner-info">
-							<p class="text-16 color-white wow fadeInUp">Where Can Velvet Take You?</p>
 							<h2 class="heading-52-medium color-white wow fadeInUp">
-								Your New York <br class="d-none d-lg-block" />Chauffeur Service
+								Luxury Limousine <br class="d-none d-lg-block" />
+								& Chauffeur Service
 							</h2>
 						</div>
 					</div>
@@ -131,7 +131,11 @@
 				</div> -->
 			</div>
 		</div>
-		<form id="quote-form" class="box-search-ride box-search-ride-quote wow fadeInUp" action="{% url 'quote_request' %}" method="post">
+		<form
+			id="quote-form"
+			class="box-search-ride box-search-ride-quote wow fadeInUp"
+			action="{% url 'quote_request' %}"
+			method="post">
 			{% csrf_token %}
 			<input type="hidden" name="service_type" value="one_way" data-quote-trip-type />
 			<div class="quote-reserve-options">
@@ -147,21 +151,36 @@
 					<div class="search-icon"><span class="item-icon icon-from"> </span></div>
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Pick Up</label>
-						<input id="quote-pickup" class="search-input quote-address-input" type="text" name="pickup" placeholder="Enter pickup location" />
+						<input
+							id="quote-pickup"
+							class="search-input quote-address-input"
+							type="text"
+							name="pickup"
+							placeholder="Enter pickup location" />
 					</div>
 				</div>
 				<div class="search-item search-to">
 					<div class="search-icon"><span class="item-icon icon-to"> </span></div>
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Drop Off</label>
-						<input id="quote-dropoff" class="search-input quote-address-input" type="text" name="dropoff" placeholder="Enter drop off location" />
+						<input
+							id="quote-dropoff"
+							class="search-input quote-address-input"
+							type="text"
+							name="dropoff"
+							placeholder="Enter drop off location" />
 					</div>
 				</div>
 				<div class="search-item search-add-stop">
 					<div class="search-icon"><span class="item-icon icon-add-stop"> </span></div>
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Add Stop</label>
-						<input id="quote-stop" class="search-input quote-address-input" type="text" name="stop" placeholder="Optional stop" />
+						<input
+							id="quote-stop"
+							class="search-input quote-address-input"
+							type="text"
+							name="stop"
+							placeholder="Optional stop" />
 					</div>
 				</div>
 			</div>
@@ -204,7 +223,11 @@
 					<div class="search-icon"><span class="item-icon icon-to"> </span></div>
 					<div class="search-inputs">
 						<label class="text-14 color-grey">Service Area</label>
-						<input class="search-input quote-address-input" type="text" name="hourly_area" placeholder="City or area" />
+						<input
+							class="search-input quote-address-input"
+							type="text"
+							name="hourly_area"
+							placeholder="City or area" />
 					</div>
 				</div>
 				<div class="search-item search-riders">
@@ -259,7 +282,10 @@
 			</div>
 		</form>
 		{% if USE_GOOGLE_MAPS_API and GOOGLE_MAPS_API_KEY %}
-		<script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&libraries=places" async defer></script>
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&libraries=places"
+			async
+			defer></script>
 		<script>
 			window.addEventListener('load', function () {
 				if (!window.google || !google.maps || !google.maps.places) return;
@@ -314,19 +340,19 @@
 		</div>
 		<div class="box-slide-fleet mt-50">
 			<div class="box-swiper">
-					<div class="swiper-container swiper-group-4-service pb-0">
-						<div class="swiper-wrapper">
-							{% for service in services %}
-							<div class="swiper-slide">
-								<div class="cardService wow fadeInUp">
-									<div class="cardInfo">
-										<h3 class="cardTitle text-20-medium color-white mb-10">{{ service.title }}</h3>
-										<div class="box-inner-info">
-											<p class="cardDesc text-14 color-white mb-30">{{ service.short_description }}</p>
-											<a class="cardLink btn btn-arrow-up" href="{% url 'services' %}">
-												<svg
-													class="icon-16"
-													fill="none"
+				<div class="swiper-container swiper-group-4-service pb-0">
+					<div class="swiper-wrapper">
+						{% for service in services %}
+						<div class="swiper-slide">
+							<div class="cardService wow fadeInUp">
+								<div class="cardInfo">
+									<h3 class="cardTitle text-20-medium color-white mb-10">{{ service.title }}</h3>
+									<div class="box-inner-info">
+										<p class="cardDesc text-14 color-white mb-30">{{ service.short_description }}</p>
+										<a class="cardLink btn btn-arrow-up" href="{% url 'services' %}">
+											<svg
+												class="icon-16"
+												fill="none"
 												stroke="currentColor"
 												stroke-width="1.5"
 												viewbox="0 0 24 24"
@@ -337,19 +363,21 @@
 													stroke-linejoin="round"
 													d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg
 										></a>
-										</div>
-									</div>
-									<div class="cardImage">
-										{% if service.image %}
-										<img src="{{ service.image.url }}" alt="{{ service.title }}" />
-										{% else %}
-										<img src="{% static 'assets/imgs/page/homepage1/service1.png' %}" alt="{{ service.title }}" />
-										{% endif %}
 									</div>
 								</div>
+								<div class="cardImage">
+									{% if service.image %}
+									<img src="{{ service.image.url }}" alt="{{ service.title }}" />
+									{% else %}
+									<img
+										src="{% static 'assets/imgs/page/homepage1/service1.png' %}"
+										alt="{{ service.title }}" />
+									{% endif %}
+								</div>
 							</div>
-							{% endfor %}
 						</div>
+						{% endfor %}
+					</div>
 					<div class="box-pagination-fleet">
 						<div class="swiper-button-prev swiper-button-prev-fleet">
 							<svg
@@ -411,34 +439,40 @@
 		</div>
 		<div class="box-slide-fleet mt-50">
 			<div class="box-swiper">
-					<div class="swiper-container swiper-group-4-fleet pb-0">
-						<div class="swiper-wrapper">
-							{% for fleet in fleets %}
-							<div class="swiper-slide">
-								<div class="cardFleet wow fadeInUp">
-									<div class="cardInfo">
-										<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
-										<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
+				<div class="swiper-container swiper-group-4-fleet pb-0">
+					<div class="swiper-wrapper">
+						{% for fleet in fleets %}
+						<div class="swiper-slide">
+							<div class="cardFleet wow fadeInUp">
+								<div class="cardInfo">
+									<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
+									<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
+								</div>
+								<div class="cardImage mb-30">
+									{% if fleet.image %}
+									<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
+									{% endif %}
+								</div>
+								<div class="cardInfoBottom">
+									<div class="passenger fleet-meta">
+										<span class="icon-circle icon-passenger"></span
+										><span class="text-14"
+											><span class="fleet-meta-label">Passengers</span
+											><span class="fleet-meta-value">{{ fleet.passengers }}</span></span
+										>
 									</div>
-									<div class="cardImage mb-30">
-										{% if fleet.image %}
-										<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
-										{% endif %}
-									</div>
-									<div class="cardInfoBottom">
-										<div class="passenger fleet-meta">
-											<span class="icon-circle icon-passenger"></span
-											><span class="text-14"><span class="fleet-meta-label">Passengers</span><span class="fleet-meta-value">{{ fleet.passengers }}</span></span>
-										</div>
-										<div class="luggage fleet-meta">
-											<span class="icon-circle icon-luggage"></span
-											><span class="text-14"><span class="fleet-meta-label">Luggage</span><span class="fleet-meta-value">{{ fleet.luggage }}</span></span>
-										</div>
+									<div class="luggage fleet-meta">
+										<span class="icon-circle icon-luggage"></span
+										><span class="text-14"
+											><span class="fleet-meta-label">Luggage</span
+											><span class="fleet-meta-value">{{ fleet.luggage }}</span></span
+										>
 									</div>
 								</div>
 							</div>
-							{% endfor %}
 						</div>
+						{% endfor %}
+					</div>
 					<div class="box-pagination-fleet">
 						<div class="swiper-button-prev swiper-button-prev-fleet">
 							<svg

@@ -12,8 +12,14 @@ def about(request):
     return render(request, 'about.html')
 
 def fleet(request):
-    fleets = Fleet.objects.all().order_by('order', 'title')
-    return render(request, 'fleet-list.html', {'fleets': fleets})
+    fleets = Fleet.objects.filter(is_active=True).order_by('order', 'title')
+    sedan_fleets = fleets.filter(category=Fleet.CATEGORY_SEDAN)
+    suv_fleets = fleets.filter(category=Fleet.CATEGORY_SUV)
+    return render(request, 'fleet-list.html', {
+        'fleets': fleets,
+        'sedan_fleets': sedan_fleets,
+        'suv_fleets': suv_fleets,
+    })
 
 def services(request):
     services = Service.objects.filter(is_active=True).order_by('order')

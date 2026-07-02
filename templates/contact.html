@@ -1,78 +1,384 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <style>
-.form-group {
-    margin-bottom: 25px;
-}
+	.form-group {
+		margin-bottom: 25px;
+	}
 
-.form-label {
-    display: block;
-    margin-bottom: 12px;
-    font-weight: 600;
-    color: #333;
-    font-size: 13px;
-    text-transform: capitalize;
-}
+	.form-label {
+		display: block;
+		margin-bottom: 12px;
+		font-weight: 600;
+		color: #333;
+		font-size: 13px;
+		text-transform: capitalize;
+	}
 
-.form-control {
-    width: 100%;
-    display: block;
-    min-height: 44px;
-    padding: 12px 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #333;
-    background-color: #fafafa;
-    font-family: inherit;
-    transition: border-color 0.3s, background-color 0.3s;
-    box-sizing: border-box;
-}
+	.form-control {
+		width: 100%;
+		display: block;
+		min-height: 44px;
+		padding: 12px 15px;
+		border: 1px solid #e0e0e0;
+		border-radius: 6px;
+		font-size: 14px;
+		line-height: 1.5;
+		color: #333;
+		background-color: #fafafa;
+		font-family: inherit;
+		transition:
+			border-color 0.3s,
+			background-color 0.3s;
+		box-sizing: border-box;
+	}
 
-.form-control:hover {
-    background-color: #fff;
-    border-color: #ccc;
-}
+	.form-control:hover {
+		background-color: #fff;
+		border-color: #ccc;
+	}
 
-.form-control:focus {
-    background-color: #fff;
-    border-color: #0066cc;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-}
+	.form-control:focus {
+		background-color: #fff;
+		border-color: #0066cc;
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+	}
 
-textarea.form-control {
-    min-height: 120px;
-    resize: vertical;
-}
+	textarea.form-control {
+		min-height: 120px;
+		resize: vertical;
+	}
 
-.text-danger {
-    color: #dc3545;
-    font-size: 12px;
-    margin-top: 5px;
-    display: block;
-}
+	.text-danger {
+		color: #dc3545;
+		font-size: 12px;
+		margin-top: 5px;
+		display: block;
+	}
 
-.contact-info-box {
-	height: 100%;
-	padding: 28px;
-	border: 1px solid #ececec;
-	border-radius: 14px;
-	background: #fff;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-}
+	.contact-info-box {
+		height: 100%;
+		padding: 28px;
+		border: 1px solid #ececec;
+		border-radius: 14px;
+		background: #fff;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+	}
 
-.contact-info-box h6 {
-	margin-bottom: 10px;
-}
+	.contact-info-box h6 {
+		margin-bottom: 10px;
+	}
 
-.contact-note {
-	max-width: 860px;
-	margin-top: 32px;
-	font-size: 18px;
-	line-height: 1.7;
-	color: #222;
-}
+	.contact-note {
+		max-width: 860px;
+		margin-top: 32px;
+		font-size: 18px;
+		line-height: 1.7;
+		color: #222;
+	}
+
+	.contact-service-map {
+		position: relative;
+		width: 100%;
+		height: min(720px, 78vh);
+		min-height: 520px;
+		background: #dce8e5;
+		overflow: hidden;
+	}
+
+	.contact-service-map .leaflet-container {
+		width: 100%;
+		height: 100%;
+		font-family: inherit;
+	}
+
+	.contact-service-map .map-contact {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.contact-map-tile {
+		position: absolute;
+		width: 256px;
+		height: 256px;
+		max-width: none !important;
+		user-select: none;
+		-webkit-user-drag: none;
+	}
+
+	.contact-map-point {
+		position: absolute;
+		z-index: 20;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+		transform: translate(-50%, -50%);
+	}
+
+	.contact-map-point-label {
+		position: absolute;
+		left: 50%;
+		top: 100%;
+		min-width: max-content;
+		margin-top: 7px;
+		padding: 5px 8px;
+		border-radius: 6px;
+		background: rgba(255, 255, 255, 0.94);
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+		color: #181a1f;
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 1.2;
+		transform: translateX(-50%);
+		white-space: nowrap;
+	}
+
+	.leaflet-pane,
+	.leaflet-tile,
+	.leaflet-marker-icon,
+	.leaflet-marker-shadow,
+	.leaflet-tile-container,
+	.leaflet-pane > svg,
+	.leaflet-pane > canvas,
+	.leaflet-zoom-box,
+	.leaflet-image-layer,
+	.leaflet-layer {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+
+	.leaflet-container {
+		overflow: hidden;
+		touch-action: pan-x pan-y;
+	}
+
+	.leaflet-tile,
+	.leaflet-marker-icon,
+	.leaflet-marker-shadow {
+		user-select: none;
+		-webkit-user-drag: none;
+	}
+
+	.leaflet-container img {
+		max-width: none !important;
+		max-height: none !important;
+	}
+
+	.leaflet-marker-icon,
+	.leaflet-marker-shadow {
+		display: block;
+	}
+
+	.leaflet-tile-pane {
+		z-index: 200;
+	}
+
+	.leaflet-overlay-pane {
+		z-index: 400;
+	}
+
+	.leaflet-marker-pane {
+		z-index: 600;
+	}
+
+	.leaflet-popup-pane {
+		z-index: 700;
+	}
+
+	.leaflet-control-container .leaflet-top,
+	.leaflet-control-container .leaflet-bottom {
+		position: absolute;
+		z-index: 1000;
+		pointer-events: none;
+	}
+
+	.leaflet-top {
+		top: 12px;
+	}
+
+	.leaflet-bottom {
+		bottom: 12px;
+	}
+
+	.leaflet-left {
+		left: 12px;
+	}
+
+	.leaflet-right {
+		right: 12px;
+	}
+
+	.leaflet-control {
+		position: relative;
+		z-index: 800;
+		pointer-events: auto;
+		float: left;
+		clear: both;
+	}
+
+	.leaflet-control-zoom {
+		border: 1px solid rgba(24, 26, 31, 0.12);
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+	}
+
+	.leaflet-control-zoom a {
+		display: block;
+		width: 34px;
+		height: 34px;
+		line-height: 32px;
+		background: #ffffff;
+		color: #181a1f;
+		text-align: center;
+		font-size: 22px;
+		font-weight: 600;
+		text-decoration: none;
+		border-bottom: 1px solid #e4e6e8;
+	}
+
+	.leaflet-control-zoom a:last-child {
+		border-bottom: 0;
+	}
+
+	.leaflet-control-attribution {
+		padding: 4px 8px;
+		background: rgba(255, 255, 255, 0.86);
+		color: #474b52;
+		font-size: 11px;
+	}
+
+	.leaflet-control-attribution a {
+		color: #1f4f8f;
+	}
+
+	.contact-map-marker {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 38px;
+		height: 38px;
+		border: 3px solid #ffffff;
+		border-radius: 50%;
+		background: #174f9f;
+		color: #ffffff;
+		font-size: 20px;
+		line-height: 1;
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+	}
+
+	.contact-map-marker-fallback {
+		font-size: 14px;
+		font-weight: 700;
+	}
+
+	.contact-map-marker-office {
+		width: 48px;
+		height: 48px;
+		background: #b2182b;
+		font-size: 18px;
+		box-shadow:
+			0 0 0 8px rgba(178, 24, 43, 0.22),
+			0 12px 24px rgba(0, 0, 0, 0.34);
+	}
+
+	.contact-map-label {
+		position: absolute;
+		right: 18px;
+		bottom: 18px;
+		z-index: 700;
+		display: flex;
+		gap: 12px;
+		flex-wrap: wrap;
+		padding: 10px 12px;
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.92);
+		box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+		font-size: 13px;
+		color: #181a1f;
+	}
+
+	.contact-map-label span {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		white-space: nowrap;
+	}
+
+	.contact-map-dot {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: #174f9f;
+	}
+
+	.contact-map-dot-office {
+		background: #b2182b;
+	}
+
+	.leaflet-popup {
+		position: absolute;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.leaflet-popup-content-wrapper {
+		padding: 10px 14px;
+		border-radius: 8px;
+		background: #ffffff;
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+	}
+
+	.leaflet-popup-content {
+		margin: 0;
+		font-size: 14px;
+		line-height: 1.4;
+		color: #181a1f;
+	}
+
+	.leaflet-popup-tip-container {
+		position: absolute;
+		left: 50%;
+		width: 20px;
+		height: 10px;
+		margin-left: -10px;
+		overflow: hidden;
+		pointer-events: none;
+	}
+
+	.leaflet-popup-tip {
+		width: 14px;
+		height: 14px;
+		margin: -7px auto 0;
+		background: #ffffff;
+		transform: rotate(45deg);
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+	}
+
+	.leaflet-popup-close-button {
+		display: none;
+	}
+
+	@media (max-width: 767px) {
+		.contact-service-map {
+			height: 620px;
+			min-height: 620px;
+		}
+
+		.contact-map-label {
+			left: 14px;
+			right: 14px;
+			bottom: 14px;
+		}
+
+		.contact-map-point-label {
+			font-size: 11px;
+		}
+	}
 </style>
 <main class="main">
 	<div class="section pt-60 pb-60 bg-primary">
@@ -88,7 +394,7 @@ textarea.form-control {
 	</div>
 	<div class="section pt-60 pb-60">
 		<div class="container-sub">
-			<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">Ready to book your next ride? Let's Get You There:</h2>
+			<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">Reach Out Our Team with a Message:</h2>
 
 			{% if messages %}
 			<div class="alert-messages mb-30">
@@ -111,7 +417,9 @@ textarea.form-control {
 				<div class="col-lg-4 col-md-4 mb-30">
 					<div class="contact-info-box wow fadeInUp">
 						<h6 class="heading-20-medium">Email</h6>
-						<p class="text-16 mb-0"><a href="mailto:Mahbub@velvetlimousine.com">Mahbub@velvetlimousine.com</a></p>
+						<p class="text-16 mb-0">
+							<a href="mailto:Mahbub@velvetlimousine.com">Mahbub@velvetlimousine.com</a>
+						</p>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 mb-30">
@@ -130,8 +438,7 @@ textarea.form-control {
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<label class="form-label" for="{{ form.full_name.id_for_label }}">Your Name</label>
-									{{ form.full_name }}
-									{% if form.full_name.errors %}
+									{{ form.full_name }} {% if form.full_name.errors %}
 									<span class="text-danger">{{ form.full_name.errors }}</span>
 									{% endif %}
 								</div>
@@ -139,8 +446,7 @@ textarea.form-control {
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<label class="form-label" for="{{ form.email.id_for_label }}">Your Email</label>
-									{{ form.email }}
-									{% if form.email.errors %}
+									{{ form.email }} {% if form.email.errors %}
 									<span class="text-danger">{{ form.email.errors }}</span>
 									{% endif %}
 								</div>
@@ -148,8 +454,7 @@ textarea.form-control {
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label class="form-label" for="{{ form.phone.id_for_label }}">Your Phone</label>
-									{{ form.phone }}
-									{% if form.phone.errors %}
+									{{ form.phone }} {% if form.phone.errors %}
 									<span class="text-danger">{{ form.phone.errors }}</span>
 									{% endif %}
 								</div>
@@ -157,8 +462,7 @@ textarea.form-control {
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label class="form-label" for="{{ form.message.id_for_label }}">Message</label>
-									{{ form.message }}
-									{% if form.message.errors %}
+									{{ form.message }} {% if form.message.errors %}
 									<span class="text-danger">{{ form.message.errors }}</span>
 									{% endif %}
 								</div>
@@ -187,24 +491,171 @@ textarea.form-control {
 
 				<div class="contact-note wow fadeInUp">
 					<p>
-						Please Contact us for reservations, quotes, or any questions. We're committed to providing
-						safe, reliable, and luxury transportation throughout Westchester County, New York City, the
-						Tri-State Area, and all major airports.
+						Please Contact us for reservations, quotes, or any questions. We're committed to providing safe,
+						reliable, and luxury transportation throughout Westchester County, New York City, the Tri-State
+						Area, and all major airports.
 					</p>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="section wow fadeInUp">
-		<iframe
-			class="map-contact"
-			title="272 Eastchester Road, New Rochelle, NY 10801"
-			src="https://www.google.com/maps?q=272+Eastchester+Road,+New+Rochelle,+NY+10801,+Westchester+County&output=embed"
-			style="border: 0"
-			allowfullscreen=""
-			loading="lazy"
-			referrerpolicy="no-referrer-when-downgrade"></iframe>
+		<div
+			class="contact-service-map"
+			aria-label="Map showing Velvet Limousine near HPN, LGA, and JFK airports">
+			<div id="contact-airport-map" class="map-contact"></div>
+			<div class="contact-map-label" aria-hidden="true">
+				<span><i class="contact-map-dot contact-map-dot-office"></i>Velvet Limousine</span>
+				<span><i class="contact-map-dot"></i>Airport</span>
+			</div>
+		</div>
 	</div>
-
 </main>
+<script>
+	(function () {
+		var mapElement = document.getElementById('contact-airport-map');
+
+		if (!mapElement) {
+			return;
+		}
+
+		var zoom = 10;
+		var tileSize = 256;
+		var locations = [
+			{
+				name: 'Velvet Limousine',
+				shortName: 'Velvet Limousine',
+				address: '272 Eastchester Road, New Rochelle, NY 10801',
+				coords: [40.9229, -73.7857],
+				type: 'office',
+			},
+			{
+				name: 'Westchester County Airport (HPN)',
+				shortName: 'HPN',
+				coords: [41.067, -73.7076],
+				type: 'airport',
+			},
+			{
+				name: 'LaGuardia Airport (LGA)',
+				shortName: 'LGA',
+				coords: [40.7769, -73.874],
+				type: 'airport',
+			},
+			{
+				name: 'John F. Kennedy International Airport (JFK)',
+				shortName: 'JFK',
+				coords: [40.6413, -73.7781],
+				type: 'airport',
+			},
+		];
+
+		function project(coords) {
+			var lat = coords[0];
+			var lng = coords[1];
+			var sinLat = Math.sin((lat * Math.PI) / 180);
+			var scale = tileSize * Math.pow(2, zoom);
+
+			return {
+				x: ((lng + 180) / 360) * scale,
+				y: (0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI)) * scale,
+			};
+		}
+
+		function drawMap() {
+			var width = mapElement.clientWidth;
+			var height = mapElement.clientHeight;
+			var projected = locations.map(function (location) {
+				return project(location.coords);
+			});
+			var minX = Math.min.apply(
+				null,
+				projected.map(function (point) {
+					return point.x;
+				}),
+			);
+			var maxX = Math.max.apply(
+				null,
+				projected.map(function (point) {
+					return point.x;
+				}),
+			);
+			var minY = Math.min.apply(
+				null,
+				projected.map(function (point) {
+					return point.y;
+				}),
+			);
+			var maxY = Math.max.apply(
+				null,
+				projected.map(function (point) {
+					return point.y;
+				}),
+			);
+			var centerX = (minX + maxX) / 2;
+			var centerY = (minY + maxY) / 2;
+			var originX = centerX - width / 2;
+			var originY = centerY - height / 2;
+			var firstTileX = Math.floor(originX / tileSize);
+			var lastTileX = Math.floor((originX + width) / tileSize);
+			var firstTileY = Math.floor(originY / tileSize);
+			var lastTileY = Math.floor((originY + height) / tileSize);
+			var maxTile = Math.pow(2, zoom);
+			var html = '';
+
+			for (var x = firstTileX; x <= lastTileX; x += 1) {
+				for (var y = firstTileY; y <= lastTileY; y += 1) {
+					if (y < 0 || y >= maxTile) {
+						continue;
+					}
+
+					var wrappedX = ((x % maxTile) + maxTile) % maxTile;
+					var left = Math.round(x * tileSize - originX);
+					var top = Math.round(y * tileSize - originY);
+
+					html +=
+						'<img class="contact-map-tile" alt="" src="https://tile.openstreetmap.org/' +
+						zoom +
+						'/' +
+						wrappedX +
+						'/' +
+						y +
+						'.png" style="left:' +
+						left +
+						'px; top:' +
+						top +
+						'px;">';
+				}
+			}
+
+			locations.forEach(function (location, index) {
+				var point = projected[index];
+				var left = point.x - originX;
+				var top = point.y - originY;
+				var markerClass =
+					location.type === 'office' ? 'contact-map-marker contact-map-marker-office' : 'contact-map-marker';
+				var markerContent =
+					location.type === 'office' ? '<span class="contact-map-marker-fallback">VEL</span>' : '&#9992;';
+
+				html +=
+					'<button class="contact-map-point" type="button" title="' +
+					location.name +
+					'" style="left:' +
+					left +
+					'px; top:' +
+					top +
+					'px;">';
+				html += '<span class="' + markerClass + '" aria-hidden="true">' + markerContent + '</span>';
+				html += '<span class="contact-map-point-label">' + location.shortName + '</span>';
+				html += '</button>';
+			});
+
+			html +=
+				'<div class="leaflet-control-attribution" style="position:absolute; right:8px; bottom:8px; z-index:10;">&copy; OpenStreetMap contributors</div>';
+			mapElement.innerHTML = html;
+		}
+
+		drawMap();
+		window.addEventListener('resize', drawMap);
+	})();
+</script>
 {% endblock %}

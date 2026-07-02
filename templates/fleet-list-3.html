@@ -10,7 +10,52 @@
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/template/favicon.png">
-    <link href="assets/css/style.css?v=1.0.0" rel="stylesheet">
+	    <link href="assets/css/style.css?v=1.0.0" rel="stylesheet">
+	    <style>
+	      .cardFleet .cardInfoBottom {
+	        display: grid;
+	        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	        align-items: center;
+	        gap: 8px;
+	        width: 100%;
+	      }
+	      .cardFleet .cardInfoBottom .passenger,
+	      .cardFleet .cardInfoBottom .luggage {
+	        flex: 0 1 auto;
+	        width: auto;
+	        min-width: 0;
+	      }
+	      .cardFleet .cardInfoBottom .luggage {
+	        justify-content: flex-end;
+	        text-align: left;
+	      }
+	      .cardFleet .cardInfoBottom .passenger .icon-circle,
+	      .cardFleet .cardInfoBottom .luggage .icon-circle {
+	        flex: 0 0 28px;
+	        width: 28px;
+	        height: 28px;
+	        margin-right: 0;
+	        background-size: 14px 14px;
+	      }
+	      .cardFleet .cardInfoBottom .text-14 {
+	        display: inline-flex;
+	        align-items: baseline;
+	        gap: 6px;
+	        white-space: nowrap;
+	      }
+	      @media (min-width: 992px) {
+	        .cardFleet {
+	          padding: 20px;
+	        }
+	        .cardFleet .cardInfoBottom {
+	          gap: 8px;
+	        }
+	        .cardFleet .cardInfoBottom .text-14 {
+	          font-size: 12px;
+	          gap: 4px;
+	        }
+	      }
+	    </style>
     <title>Fleet List 3 - Multipurpose Startup SaaS HTML Template</title>
   </head>
   <body>
@@ -208,7 +253,7 @@
         <div class="container-sub"> 
           <div class="row align-items-center"> 
             <div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-start mb-30"> 
-              <h2 class="heading-24-medium wow fadeInUp">Choose Your Fleet</h2>
+	              <h2 class="heading-24-medium wow fadeInUp">Premium Sedan (First Class &amp; Business Class)</h2>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-end mb-30 wow fadeInUp">
               <div class="dropdown dropdown-menu-box"><a class="dropdown-toggle" id="dropdownMenuButton1" href="#" data-bs-toggle="dropdown" aria-expanded="false">Vehicle Type</a>

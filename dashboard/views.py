@@ -78,7 +78,7 @@ def service_delete(request, pk):
 
 @staff_member_required(login_url='admin:login')
 def fleet_list(request):
-    fleets = Fleet.objects.all().order_by('order', 'title')
+    fleets = Fleet.objects.all().order_by('category', 'order', 'title')
     return render(request, 'dashboard/fleet_list.html', {'fleets': fleets})
 
 
