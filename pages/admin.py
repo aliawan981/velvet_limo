@@ -14,8 +14,8 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Fleet)
 class FleetAdmin(admin.ModelAdmin):
-    list_display = ('title', 'vehicle_name', 'passengers', 'luggage', 'is_active', 'order', 'created_at', 'updated_at')
-    list_filter = ('is_active', 'created_at', 'updated_at')
+    list_display = ('title', 'category', 'vehicle_name', 'passengers', 'luggage', 'is_active', 'order', 'created_at', 'updated_at')
+    list_filter = ('category', 'is_active', 'created_at', 'updated_at')
     search_fields = ('title', 'vehicle_name', 'description')
-    list_editable = ('is_active', 'order')
-    ordering = ('order', 'title')
+    list_editable = ('category', 'is_active', 'order')
+    ordering = ('category', 'order', 'title')

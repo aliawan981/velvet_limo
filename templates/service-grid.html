@@ -23,19 +23,66 @@
 	margin-bottom: 18px;
 }
 
+.services-intro {
+	max-width: 980px;
+	margin-bottom: 18px;
+	font-size: 28px;
+	line-height: 1.35;
+	color: #0b1725;
+}
+
+.services-airport-group {
+	margin-top: 0;
+}
+
+.services-list-row {
+	row-gap: 22px;
+}
+
 .services-airport-list {
 	margin: 0;
 	padding-left: 22px;
-	column-count: 2;
-	column-gap: 32px;
 	font-size: 16px;
 	line-height: 1.7;
 	color: #25364a;
+	list-style: disc outside;
 }
 
 .services-airport-list li {
 	break-inside: avoid;
-	margin-bottom: 8px;
+	display: list-item;
+	list-style: disc outside;
+	margin-bottom: 10px;
+	padding-left: 2px;
+}
+
+.services-airport-list li::marker {
+	color: #0b2645;
+	font-size: 0.85em;
+}
+
+.services-airport-sublist {
+	margin: 12px 0 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+.services-airport-sublist li {
+	display: block;
+	list-style: none;
+	margin-bottom: 0;
+	padding-left: 22px;
+	position: relative;
+}
+
+.services-airport-sublist li::before {
+	content: "-";
+	left: 0;
+	position: absolute;
+}
+
+.services-airport-sublist li::marker {
+	content: "";
 }
 
 .services-reservation {
@@ -103,19 +150,34 @@
 
 @media (max-width: 767px) {
 	.services-callout {
-		padding: 24px;
+		padding: 22px;
 	}
 
 	.services-callout h3 {
-		font-size: 23px;
+		font-size: 22px;
 	}
 
 	.services-callout p {
 		font-size: 16px;
 	}
 
+	.services-intro {
+		font-size: 21px;
+		line-height: 1.4;
+	}
+
 	.services-airport-list {
-		column-count: 1;
+		font-size: 15px;
+		line-height: 1.6;
+		padding-left: 18px;
+	}
+
+	.services-airport-list li {
+		margin-bottom: 8px;
+	}
+
+	.services-airport-sublist li {
+		padding-left: 18px;
 	}
 
 	.services-reservation-heading {
@@ -143,31 +205,51 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-	<section class="section">
-		<div class="container-sub">
-			<div class="mt-60">
-				<h2 class="heading-44-medium mb-30 color-text title-fleet wow fadeInUp">Our Services</h2>
-				<div class="services-callout wow fadeInUp">
-					<h3 class="heading-44-medium color-text">Whether you're traveling for business or leisure, our professional chauffeurs deliver safe, reliable, and first-class service 24/7.</h3>
-					<p class="text-18-medium">Our Services Include:</p>
-					<ul class="services-airport-list">
-						<li>Airport transportation to and from Westchester County Airport (HPN).</li>
-						<li>John F. Kennedy Airport (JFK).</li>
-						<li>LaGuardia Airport (LGA).</li>
-						<li>Newark Liberty Airport (EWR).</li>
-						<li>Teterboro Airport (TEB).</li>
-						<li>Stewart Intl Airport (SWF).</li>
-						<li>Long Island MacArthur Airport (ISP).</li>
-						<li>Philadelphia Airport (PHL).</li>
-						<li>Boston Logan Airport (BOS).</li>
-						<li>All private aviation terminals.</li>
-					</ul>
-				</div>
+		</div>
+		<section class="section">
+			<div class="container-sub">
+				<div class="mt-60">
+					<p class="services-intro wow fadeInUp">Whether you're traveling for business or leisure, our professional chauffeurs deliver safe, reliable, and first-class service 24/7.</p>
+					<h2 class="heading-44-medium mb-30 color-text title-fleet wow fadeInUp">Our Services</h2>
+					<div class="services-callout wow fadeInUp">
+						<div class="services-airport-group">
+							<div class="row services-list-row">
+								<div class="col-lg-6 col-md-6 col-12">
+									<ul class="services-airport-list">
+										<li>
+											Airport transportation to and from
+											<ul class="services-airport-sublist">
+												<li>Westchester County Airport (HPN).</li>
+												<li>John F. Kennedy Airport (JFK).</li>
+												<li>LaGuardia Airport (LGA).</li>
+												<li>Newark Liberty Airport (EWR).</li>
+												<li>Teterboro Airport (TEB).</li>
+												<li>Stewart Intl Airport (SWF).</li>
+												<li>Long Island MacArthur Airport (ISP).</li>
+												<li>Philadelphia Airport (PHL).</li>
+												<li>Boston Logan Airport (BOS).</li>
+												<li>All private aviation terminals.</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<ul class="services-airport-list">
+										<li>Executive and corporate transportation.</li>
+										<li>Proms, graduations, and special events.</li>
+										<li>Private School Transportation.</li>
+										<li>Hourly chauffeur service.</li>
+										<li>Point-to-point transportation.</li>
+										<li>Night-out and private event transportation.</li>
+										<li>Long-distance and interstate travel throughout the Tri-State area.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 	<section class="section pt-60">
 		<div class="container-sub">
 			<div class="row">

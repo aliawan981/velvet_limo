@@ -19,7 +19,15 @@ class Service(models.Model):
 
 
 class Fleet(models.Model):
+    CATEGORY_SEDAN = 'sedan'
+    CATEGORY_SUV = 'suv'
+    CATEGORY_CHOICES = (
+        (CATEGORY_SEDAN, 'Premium Sedan'),
+        (CATEGORY_SUV, 'Premium SUV'),
+    )
+
     title = models.CharField(max_length=150)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default=CATEGORY_SEDAN)
     vehicle_name = models.CharField(max_length=150, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='fleet/', blank=True, null=True)
@@ -37,3 +45,11 @@ class Fleet(models.Model):
         if self.vehicle_name:
             return f'{self.title} - {self.vehicle_name}'
         return self.title
+
+    @property
+    def description_points(self):
+        return [
+            line.strip().lstrip('-•*').strip()
+            for line in self.description.splitlines()
+            if line.strip()
+        ]

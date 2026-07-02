@@ -9,10 +9,11 @@
 	<table class="dashboard-table">
 		<thead>
 			<tr>
-				<th>Order</th>
-				<th>Title</th>
-				<th>Passengers</th>
-				<th>Luggage</th>
+					<th>Order</th>
+					<th>Title</th>
+					<th>Category</th>
+					<th>Passengers</th>
+					<th>Luggage</th>
 				<th>Status</th>
 				<th>Actions</th>
 			</tr>
@@ -20,9 +21,10 @@
 		<tbody>
 			{% for fleet in fleets %}
 			<tr>
-				<td>{{ fleet.order }}</td>
-				<td>{{ fleet.title }}</td>
-				<td>{{ fleet.passengers }}</td>
+					<td>{{ fleet.order }}</td>
+					<td>{{ fleet.title }}</td>
+					<td>{{ fleet.get_category_display }}</td>
+					<td>{{ fleet.passengers }}</td>
 				<td>{{ fleet.luggage }}</td>
 				<td>{% if fleet.is_active %}Active{% else %}Inactive{% endif %}</td>
 				<td>
@@ -31,7 +33,7 @@
 				</td>
 			</tr>
 			{% empty %}
-			<tr><td colspan="6">No fleet vehicles added yet.</td></tr>
+				<tr><td colspan="7">No fleet vehicles added yet.</td></tr>
 			{% endfor %}
 		</tbody>
 	</table>

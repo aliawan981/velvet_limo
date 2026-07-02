@@ -22,7 +22,7 @@ class ServiceForm(DashboardFormMixin, forms.ModelForm):
 class FleetForm(DashboardFormMixin, forms.ModelForm):
     class Meta:
         model = Fleet
-        fields = ('title', 'vehicle_name', 'description', 'image', 'passengers', 'luggage', 'is_active', 'order')
+        fields = ('title', 'category', 'vehicle_name', 'description', 'image', 'passengers', 'luggage', 'is_active', 'order')
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
         }

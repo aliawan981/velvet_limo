@@ -24,25 +24,114 @@
 		object-fit: cover;
 	}
 
-	.fleet-meta {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-	}
+		.fleet-meta {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			min-width: 0;
+		}
 
-	.fleet-meta .text-14 {
-		display: inline-flex;
-		align-items: baseline;
-		gap: 6px;
-		font-weight: 600;
-	}
+		.fleet-meta .text-14 {
+			display: inline-flex;
+			align-items: baseline;
+			gap: 6px;
+			font-weight: 600;
+			white-space: nowrap;
+		}
 
-	.fleet-meta .fleet-meta-value {
-		font-size: 18px;
-		font-weight: 800;
-		line-height: 1;
-	}
-</style>
+		.fleet-meta .fleet-meta-value {
+			font-size: 18px;
+			font-weight: 800;
+			line-height: 1;
+		}
+
+		.fleet-description-points {
+			margin: 0 0 30px;
+			padding-left: 0;
+			color: #181a1f;
+			font-size: 14px;
+			line-height: 1.6;
+			list-style: none;
+		}
+
+		.fleet-description-points li {
+			margin-bottom: 6px;
+			padding-left: 18px;
+			position: relative;
+		}
+
+		.fleet-description-points li::before {
+			content: "-";
+			left: 0;
+			position: absolute;
+		}
+
+		.cardFleet .cardInfoBottom {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			align-items: center;
+			gap: 8px;
+			width: 100%;
+			margin-top: auto;
+		}
+
+		.cardFleet .cardInfoBottom .passenger,
+		.cardFleet .cardInfoBottom .luggage {
+			flex: 0 1 auto;
+			width: auto;
+			min-width: 0;
+		}
+
+		.cardFleet .cardInfoBottom .luggage {
+			justify-content: flex-end;
+			text-align: left;
+		}
+
+		.cardFleet .cardInfoBottom .passenger .icon-circle,
+		.cardFleet .cardInfoBottom .luggage .icon-circle {
+			flex: 0 0 36px;
+			width: 36px;
+			height: 36px;
+			margin-right: 0;
+		}
+
+		@media (min-width: 992px) {
+			.cardFleet {
+				padding: 20px;
+			}
+
+			.cardFleet .cardInfoBottom {
+				gap: 8px;
+			}
+
+			.fleet-meta {
+				gap: 6px;
+			}
+
+			.fleet-meta .text-14 {
+				font-size: 12px;
+				gap: 4px;
+			}
+
+			.fleet-meta .fleet-meta-value {
+				font-size: 14px;
+			}
+
+			.cardFleet .cardInfoBottom .passenger .icon-circle,
+			.cardFleet .cardInfoBottom .luggage .icon-circle {
+				flex-basis: 28px;
+				width: 28px;
+				height: 28px;
+				background-size: 14px 14px;
+			}
+		}
+
+		@media (max-width: 1199px) {
+			.cardFleet .cardInfoBottom {
+				flex-wrap: wrap;
+			}
+		}
+	</style>
 <main class="main">
 	<div class="section pt-60 pb-60 bg-primary">
 		<div class="container-sub">
@@ -74,7 +163,7 @@
 		<div class="container-sub">
 			<div class="row align-items-center">
 				<div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-start mb-30">
-					<h2 class="heading-24-medium wow fadeInUp">Choose Your Fleet</h2>
+						<h2 class="heading-24-medium wow fadeInUp">Premium Sedan (First Class &amp; Business Class)</h2>
 				</div>
 			</div>
 			<div class="row mt-30">
@@ -153,13 +242,21 @@
 						</div>
 					</div>
 				</div> -->
-				{% for fleet in fleets %}
-				<div class="col-lg-4 mb-30">
-					<div class="cardFleet wow fadeInUp">
-						<div class="cardInfo">
-							<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
-							<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
-						</div>
+					{% for fleet in sedan_fleets %}
+					<div class="col-lg-3 col-md-6 mb-30">
+						<div class="cardFleet wow fadeInUp">
+							<div class="cardInfo">
+								<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
+								{% if fleet.description_points|length > 1 %}
+								<ul class="fleet-description-points">
+									{% for point in fleet.description_points %}
+									<li>{{ point }}</li>
+									{% endfor %}
+								</ul>
+								{% else %}
+								<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
+								{% endif %}
+							</div>
 						<div class="cardImage mb-30">
 							{% if fleet.image %}
 							<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
@@ -180,12 +277,59 @@
 					</div>
 				</div>
 				{% empty %}
-				<div class="col-12">
-					<p class="text-16 color-text">No fleet vehicles are available yet.</p>
+					<div class="col-12">
+						<p class="text-16 color-text">No fleet vehicles are available yet.</p>
+					</div>
+					{% endfor %}
 				</div>
-				{% endfor %}
-			</div>
-			<!-- <div class="text-center mt-40 mb-120">
+				<div class="row align-items-center mt-40">
+					<div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-start mb-30">
+						<h2 class="heading-24-medium wow fadeInUp">Premium SUV</h2>
+					</div>
+				</div>
+				<div class="row mt-30">
+					{% for fleet in suv_fleets %}
+					<div class="col-lg-3 col-md-6 mb-30">
+						<div class="cardFleet wow fadeInUp">
+							<div class="cardInfo">
+								<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
+								{% if fleet.description_points|length > 1 %}
+								<ul class="fleet-description-points">
+									{% for point in fleet.description_points %}
+									<li>{{ point }}</li>
+									{% endfor %}
+								</ul>
+								{% else %}
+								<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
+								{% endif %}
+							</div>
+							<div class="cardImage mb-30">
+								{% if fleet.image %}
+								<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
+								{% else %}
+								<img src="{% static 'assets/imgs/page/fleet/suv-class.png' %}" alt="{{ fleet.title }}" />
+								{% endif %}
+							</div>
+							<div class="cardInfoBottom">
+								<div class="passenger fleet-meta">
+									<span class="icon-circle icon-passenger"></span
+									><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">{{ fleet.passengers }}</span></span>
+								</div>
+								<div class="luggage fleet-meta">
+									<span class="icon-circle icon-luggage"></span
+									><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">{{ fleet.luggage }}</span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					{% if not suv_fleets %}
+					<div class="col-12">
+						<p class="text-16 color-text">No premium SUVs are available yet.</p>
+					</div>
+					{% endif %}
+				</div>
+				<!-- <div class="text-center mt-40 mb-120">
 				<nav class="box-pagination">
 					<ul class="pagination">
 						<li class="page-item">
