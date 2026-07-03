@@ -3,9 +3,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404, redirect, render
 
 from main.models import ClientProfile, ContactForm, QuoteRequest
-from pages.models import Fleet, Service
+from pages.models import ClientReview, Fleet, Service
 
-from .forms import FleetForm, ServiceForm
+from .forms import ClientReviewForm, FleetForm, ServiceForm
 
 
 @staff_member_required(login_url='admin:login')
@@ -15,6 +15,8 @@ def dashboard_home(request):
         'active_services': Service.objects.filter(is_active=True).count(),
         'total_fleet': Fleet.objects.count(),
         'active_fleet': Fleet.objects.filter(is_active=True).count(),
+        'total_client_reviews': ClientReview.objects.count(),
+        'active_client_reviews': ClientReview.objects.filter(is_active=True).count(),
         'total_client_profiles': ClientProfile.objects.count(),
         'total_contact_forms': ContactForm.objects.count(),
         'total_quote_requests': QuoteRequest.objects.count(),
@@ -107,6 +109,43 @@ def fleet_edit(request, pk):
 def fleet_delete(request, pk):
     fleet = get_object_or_404(Fleet, pk=pk)
     return _delete_record(request, fleet, 'dashboard_fleet', 'Fleet vehicle deleted successfully.', 'Fleet')
+
+
+@staff_member_required(login_url='admin:login')
+def client_review_list(request):
+    reviews = ClientReview.objects.all().order_by('order', '-created_at')
+    return render(request, 'dashboard/client_review_list.html', {'reviews': reviews})
+
+
+@staff_member_required(login_url='admin:login')
+def client_review_add(request):
+    form = ClientReviewForm(request.POST or None, request.FILES or None)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, 'Client review added successfully.')
+        return redirect('dashboard_client_reviews')
+    return render(request, 'dashboard/client_review_form.html', {'form': form, 'title': 'Add Client Review'})
+
+
+@staff_member_required(login_url='admin:login')
+def client_review_edit(request, pk):
+    review = get_object_or_404(ClientReview, pk=pk)
+    form = ClientReviewForm(request.POST or None, request.FILES or None, instance=review)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, 'Client review updated successfully.')
+        return redirect('dashboard_client_reviews')
+    return render(request, 'dashboard/client_review_form.html', {
+        'form': form,
+        'title': 'Edit Client Review',
+        'object': review,
+    })
+
+
+@staff_member_required(login_url='admin:login')
+def client_review_delete(request, pk):
+    review = get_object_or_404(ClientReview, pk=pk)
+    return _delete_record(request, review, 'dashboard_client_reviews', 'Client review deleted successfully.', 'Client Review')
 
 
 @staff_member_required(login_url='admin:login')

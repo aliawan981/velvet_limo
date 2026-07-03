@@ -1,12 +1,17 @@
 from django.shortcuts import render
 
-from .models import Fleet, Service
+from .models import ClientReview, Fleet, Service
 
 
 def home(request):
     services = Service.objects.filter(is_active=True).order_by('order')
     fleets = Fleet.objects.all().order_by('order', 'title')
-    return render(request, 'index.html', {'services': services, 'fleets': fleets})
+    client_reviews = ClientReview.objects.filter(is_active=True).order_by('order', '-created_at')
+    return render(request, 'index.html', {
+        'services': services,
+        'fleets': fleets,
+        'client_reviews': client_reviews,
+    })
 
 def about(request):
     return render(request, 'about.html')
