@@ -77,8 +77,17 @@
 	.fleet-section-meta {
 		display: flex;
 		align-items: center;
-		justify-content: flex-end;
-		gap: 24px;
+		justify-content: flex-start;
+		gap: 16px;
+		flex-wrap: wrap;
+	}
+
+	.fleet-section-header {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 18px;
+		flex-wrap: wrap;
 	}
 
 	.cardFleet .cardInfoBottom {
@@ -180,7 +189,13 @@
 		.fleet-section-meta {
 			justify-content: center;
 			flex-wrap: wrap;
-			gap: 14px;
+			gap: 12px;
+		}
+
+		.fleet-section-header {
+			justify-content: center;
+			text-align: center;
+			gap: 12px;
 		}
 	}
 </style>
@@ -213,20 +228,16 @@
 	</section>
 	<section class="section pt-60 bg-white latest-new-white">
 		<div class="container-sub">
-			<div class="row align-items-center">
-				<div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-start mb-30">
-					<h2 class="heading-24-medium wow fadeInUp">Premium Sedan (First Class &amp; Business Class)</h2>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 mb-30">
-					<div class="fleet-section-meta wow fadeInUp">
-						<div class="passenger fleet-meta">
-							<span class="icon-circle icon-passenger"></span
-							><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">3</span></span>
-						</div>
-						<div class="luggage fleet-meta">
-							<span class="icon-circle icon-luggage"></span
-							><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">3</span></span>
-						</div>
+			<div class="fleet-section-header mb-30 wow fadeInUp">
+				<h2 class="heading-24-medium mb-0">Premium Sedan (First Class &amp; Business Class);</h2>
+				<div class="fleet-section-meta">
+					<div class="passenger fleet-meta">
+						<span class="icon-circle icon-passenger"></span
+						><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">3</span></span>
+					</div>
+					<div class="luggage fleet-meta">
+						<span class="icon-circle icon-luggage"></span
+						><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">3</span></span>
 					</div>
 				</div>
 			</div>
@@ -243,9 +254,9 @@
 				{% for fleet in sedan_fleets %}
 				<div class="col-lg-3 col-md-6 mb-30">
 					<div class="cardFleet wow fadeInUp">
-						<div class="cardInfo">
+						<!-- <div class="cardInfo">
 							<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
-						</div>
+						</div> -->
 						<div class="cardImage mb-30">
 							{% if fleet.image %}
 							<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
@@ -262,18 +273,18 @@
 				{% endfor %}
 			</div>
 			<div class="row align-items-center mt-40">
-				<div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-start mb-30">
-					<h2 class="heading-24-medium wow fadeInUp">Premium SUV</h2>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 mb-30">
-					<div class="fleet-section-meta wow fadeInUp">
-						<div class="passenger fleet-meta">
-							<span class="icon-circle icon-passenger"></span
-							><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">6</span></span>
-						</div>
-						<div class="luggage fleet-meta">
-							<span class="icon-circle icon-luggage"></span
-							><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">6</span></span>
+				<div class="col-12 mb-30">
+					<div class="fleet-section-header wow fadeInUp">
+						<h2 class="heading-24-medium mb-0">Premium SUV; </h2>
+						<div class="fleet-section-meta">
+							<div class="passenger fleet-meta">
+								<span class="icon-circle icon-passenger"></span
+								><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">6</span></span>
+							</div>
+							<div class="luggage fleet-meta">
+								<span class="icon-circle icon-luggage"></span
+								><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">6</span></span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -293,9 +304,9 @@
 				{% for fleet in suv_fleets %}
 				<div class="col-lg-3 col-md-6 mb-30">
 					<div class="cardFleet wow fadeInUp">
-						<div class="cardInfo">
+						<!-- <div class="cardInfo">
 							<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
-						</div>
+						</div> -->
 						<div class="cardImage mb-30">
 							{% if fleet.image %}
 							<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
