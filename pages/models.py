@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Service(models.Model):
@@ -53,3 +54,21 @@ class Fleet(models.Model):
             for line in self.description.splitlines()
             if line.strip()
         ]
+
+
+class ClientReview(models.Model):
+    client_name = models.CharField(max_length=150)
+    client_title = models.CharField(max_length=150, blank=True)
+    review = models.TextField()
+    rating = models.PositiveSmallIntegerField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    image = models.ImageField(upload_to='reviews/', blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+
+    def __str__(self):
+        return self.client_name

@@ -57,6 +57,54 @@
 		top: 34%;
 	}
 
+	.client-review-card {
+		height: 100%;
+		padding: 30px;
+		border: 1px solid rgba(11, 38, 69, 0.1);
+		border-radius: 8px;
+		background: #fff;
+		box-shadow: 0 18px 45px rgba(11, 38, 69, 0.08);
+	}
+
+	.client-review-stars {
+		margin-bottom: 18px;
+		color: #b58a2a;
+		font-size: 18px;
+		letter-spacing: 2px;
+	}
+
+	.client-review-text {
+		color: #25364a;
+		font-size: 16px;
+		line-height: 1.75;
+	}
+
+	.client-review-author {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		margin-top: 24px;
+	}
+
+	.client-review-avatar {
+		flex: 0 0 54px;
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		object-fit: cover;
+		background: #f6f6f6;
+	}
+
+	.client-review-initial {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-size: 20px;
+		font-weight: 800;
+		background: #0b2645;
+	}
+
 	@media (max-width: 767px) {
 		.banner-home1 .box-banner-info {
 			top: 22%;
@@ -75,7 +123,7 @@
 						<div class="box-banner-info">
 							<h2 class="heading-52-medium color-white wow fadeInUp">
 								Luxury Limousine <br class="d-none d-lg-block" />
-								& Chauffeur Service
+								& Chauffeur Services
 							</h2>
 						</div>
 					</div>
@@ -444,10 +492,10 @@
 						{% for fleet in fleets %}
 						<div class="swiper-slide">
 							<div class="cardFleet wow fadeInUp">
-								<div class="cardInfo">
+								<!-- <div class="cardInfo">
 									<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
 									<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
-								</div>
+								</div> -->
 								<div class="cardImage mb-30">
 									{% if fleet.image %}
 									<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
@@ -507,6 +555,44 @@
 			</div>
 		</div>
 	</section>
+	{% if client_reviews %}
+	<section class="section pt-120 pb-120 bg-white">
+		<div class="container-sub">
+			<div class="row align-items-center mb-50">
+				<div class="col-lg-8">
+					<h2 class="heading-44-medium color-text wow fadeInUp">Client Reviews</h2>
+				</div>
+			</div>
+			<div class="row">
+				{% for review in client_reviews %}
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="client-review-card wow fadeInUp">
+						<div class="client-review-stars" aria-label="{{ review.rating }} out of 5 stars">
+							{% for _ in "12345" %}
+								{% if forloop.counter <= review.rating %}&#9733;{% else %}&#9734;{% endif %}
+							{% endfor %}
+						</div>
+						<p class="client-review-text mb-0">{{ review.review }}</p>
+						<div class="client-review-author">
+							{% if review.image %}
+							<img class="client-review-avatar" src="{{ review.image.url }}" alt="{{ review.client_name }}" />
+							{% else %}
+							<span class="client-review-avatar client-review-initial">{{ review.client_name|first }}</span>
+							{% endif %}
+							<div>
+								<h3 class="text-18-medium color-text mb-5">{{ review.client_name }}</h3>
+								{% if review.client_title %}
+								<p class="text-14 color-text mb-0">{{ review.client_title }}</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	{% endif %}
 	<!-- <section class="section pt-120 pb-20 bg-primary bg-how-it-works">
 		<div class="container-sub">
 			<h2 class="heading-44-medium color-white mb-60 wow fadeInUp">How It Works</h2>

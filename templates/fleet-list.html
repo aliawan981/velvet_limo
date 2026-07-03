@@ -24,114 +24,166 @@
 		object-fit: cover;
 	}
 
-		.fleet-meta {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			min-width: 0;
-		}
+	.fleet-meta {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		min-width: 0;
+	}
 
-		.fleet-meta .text-14 {
-			display: inline-flex;
-			align-items: baseline;
-			gap: 6px;
-			font-weight: 600;
-			white-space: nowrap;
-		}
+	.fleet-meta .text-14 {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 6px;
+		font-weight: 600;
+		white-space: nowrap;
+	}
 
-		.fleet-meta .fleet-meta-value {
-			font-size: 18px;
-			font-weight: 800;
-			line-height: 1;
-		}
+	.fleet-meta .fleet-meta-value {
+		font-size: 18px;
+		font-weight: 800;
+		line-height: 1;
+	}
 
-		.fleet-description-points {
-			margin: 0 0 30px;
-			padding-left: 0;
-			color: #181a1f;
-			font-size: 14px;
-			line-height: 1.6;
-			list-style: none;
-		}
+	.fleet-description-points {
+		margin: 0 0 30px;
+		padding-left: 0;
+		color: #181a1f;
+		font-size: 14px;
+		line-height: 1.6;
+		list-style: none;
+	}
 
-		.fleet-description-points li {
-			margin-bottom: 6px;
-			padding-left: 18px;
-			position: relative;
-		}
+	.fleet-description-points li {
+		margin-bottom: 6px;
+		padding-left: 18px;
+		position: relative;
+	}
 
-		.fleet-description-points li::before {
-			content: "-";
-			left: 0;
-			position: absolute;
+	.fleet-description-points li::before {
+		content: '-';
+		left: 0;
+		position: absolute;
+	}
+
+	.fleet-section-features {
+		margin: -10px 0 30px;
+	}
+
+	.fleet-section-features .fleet-description-points {
+		margin-bottom: 0;
+	}
+
+	.fleet-section-meta {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 24px;
+	}
+
+	.cardFleet .cardInfoBottom {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		align-items: center;
+		gap: 8px;
+		width: 100%;
+		margin-top: auto;
+	}
+
+	.cardFleet .cardInfoBottom .passenger,
+	.cardFleet .cardInfoBottom .luggage {
+		flex: 0 1 auto;
+		width: auto;
+		min-width: 0;
+	}
+
+	.cardFleet .cardInfoBottom .luggage {
+		justify-content: flex-end;
+		text-align: left;
+	}
+
+	.cardFleet .cardInfoBottom .passenger .icon-circle,
+	.cardFleet .cardInfoBottom .luggage .icon-circle {
+		flex: 0 0 36px;
+		width: 36px;
+		height: 36px;
+		margin-right: 0;
+	}
+
+	@media (min-width: 992px) {
+		.cardFleet {
+			padding: 20px;
 		}
 
 		.cardFleet .cardInfoBottom {
-			display: grid;
-			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-			align-items: center;
 			gap: 8px;
-			width: 100%;
-			margin-top: auto;
 		}
 
-		.cardFleet .cardInfoBottom .passenger,
-		.cardFleet .cardInfoBottom .luggage {
-			flex: 0 1 auto;
-			width: auto;
-			min-width: 0;
+		.fleet-meta {
+			gap: 6px;
 		}
 
-		.cardFleet .cardInfoBottom .luggage {
-			justify-content: flex-end;
-			text-align: left;
+		.fleet-meta .text-14 {
+			font-size: 12px;
+			gap: 4px;
+		}
+
+		.fleet-meta .fleet-meta-value {
+			font-size: 14px;
 		}
 
 		.cardFleet .cardInfoBottom .passenger .icon-circle,
 		.cardFleet .cardInfoBottom .luggage .icon-circle {
-			flex: 0 0 36px;
-			width: 36px;
-			height: 36px;
-			margin-right: 0;
+			flex-basis: 28px;
+			width: 28px;
+			height: 28px;
+			background-size: 14px 14px;
 		}
+	}
 
-		@media (min-width: 992px) {
-			.cardFleet {
-				padding: 20px;
-			}
-
-			.cardFleet .cardInfoBottom {
-				gap: 8px;
-			}
-
-			.fleet-meta {
-				gap: 6px;
-			}
-
-			.fleet-meta .text-14 {
-				font-size: 12px;
-				gap: 4px;
-			}
-
-			.fleet-meta .fleet-meta-value {
-				font-size: 14px;
-			}
-
-			.cardFleet .cardInfoBottom .passenger .icon-circle,
-			.cardFleet .cardInfoBottom .luggage .icon-circle {
-				flex-basis: 28px;
-				width: 28px;
-				height: 28px;
-				background-size: 14px 14px;
-			}
+	@media (max-width: 1199px) {
+		.cardFleet .cardInfoBottom {
+			flex-wrap: wrap;
 		}
+	}
 
-		@media (max-width: 1199px) {
-			.cardFleet .cardInfoBottom {
-				flex-wrap: wrap;
-			}
+	.fleet-section-meta .fleet-meta .text-14 {
+		font-size: 14px;
+		gap: 6px;
+	}
+
+	.fleet-section-meta .fleet-meta .fleet-meta-value {
+		font-size: 16px;
+	}
+
+	.fleet-section-meta .fleet-meta .icon-circle {
+		display: inline-block;
+		flex: 0 0 36px;
+		width: 36px;
+		height: 36px;
+		background-color: #f6f6f6;
+		background-position: center;
+		background-repeat: no-repeat;
+		border-radius: 50%;
+		margin-right: 0;
+	}
+
+	.fleet-section-meta .fleet-meta .icon-passenger {
+		background-image: url("{% static 'assets/imgs/template/icons/friend.svg' %}");
+	}
+
+	.fleet-section-meta .fleet-meta .icon-luggage {
+		background-image: url("{% static 'assets/imgs/template/icons/luggage.svg' %}");
+	}
+
+	@media (max-width: 767px) {
+		.fleet-section-meta {
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 14px;
 		}
-	</style>
+	}
+</style>
 <main class="main">
 	<div class="section pt-60 pb-60 bg-primary">
 		<div class="container-sub">
@@ -163,100 +215,37 @@
 		<div class="container-sub">
 			<div class="row align-items-center">
 				<div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-start mb-30">
-						<h2 class="heading-24-medium wow fadeInUp">Premium Sedan (First Class &amp; Business Class)</h2>
+					<h2 class="heading-24-medium wow fadeInUp">Premium Sedan (First Class &amp; Business Class)</h2>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 mb-30">
+					<div class="fleet-section-meta wow fadeInUp">
+						<div class="passenger fleet-meta">
+							<span class="icon-circle icon-passenger"></span
+							><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">3</span></span>
+						</div>
+						<div class="luggage fleet-meta">
+							<span class="icon-circle icon-luggage"></span
+							><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">3</span></span>
+						</div>
+					</div>
 				</div>
 			</div>
+			<div class="fleet-section-features wow fadeInUp">
+				<ul class="fleet-description-points">
+					<li>Black Exterior.</li>
+					<li>Interior Leather.</li>
+					<li>Controlled Temperature.</li>
+					<li>Bottled Water.</li>
+					<li>Phone Charging Facilities.</li>
+				</ul>
+			</div>
 			<div class="row mt-30">
-				<!-- <div class="col-lg-4 mb-30">
+				{% for fleet in sedan_fleets %}
+				<div class="col-lg-3 col-md-6 mb-30">
 					<div class="cardFleet wow fadeInUp">
 						<div class="cardInfo">
-							<a href="fleet-single.html"> <h3 class="text-20-medium color-text mb-10">Business Class</h3></a>
-							<p class="text-14 color-text mb-30">
-								Mercedes-Benz E-Class, BMW 5 Series, Cadillac XTS or similar
-							</p>
+							<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
 						</div>
-						<div class="cardImage mb-30">
-							<a href="fleet-single.html"
-								><img src=" {% static 'assets/imgs/page/homepage1/e-class.png' %} " alt="Luxride"
-							/></a>
-						</div>
-						<div class="cardInfoBottom">
-							<div class="passenger fleet-meta">
-								<span class="icon-circle icon-passenger"></span
-								><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">4</span></span>
-							</div>
-							<div class="luggage fleet-meta">
-								<span class="icon-circle icon-luggage"></span
-								><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">2</span></span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 mb-30">
-					<div class="cardFleet wow fadeInUp">
-						<div class="cardInfo">
-							<a href="fleet-single.html"> <h3 class="text-20-medium color-text mb-10">First Class</h3></a>
-							<p class="text-14 color-text mb-30">Mercedes-Benz EQS, BMW 7 Series, Audi A8 or similar</p>
-						</div>
-						<div class="cardImage mb-30">
-							<a href="fleet-single.html"
-								><img src=" {% static 'assets/imgs/page/homepage1/e-class.png' %} " alt="Luxride"
-							/></a>
-						</div>
-						<div class="cardInfoBottom">
-							<div class="passenger fleet-meta">
-								<span class="icon-circle icon-passenger"></span
-								><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">4</span></span>
-							</div>
-							<div class="luggage fleet-meta">
-								<span class="icon-circle icon-luggage"></span
-								><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">2</span></span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 mb-30">
-					<div class="cardFleet wow fadeInUp">
-						<div class="cardInfo">
-							<a href="fleet-single.html">
-								<h3 class="text-20-medium color-text mb-10">Business Van/SUV</h3></a
-							>
-							<p class="text-14 color-text mb-30">
-								Mercedes-Benz V-Class, Chevrolet Suburban, Cadillac Escalade, Toyota Alphard or similar
-							</p>
-						</div>
-						<div class="cardImage mb-30">
-							<a href="fleet-single.html"
-								><img src=" {% static 'assets/imgs/page/homepage1/suv.png' %} " alt="Luxride"
-							/></a>
-						</div>
-						<div class="cardInfoBottom">
-							<div class="passenger fleet-meta">
-								<span class="icon-circle icon-passenger"></span
-								><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">4</span></span>
-							</div>
-							<div class="luggage fleet-meta">
-								<span class="icon-circle icon-luggage"></span
-								><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">2</span></span>
-							</div>
-						</div>
-					</div>
-				</div> -->
-					{% for fleet in sedan_fleets %}
-					<div class="col-lg-3 col-md-6 mb-30">
-						<div class="cardFleet wow fadeInUp">
-							<div class="cardInfo">
-								<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
-								{% if fleet.description_points|length > 1 %}
-								<ul class="fleet-description-points">
-									{% for point in fleet.description_points %}
-									<li>{{ point }}</li>
-									{% endfor %}
-								</ul>
-								{% else %}
-								<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
-								{% endif %}
-							</div>
 						<div class="cardImage mb-30">
 							{% if fleet.image %}
 							<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
@@ -264,72 +253,65 @@
 							<img src="{% static 'assets/imgs/page/fleet/suv-class.png' %}" alt="{{ fleet.title }}" />
 							{% endif %}
 						</div>
-						<div class="cardInfoBottom">
-							<div class="passenger fleet-meta">
-								<span class="icon-circle icon-passenger"></span
-								><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">{{ fleet.passengers }}</span></span>
-							</div>
-							<div class="luggage fleet-meta">
-								<span class="icon-circle icon-luggage"></span
-								><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">{{ fleet.luggage }}</span></span>
-							</div>
-						</div>
 					</div>
 				</div>
 				{% empty %}
-					<div class="col-12">
-						<p class="text-16 color-text">No fleet vehicles are available yet.</p>
-					</div>
-					{% endfor %}
+				<div class="col-12">
+					<p class="text-16 color-text">No fleet vehicles are available yet.</p>
 				</div>
-				<div class="row align-items-center mt-40">
-					<div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-start mb-30">
-						<h2 class="heading-24-medium wow fadeInUp">Premium SUV</h2>
-					</div>
+				{% endfor %}
+			</div>
+			<div class="row align-items-center mt-40">
+				<div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-start mb-30">
+					<h2 class="heading-24-medium wow fadeInUp">Premium SUV</h2>
 				</div>
-				<div class="row mt-30">
-					{% for fleet in suv_fleets %}
-					<div class="col-lg-3 col-md-6 mb-30">
-						<div class="cardFleet wow fadeInUp">
-							<div class="cardInfo">
-								<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
-								{% if fleet.description_points|length > 1 %}
-								<ul class="fleet-description-points">
-									{% for point in fleet.description_points %}
-									<li>{{ point }}</li>
-									{% endfor %}
-								</ul>
-								{% else %}
-								<p class="text-14 color-text mb-30">{{ fleet.description }}</p>
-								{% endif %}
-							</div>
-							<div class="cardImage mb-30">
-								{% if fleet.image %}
-								<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
-								{% else %}
-								<img src="{% static 'assets/imgs/page/fleet/suv-class.png' %}" alt="{{ fleet.title }}" />
-								{% endif %}
-							</div>
-							<div class="cardInfoBottom">
-								<div class="passenger fleet-meta">
-									<span class="icon-circle icon-passenger"></span
-									><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">{{ fleet.passengers }}</span></span>
-								</div>
-								<div class="luggage fleet-meta">
-									<span class="icon-circle icon-luggage"></span
-									><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">{{ fleet.luggage }}</span></span>
-								</div>
-							</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 mb-30">
+					<div class="fleet-section-meta wow fadeInUp">
+						<div class="passenger fleet-meta">
+							<span class="icon-circle icon-passenger"></span
+							><span class="text-14"><span>Passengers</span><span class="fleet-meta-value">6</span></span>
+						</div>
+						<div class="luggage fleet-meta">
+							<span class="icon-circle icon-luggage"></span
+							><span class="text-14"><span>Luggage</span><span class="fleet-meta-value">6</span></span>
 						</div>
 					</div>
-					{% endfor %}
-					{% if not suv_fleets %}
-					<div class="col-12">
-						<p class="text-16 color-text">No premium SUVs are available yet.</p>
-					</div>
-					{% endif %}
 				</div>
-				<!-- <div class="text-center mt-40 mb-120">
+			</div>
+			<div class="fleet-section-features wow fadeInUp">
+				<ul class="fleet-description-points">
+					<li>Black Exterior.</li>
+					<li>Interior Leather.</li>
+					<li>Controlled Temperature.</li>
+					<li>Bottled Water.</li>
+					<li>Phone Charging Facilities.</li>
+					<li>Entertainment Services.</li>
+					<li>Third Row Seating.</li>
+				</ul>
+			</div>
+			<div class="row mt-30">
+				{% for fleet in suv_fleets %}
+				<div class="col-lg-3 col-md-6 mb-30">
+					<div class="cardFleet wow fadeInUp">
+						<div class="cardInfo">
+							<h3 class="text-20-medium color-text mb-10">{{ fleet.title }}</h3>
+						</div>
+						<div class="cardImage mb-30">
+							{% if fleet.image %}
+							<img src="{{ fleet.image.url }}" alt="{{ fleet.title }}" />
+							{% else %}
+							<img src="{% static 'assets/imgs/page/fleet/suv-class.png' %}" alt="{{ fleet.title }}" />
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				{% endfor %} {% if not suv_fleets %}
+				<div class="col-12">
+					<p class="text-16 color-text">No premium SUVs are available yet.</p>
+				</div>
+				{% endif %}
+			</div>
+			<!-- <div class="text-center mt-40 mb-120">
 				<nav class="box-pagination">
 					<ul class="pagination">
 						<li class="page-item">
@@ -375,12 +357,21 @@
 	<section class="section">
 		<div class="container-sub">
 			<div class="mt-10">
-				<div class="content-single wow fadeInUp" style="padding: 28px; border: 1px solid #ececec; border-radius: 14px; background: #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); text-align: center;">
-					<p style="font-size: 24px; line-height: 1.5; font-weight: 700; margin-bottom: 12px;">
+				<div
+					class="content-single wow fadeInUp"
+					style="
+						padding: 28px;
+						border: 1px solid #ececec;
+						border-radius: 14px;
+						background: #fff;
+						box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+						text-align: center;
+					">
+					<p style="font-size: 24px; line-height: 1.5; font-weight: 700; margin-bottom: 12px">
 						Need Help to choose the type of Vehicle. Call our number.
 					</p>
-					<p style="font-size: 28px; line-height: 1.2; font-weight: 800; margin-bottom: 0;">
-						<a href="tel:9145011564" style="color: inherit; text-decoration: none;">914-501-1564</a>
+					<p style="font-size: 28px; line-height: 1.2; font-weight: 800; margin-bottom: 0">
+						<a href="tel:+914-501-1564" style="color: inherit; text-decoration: none">914-501-1564</a>
 					</p>
 				</div>
 			</div>

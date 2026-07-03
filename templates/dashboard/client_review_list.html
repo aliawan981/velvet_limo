@@ -1,0 +1,39 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_title %}Client Reviews{% endblock %}
+{% block dashboard_content %}
+<section class="dashboard-panel">
+	<div class="dashboard-panel-head">
+		<h2>Client Reviews</h2>
+		<a class="dashboard-button" href="{% url 'dashboard_client_review_add' %}">Add Review</a>
+	</div>
+	<table class="dashboard-table">
+		<thead>
+			<tr>
+				<th>Order</th>
+				<th>Client</th>
+				<th>Title</th>
+				<th>Rating</th>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for review in reviews %}
+			<tr>
+				<td>{{ review.order }}</td>
+				<td>{{ review.client_name }}</td>
+				<td>{{ review.client_title|default:"-" }}</td>
+				<td>{{ review.rating }}</td>
+				<td>{% if review.is_active %}Active{% else %}Inactive{% endif %}</td>
+				<td>
+					<a href="{% url 'dashboard_client_review_edit' review.id %}">Edit</a>
+					<a class="dashboard-danger-link" href="{% url 'dashboard_client_review_delete' review.id %}">Delete</a>
+				</td>
+			</tr>
+			{% empty %}
+			<tr><td colspan="6">No client reviews added yet.</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</section>
+{% endblock %}

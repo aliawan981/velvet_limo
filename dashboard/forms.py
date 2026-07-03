@@ -1,6 +1,6 @@
 from django import forms
 
-from pages.models import Fleet, Service
+from pages.models import ClientReview, Fleet, Service
 
 
 class DashboardFormMixin:
@@ -25,4 +25,13 @@ class FleetForm(DashboardFormMixin, forms.ModelForm):
         fields = ('title', 'category', 'vehicle_name', 'description', 'image', 'passengers', 'luggage', 'is_active', 'order')
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
+        }
+
+
+class ClientReviewForm(DashboardFormMixin, forms.ModelForm):
+    class Meta:
+        model = ClientReview
+        fields = ('client_name', 'client_title', 'review', 'rating', 'image', 'is_active', 'order')
+        widgets = {
+            'review': forms.Textarea(attrs={'rows': 4}),
         }

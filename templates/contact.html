@@ -394,7 +394,9 @@
 	</div>
 	<div class="section pt-60 pb-60">
 		<div class="container-sub">
-			<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">Reach Out Our Team with a Message:</h2>
+			<h2 class="heading-44-medium mb-60 text-center wow fadeInUp">
+				Ready to book your next ride? Let's Get You There:
+			</h2>
 
 			{% if messages %}
 			<div class="alert-messages mb-30">
@@ -425,12 +427,17 @@
 				<div class="col-lg-4 col-md-4 mb-30">
 					<div class="contact-info-box wow fadeInUp">
 						<h6 class="heading-20-medium">Address:</h6>
-						<p class="text-16 mb-0">272 Eastchester Road. New Rochelle. NY-10801 Westchester County.</p>
+						<p class="text-16 mb-0">
+							272 Eastchester Road.<br />
+							New Rochelle. NY-10801. <br />
+							Westchester County.
+						</p>
 					</div>
 				</div>
 			</div>
 
 			<div class="mw-770">
+				<h2 class="heading-44-medium mb-30 text-center wow fadeInUp">Reach Out Our Team with a Message:</h2>
 				<div class="form-contact form-comment wow fadeInUp">
 					<form method="POST" action="{% url 'contact' %}">
 						{% csrf_token %}
@@ -502,7 +509,7 @@
 	<div class="section wow fadeInUp">
 		<div
 			class="contact-service-map"
-			aria-label="Map showing Velvet Limousine near HPN, LGA, and JFK airports">
+			aria-label="Map showing Velvet Limousine near HPN, LGA, JFK, and EWR airports">
 			<div id="contact-airport-map" class="map-contact"></div>
 			<div class="contact-map-label" aria-hidden="true">
 				<span><i class="contact-map-dot contact-map-dot-office"></i>Velvet Limousine</span>
@@ -539,6 +546,12 @@
 				name: 'LaGuardia Airport (LGA)',
 				shortName: 'LGA',
 				coords: [40.7769, -73.874],
+				type: 'airport',
+			},
+			{
+				name: 'Newark Liberty International Airport (EWR)',
+				shortName: 'EWR',
+				coords: [40.6895, -74.1745],
 				type: 'airport',
 			},
 			{

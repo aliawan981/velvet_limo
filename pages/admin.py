@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Fleet, Service
+from .models import ClientReview, Fleet, Service
 
 
 @admin.register(Service)
@@ -19,3 +19,12 @@ class FleetAdmin(admin.ModelAdmin):
     search_fields = ('title', 'vehicle_name', 'description')
     list_editable = ('category', 'is_active', 'order')
     ordering = ('category', 'order', 'title')
+
+
+@admin.register(ClientReview)
+class ClientReviewAdmin(admin.ModelAdmin):
+    list_display = ('client_name', 'client_title', 'rating', 'is_active', 'order', 'created_at', 'updated_at')
+    list_filter = ('is_active', 'rating', 'created_at', 'updated_at')
+    search_fields = ('client_name', 'client_title', 'review')
+    list_editable = ('rating', 'is_active', 'order')
+    ordering = ('order', '-created_at')
