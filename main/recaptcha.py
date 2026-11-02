@@ -18,11 +18,11 @@ def _client_ip(request):
     return request.META.get('REMOTE_ADDR', '')
 
 
-def verify_recaptcha(request, expected_action):
-    """Verify a reCAPTCHA v3 token posted as ``g-recaptcha-response``.
+def verify_recaptcha(request):
+    """Verify a reCAPTCHA v2 ("I'm not a robot" checkbox) response.
 
-    Returns True when the token is valid, matches ``expected_action`` and the
-    score meets ``RECAPTCHA_MIN_SCORE``.
+    The widget posts its token as ``g-recaptcha-response``. Returns True when
+    Google confirms the token is valid.
     """
     secret = getattr(settings, 'RECAPTCHA_SECRET_KEY', '')
     if not secret:
@@ -48,15 +48,6 @@ def verify_recaptcha(request, expected_action):
 
     if not result.get('success'):
         logger.info('reCAPTCHA failed: %s', result.get('error-codes'))
-        return False
-
-    if result.get('action') != expected_action:
-        logger.info('reCAPTCHA action mismatch: %s', result.get('action'))
-        return False
-
-    min_score = getattr(settings, 'RECAPTCHA_MIN_SCORE', 0.5)
-    if result.get('score', 0) < min_score:
-        logger.info('reCAPTCHA score too low: %s', result.get('score'))
         return False
 
     return True

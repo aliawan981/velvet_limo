@@ -117,8 +117,8 @@ def logout_view(request):
 def contact(request):
     if request.method == 'POST':
         form = ContactFormForm(request.POST)
-        if form.is_valid() and not verify_recaptcha(request, 'contact'):
-            form.add_error(None, 'reCAPTCHA verification failed. Please try again.')
+        if form.is_valid() and not verify_recaptcha(request):
+            form.add_error(None, 'Please confirm you are not a robot.')
         if form.is_valid():
             # Save form to database
             contact_instance = form.save()
