@@ -10,6 +10,7 @@ from threading import Thread
 from .forms import ClientLoginForm, ClientRegistrationForm, ContactFormForm, QuoteRequestForm
 from .models import ClientProfile, QuoteRequest
 from .microsoft_graph_mail import send_graph_mail
+from .recaptcha import verify_recaptcha
 
 ADMIN_EMAIL = getattr(settings, 'ADMIN_EMAIL', '')
 
@@ -116,6 +117,8 @@ def logout_view(request):
 def contact(request):
     if request.method == 'POST':
         form = ContactFormForm(request.POST)
+        if form.is_valid() and not verify_recaptcha(request, 'contact'):
+            form.add_error(None, 'reCAPTCHA verification failed. Please try again.')
         if form.is_valid():
             # Save form to database
             contact_instance = form.save()
@@ -170,7 +173,10 @@ def contact(request):
     else:
         form = ContactFormForm()
 
-    return render(request, 'contact.html', {'form': form})
+    return render(request, 'contact.html', {
+        'form': form,
+        'recaptcha_site_key': getattr(settings, 'RECAPTCHA_SITE_KEY', ''),
+    })
 
 
 @login_required(login_url='/login/')

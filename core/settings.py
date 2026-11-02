@@ -157,6 +157,11 @@ ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', '')
 GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY', '')
 USE_GOOGLE_MAPS_API = os.getenv('USE_GOOGLE_MAPS_API', 'False').strip().lower() in {'1', 'true', 'yes', 'on'}
 
+# Google reCAPTCHA v3
+RECAPTCHA_SITE_KEY = os.getenv('RECAPTCHA_SITE_KEY', '')
+RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY', '')
+RECAPTCHA_MIN_SCORE = float(os.getenv('RECAPTCHA_MIN_SCORE', '0.5'))
+
 # CORS Configuration
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",

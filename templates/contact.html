@@ -439,8 +439,14 @@
 			<div class="mw-770">
 				<h2 class="heading-44-medium mb-30 text-center wow fadeInUp">Reach Out Our Team with a Message:</h2>
 				<div class="form-contact form-comment wow fadeInUp">
-					<form method="POST" action="{% url 'contact' %}">
+					<form method="POST" action="{% url 'contact' %}" id="contact-form">
 						{% csrf_token %}
+						<input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
+						{% if form.non_field_errors %}
+						<div class="alert alert-danger mb-20" role="alert">
+							{% for error in form.non_field_errors %}{{ error }}{% endfor %}
+						</div>
+						{% endif %}
 						<div class="row">
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
@@ -475,7 +481,7 @@
 								</div>
 							</div>
 							<div class="col-lg-12">
-								<button class="btn btn-primary" type="submit">
+								<button class="btn btn-primary" type="submit" id="contact-submit">
 									Send Message
 									<svg
 										class="icon-16 ml-5"
@@ -671,4 +677,51 @@
 		window.addEventListener('resize', drawMap);
 	})();
 </script>
+{% if recaptcha_site_key %}
+<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_site_key }}"></script>
+<script>
+	(function () {
+		var form = document.getElementById('contact-form');
+		var tokenInput = document.getElementById('g-recaptcha-response');
+		var submitBtn = document.getElementById('contact-submit');
+		var siteKey = '{{ recaptcha_site_key|escapejs }}';
+		var submitting = false;
+
+		if (!form) {
+			return;
+		}
+
+		form.addEventListener('submit', function (event) {
+			if (submitting) {
+				return;
+			}
+			event.preventDefault();
+
+			if (!form.reportValidity()) {
+				return;
+			}
+
+			if (typeof grecaptcha === 'undefined') {
+				alert('Security check could not load. Please refresh the page and try again.');
+				return;
+			}
+
+			submitBtn.disabled = true;
+			grecaptcha.ready(function () {
+				grecaptcha
+					.execute(siteKey, { action: 'contact' })
+					.then(function (token) {
+						tokenInput.value = token;
+						submitting = true;
+						form.submit();
+					})
+					.catch(function () {
+						submitBtn.disabled = false;
+						alert('Security check failed. Please try again.');
+					});
+			});
+		});
+	})();
+</script>
+{% endif %}
 {% endblock %}
